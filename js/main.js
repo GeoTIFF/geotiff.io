@@ -29,12 +29,21 @@ try {
         console.log("input_url:", input_url);
 
 
-        fetch(input_url).then(r => r.arrayBuffer()).then(function(buffer) {
-            var s = L.ScalarField.fromGeoTIFF(buffer);
-            let layer = L.canvasLayer.scalarField(s).addTo(map);
-        });
-
-         $(".modal").modal('hide');
+        fetch(input_url).then(
+            r => r.arrayBuffer(),
+            (error) => {
+                var domain = new URL(input_url).host;
+                var error_message = "GeoTIFF.io could not get the file from " + domain + ".  This is often because a website's security prevents cross domain requests.  Download the file and load it manually.";
+                if (swal) swal("Oops", error_message, "error");
+                else alert(error_message);
+            }
+        ).then(function(buffer) {
+            if (buffer) {
+                $(".modal").modal('hide');
+                var s = L.ScalarField.fromGeoTIFF(buffer);
+                let layer = L.canvasLayer.scalarField(s).addTo(map);
+            }
+       });
 
     });
     
