@@ -1,0 +1,20 @@
+#map {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.modal-footer {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.modal-footer button {
+    cursor: pointer;
+}
+
+.or {
+    text-align: center;
+}
