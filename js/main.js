@@ -42,6 +42,7 @@ try {
                 $(".modal").modal('hide');
                 var s = L.ScalarField.fromGeoTIFF(buffer);
                 let layer = L.canvasLayer.scalarField(s).addTo(map);
+                map.flyToBounds(layer.getBounds());
             }
        });
 
