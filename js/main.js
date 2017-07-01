@@ -36,24 +36,6 @@ try {
 
          $(".modal").modal('hide');
 
-
-        /* if we did leaflet-geottiff instead */
-        /*var leaflet = L.leafletGeotiff(
-            url=input_url,
-            options={
-                band: 0,
-                displayMin: 0,
-                displayMax: 30,
-                name: 'Wind speed',
-                colorScale: 'rainbow',
-                clampLow: false,
-                clampHigh: true,
-                //vector:true,
-                arrowSize: 20,
-            }
-        ).addTo(map);
-        */
-
     });
     
 

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>GeoTIFF.io</title>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
 
@@ -10,12 +13,12 @@
 
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
         <script src="https://unpkg.com/geotiff@0.4.1/dist/geotiff.browserify.min.js"></script>
-        <script src="https://unpkg.com/plotty@0.2.0/dist/plotty.min.js"></script>
         <script src="https://unpkg.com/leaflet-providers@1.1.17/leaflet-providers.js"></script>
-        <!--<script src="js/leaflet-geotiff.js"></script>-->
         <script src="https://ihcantabria.github.io/Leaflet.CanvasLayer.Field/dist/leaflet.canvaslayer.field.js"></script>
         <link href="css/style.css" rel="stylesheet">
 
+
+        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -47,9 +50,13 @@
                             <div class="input-group">
                             <input type="file" class="form-control" id="file">
                         </div>
+                        </br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" id="go">GO</button>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Log feature requests and issues <a href="https://github.com/danieljdufour/geotiff.io/issues">here</a>.</p>
                     </div>
                 </div>
             </div>
