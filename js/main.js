@@ -1,5 +1,10 @@
 try {
+
+    /* Want modal to pop up immediately */
+    $(".modal").modal();
+
     console.log("starting main.js");
+
     var map = L.map('map').setView([0, 0], 2);
     map.options.minZoom = 2;
 
@@ -10,7 +15,6 @@ try {
 
     OpenStreetMap_Mapnik.addTo(map);
 
-    $(".modal").modal();
 
     $('#go').on('click', function (e) {
         console.log("GO!");
@@ -47,7 +51,20 @@ try {
        });
 
     });
-    
+
+    Promise.all([
+        load_script("https://unpkg.com/leaflet-geosearch@2.4.0/dist/bundle.min.js"),
+        load_style("https://unpkg.com/leaflet-geosearch@2.4.0/dist/style.css"),
+        load_style("https://unpkg.com/leaflet-geosearch@2.4.0/assets/css/leaflet.css")
+    ]).then(() => {
+        var provider = new GeoSearch.OpenStreetMapProvider();
+
+        var searchControl = new GeoSearch.GeoSearchControl({
+            provider: provider,
+        });
+
+        map.addControl(searchControl);
+    });
 
 } catch (error) {
     console.error(error);
