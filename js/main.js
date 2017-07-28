@@ -46,7 +46,13 @@ try {
                 $(".modal").modal('hide');
                 var s = L.ScalarField.fromGeoTIFF(buffer);
                 let layer = L.canvasLayer.scalarField(s).addTo(map);
-                map.flyToBounds(layer.getBounds());
+                var layer_bounds = layer.getBounds();
+                map.flyToBounds(layer_bounds);
+                L.rectangle(layer_bounds, {
+                    color: "#ff0000",
+                    fillOpacity: 0,
+                    weight: 1
+                }).addTo(map);
             }
        });
 
