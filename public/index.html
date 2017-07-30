@@ -9,14 +9,14 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
 
         <script>
-            function load_script(url) {
-                return new Promise((resolve, reject) => {
-                    var script = document.createElement("script");
-                    script.onload = resolve;
-                    script.src = url;
-                    document.body.appendChild(script);
-                });
-            }
+            // function load_script(url) {
+            //     return new Promise((resolve, reject) => {
+            //         var script = document.createElement("script");
+            //         script.onload = resolve;
+            //         script.src = url;
+            //         document.body.appendChild(script);
+            //     });
+            // }
             function load_style(url) {
                 return new Promise((resolve, reject) => {
                     var link = document.createElement("link");
@@ -48,7 +48,7 @@
 
     </head>
     <body>
-        <div id="map"></div>
+        <div id="app"></div>
         <div class="modal fade">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

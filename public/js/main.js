@@ -5,15 +5,15 @@ try {
 
     console.log("starting main.js");
 
-    var map = L.map('map').setView([0, 0], 2);
-    map.options.minZoom = 2;
+ //    var map = L.map('map').setView([0, 0], 2);
+ //    map.options.minZoom = 2;
 
-    var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+ //    var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	// maxZoom: 19,
+	// attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+ //    });
 
-    OpenStreetMap_Mapnik.addTo(map);
+ //    OpenStreetMap_Mapnik.addTo(map);
 
 
     $('#go').on('click', function (e) {
@@ -58,19 +58,8 @@ try {
 
     });
 
-    Promise.all([
-        load_script("https://unpkg.com/leaflet-geosearch@2.4.0/dist/bundle.min.js"),
-        load_style("https://unpkg.com/leaflet-geosearch@2.4.0/dist/style.css"),
+    load_style("https://unpkg.com/leaflet-geosearch@2.4.0/dist/style.css"),
         load_style("https://unpkg.com/leaflet-geosearch@2.4.0/assets/css/leaflet.css")
-    ]).then(() => {
-        var provider = new GeoSearch.OpenStreetMapProvider();
-
-        var searchControl = new GeoSearch.GeoSearchControl({
-            provider: provider,
-        });
-
-        map.addControl(searchControl);
-    });
 
 } catch (error) {
     console.error(error);
