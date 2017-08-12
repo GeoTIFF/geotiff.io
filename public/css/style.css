@@ -1,20 +1,236 @@
-#map {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
-
-.modal-footer {
+html .modal .modal-content,
+body .modal .modal-content {
+  border-radius: 0;
+}
+html .modal .modal-content .modal-header,
+body .modal .modal-content .modal-header {
+  background: #00897B;
+  color: white;
+}
+html .modal .modal-content .modal-header button,
+body .modal .modal-content .modal-header button {
+  background: none;
+  border: none;
+}
+html #menu,
+body #menu {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 33%;
+  height: 100%;
+  background: white;
+  z-index: 1000;
+  box-shadow: 3px 0px 4px 0 rgba(0, 0, 0, 0.15);
+}
+html #menu header,
+body #menu header {
+  background: #00897B;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+html #menu header h3,
+body #menu header h3 {
+  margin-bottom: 0;
+}
+html #menu #search,
+body #menu #search {
+  padding: 1rem;
+}
+html #menu #content,
+body #menu #content {
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+html #menu #content #tool-button-container,
+body #menu #content #tool-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+html #menu #content #tool-button-container .tool-button,
+body #menu #content #tool-button-container .tool-button {
+  cursor: pointer;
+  background: #00897B;
+  color: white;
+  border-radius: 0;
+  text-align: center;
+  height: 6rem;
+  width: 6rem;
+  margin: 1rem auto;
+  border: none;
+  box-shadow: -2px 2px 1px 0 rgba(0, 0, 0, 0.1);
+}
+html #menu #content #tool-button-container .tool-button h3,
+body #menu #content #tool-button-container .tool-button h3 {
+  font-size: 14px;
+}
+html #menu #content #tool-button-container .tool-button .material-icons,
+body #menu #content #tool-button-container .tool-button .material-icons {
+  font-size: 2.5rem;
+}
+html #menu #content #tool-button-container .tool-button:hover,
+body #menu #content #tool-button-container .tool-button:hover {
+  color: #ff4081;
+}
+html #menu #content .tool,
+body #menu #content .tool {
+  border: 1px solid #00897B;
+  box-shadow: -3px 3px 1px 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+html #menu #content .tool .controls header,
+body #menu #content .tool .controls header {
+  width: 100%;
+  background: #00897B;
+  color: white;
+  text-align: left;
+}
+html #menu #content .tool .controls header h3,
+body #menu #content .tool .controls header h3 {
+  padding-top: .5rem;
+  font-size: 18px;
+}
+html #menu #content .tool .controls .content,
+body #menu #content .tool .controls .content {
+  padding: 1rem;
+  font-size: 14px;
+}
+html #menu #content .tool .results,
+body #menu #content .tool .results {
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+html #map,
+body #map {
+  bottom: 0;
+  left: 33%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+html #map .leaflet-control,
+body #map .leaflet-control {
+  border-radius: 0 !important;
+}
+html #map .leaflet-control a,
+body #map .leaflet-control a {
+  border-radius: 0 !important;
+}
+html .modal-footer,
+body .modal-footer {
+  margin: 0 auto;
+  text-align: center;
+}
+html .modal-footer button,
+body .modal-footer button {
+  cursor: pointer;
+}
+html .or,
+body .or {
+  text-align: center;
+}
+html .gt-input,
+body .gt-input {
+  border-radius: 0;
+  border: 1px solid #00897B;
+  padding: .1rem .5rem;
+  margin: auto;
+  display: block;
+  max-width: 30rem;
+  width: 80%;
+}
+html .gt-input > input,
+body .gt-input > input {
+  border: none;
+  padding: .5rem;
+}
+html .gt-button,
+body .gt-button {
+  cursor: pointer;
+  border-radius: 0;
+  background: #00897B;
+  border: none;
+  color: white;
+  padding: .5rem 1rem;
+}
+html .gt-remove,
+body .gt-remove {
+  border-radius: 50%;
+  box-shadow: -2px 2px 1px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  float: right;
+  background: #ff4081;
+  color: white;
+  padding: .25rem;
+}
+@media screen and (max-width: 45.5em) {
+  html body #menu {
+    z-index: 1000;
+    position: relative;
+    margin: 1em auto;
+    width: 80%;
+    border-radius: 0;
+    padding: .75rem;
+    text-align: center;
+    border: 1px solid #00897B;
+  }
+  html body #menu #menu-header {
+    display: none;
+  }
+  html body #menu #search {
+    padding: 0;
+  }
+  html body #menu #search #search-input {
+    padding: .5rem 1rem;
+    width: 100%;
+    display: block;
     margin: 0 auto;
-    text-align: center;
-}
-
-.modal-footer button {
-    cursor: pointer;
-}
-
-.or {
-    text-align: center;
+  }
+  html body #menu #content {
+    padding: 0;
+    margin: 0;
+  }
+  html body #menu #content #tool-button-container,
+  html body #menu #content .controls {
+    display: none;
+  }
+  html body #menu #content .tool {
+    border: none;
+  }
+  html body #menu #content.focus {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+  html body #menu #content.focus #tool-button-container {
+    display: flex;
+  }
+  html body #menu #content.focus .controls {
+    display: block;
+  }
+  html body #menu #content.focus .tool {
+    border: 1px solid #00897B;
+  }
+  html body #menu #content .results {
+    position: fixed;
+    background: white;
+    width: 80%;
+    left: 10%;
+    bottom: 1rem;
+    box-shadow: -3px 3px 1px 0 rgba(0, 0, 0, 0.15);
+    border: 1px solid #00897B;
+  }
+  html body #map {
+    left: 0;
+  }
+  html body #map .leaflet-top {
+    top: 7.5rem;
+  }
 }
