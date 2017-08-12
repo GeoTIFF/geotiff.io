@@ -1,0 +1,2 @@
+Load GeoTiFF|insert_photo|LoadTool
+Identify|add_location|IdentifyTool
