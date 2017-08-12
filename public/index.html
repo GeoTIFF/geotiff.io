@@ -46,6 +46,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
     </head>
     <body>
         <div id="app"></div>
@@ -54,8 +57,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Welcome to GeoTIFF.io</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                        <button type="button" data-dismiss="modal" aria-label="Close">
+                            <i class='material-icons gt-remove'>clear</i>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -63,19 +66,19 @@
                         </br>
                         <p>You have two ways to link to your GeoTIFF. Add a url or upload a file.</p>
                         <label for="basic-url">URL to Your GeoTIFF</label>
-                            <div class="input-group">
-                            <input type="text" class="form-control" id="url-to-raster">
+                        <div>
+                            <input type="text" class="gt-input" id="url-to-raster">
                         </div>
                         </br>
                         <p class="or"><b>OR</b></p>
                         <label for="basic-url">Load File</label>
-                            <div class="input-group">
+                        <div class="gt-input">
                             <input type="file" class="form-control" id="file">
                         </div>
                         </br>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="go">GO</button>
+                        <button type="button" class="gt-button" id="go">GO</button>
                     </div>
                     <div class="modal-footer">
                         <p>Log feature requests and issues <a href="https://github.com/danieljdufour/geotiff.io/issues">here</a>.</p>
