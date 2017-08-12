@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+let React = require('react');
+let MapContainer = require('./MapContainer');
+let Menu = require('./Menu');
 
-import Map from './Map';
-
-class App extends Component {
+class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Map />
+            	<Menu />
+                <MapContainer />
             </div>
         );
     }
 }
 
-export default App;
+module.exports = App;
