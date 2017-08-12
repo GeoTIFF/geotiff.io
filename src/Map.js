@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
+let _ = require('underscore');
 
-import L from 'leaflet';
+let L = window.L;
 
 import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
 
-class Map extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
+let map;
+let instance = null;
 
-    componentDidMount() {
+let Map = {
+
+    tiff: null,
+    image: null,
+    raster: null,
+
+    subscribers: [],
+
+    initialize() {
 
         // add map
-        let map = L.map('map').setView([0, 0], 2);
+        map = L.map('map').setView([0, 0], 2);
         map.options.minZoom = 2;
 
         // add osm basemap
@@ -30,13 +35,50 @@ class Map extends Component {
             provider: provider,
         });
         map.addControl(searchControl);
-    }
 
-    render() {
-        return (
-            <div id='map'></div>
-        )
+        map.on('click', e => this.notify('map-click', e.latlng));
+    },
+
+    subscribe(subscriber) {
+        this.subscribers.push(subscriber);
+    },
+
+    unsubscribe(traitor) {
+        let index = _.indexOf(this.subscribers, subscriber => subscriber == traitor);
+        if (index) this.subscribers.splice(index, 1);
+    },
+
+    notify(event_type, message) {
+        this.subscribers.forEach(subscriber => subscriber.listen(event_type, message));
+    },
+
+    add_layer(layer) {
+
+        // remove existing raster
+        if (this.raster) map.removeLayer(this.raster);
+
+        // add new raster
+        layer.addTo(map);
+
+        // create bounding box to highlight raster
+        let layer_bounds = layer.getBounds();
+        map.flyToBounds(layer_bounds);
+        L.rectangle(layer_bounds, {
+            color: "#ff0000",
+            fillOpacity: 0,
+            weight: 1
+        }).addTo(map);
+
+        this.raster = layer;
+    },
+
+    add_marker(latlng) {
+        return L.marker(latlng).addTo(map);
+    },
+
+    remove_marker(marker) {
+        map.removeLayer(marker);
     }
 }
 
-export default Map;
+module.exports = Map;
