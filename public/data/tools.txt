@@ -1,2 +1,3 @@
-Load GeoTiFF|insert_photo|LoadTool
+Load GeoTIFF|insert_photo|LoadTool
 Identify|add_location|IdentifyTool
+Download|file_download|DownloadTool
