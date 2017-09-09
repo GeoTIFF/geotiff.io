@@ -1,7 +1,11 @@
 try {
 
-    /* Want modal to pop up immediately */
-    $(".modal").modal();
+    /* Want modal to pop up immediately, unless preloading a raster */
+    var search_params = new URLSearchParams(window.location.search);
+    var url = search_params.get("url");
+    if (!url) {
+        $(".modal").modal();
+    }
 
     console.log("starting main.js");
 
