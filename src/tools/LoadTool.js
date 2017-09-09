@@ -20,6 +20,14 @@ let load_raster = (input) => {
 	});
 }
 
+
+var url_to_tiff = new URLSearchParams(window.location.search).get("url");
+console.log("URL:", url_to_tiff);
+if (url_to_tiff) {
+    load_raster(url_to_tiff);
+}
+
+
 class LoadTool extends React.Component {
 
 	constructor(props) {
@@ -31,6 +39,10 @@ class LoadTool extends React.Component {
 		this.change_input_from_file = this.change_input_from_file.bind(this);
 		this.load_raster = this.load_raster.bind(this);
 	}
+
+        componentDidMount() {
+            console.log("mounted LOadTool");
+        }
 
 	change_input_from_url(event) {
 		let input = event.target.value;
