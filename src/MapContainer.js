@@ -9,7 +9,7 @@ class MapContainer extends React.Component {
     }
 
     componentDidMount() {
-    	Map.initialize();
+    	Map.initialize(this.props.params);
     }
 
     render() {

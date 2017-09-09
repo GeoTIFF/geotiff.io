@@ -7,6 +7,10 @@ class ToolButton extends React.Component {
 		this.on_select = this.on_select.bind(this);
 	}
 
+        componentDidMount() {
+            console.log("mounted:", this.props.name);
+        }
+
 	on_select() {
 		this.props.on_select(this.props.component);
 	}

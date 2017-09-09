@@ -123,6 +123,7 @@ class Menu extends React.Component {
 										icon={tool[1]}
 										component={tool[2]}
 										on_select={this.on_select}
+										params={this.props.params}
 									/>
 								})
 							}
