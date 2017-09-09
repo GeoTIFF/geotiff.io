@@ -46,6 +46,15 @@ class Menu extends React.Component {
 		tool_info.then(tools => {
 			this.setState({ tools });
 			this.set_visible_tools();
+
+                        //load a tool if passed one in a search parameter
+                        var starting_tool = this.props.params.get("tool");
+                        console.log("starting_tool:", starting_tool);
+
+                        if (starting_tool) {
+                            this.on_select(starting_tool);
+                        }
+
 		});
 	}
 
@@ -59,6 +68,7 @@ class Menu extends React.Component {
 	}
 
 	on_select(component_name) {
+		console.log("starting on_select with", component_name);
 		this.setState({ active_component: components[component_name] });
 	}
 
