@@ -1,4 +1,5 @@
 let React = require('react');
+let ReactDOM = require('react-dom');
 let MapContainer = require('./MapContainer');
 let Menu = require('./Menu');
 
@@ -6,19 +7,24 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
+        var url_params = new URLSearchParams(window.location.search);
+        var hide_menu = ["", "true", "True", "y", "Y", "yes", "Yes"].indexOf(url_params.get("hide_menu")) > -1 || false;
         this.state = {
-            params: new URLSearchParams(window.location.search)
+            hide_menu: hide_menu,
+            params: url_params
         };
     }
 
     componentDidMount() {
         console.log("App mounted");
+        var element = ReactDOM.findDOMNode(this.refs.main_app);
+        element.setAttribute("hide_menu", this.state.hide_menu);
     }
 
     render() {
         return (
-            <div className="App">
-            	<Menu params={this.state.params}/>
+            <div className="App" ref="main_app">
+                <Menu params={this.state.params}/>;
                 <MapContainer params={this.state.params}/>
             </div>
         );
