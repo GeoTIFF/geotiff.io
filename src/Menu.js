@@ -47,13 +47,13 @@ class Menu extends React.Component {
 			this.setState({ tools });
 			this.set_visible_tools();
 
-                        //load a tool if passed one in a search parameter
-                        var starting_tool = this.props.params.get("tool");
-                        console.log("starting_tool:", starting_tool);
+            //load a tool if passed one in a search parameter
+            var starting_tool = this.props.params.get("tool");
+            console.log("starting_tool:", starting_tool);
 
-                        if (starting_tool) {
-                            this.on_select(starting_tool);
-                        }
+            if (starting_tool) {
+                this.on_select(starting_tool);
+            }
 
 		});
 	}

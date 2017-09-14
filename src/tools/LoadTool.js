@@ -14,7 +14,7 @@ let load_raster = (input) => {
 			let buffer = Map.image.dataView.buffer;
 			let s = L.ScalarField.fromGeoTIFF(buffer);
 	        let layer = L.canvasLayer.scalarField(s);
-	        Map.add_layer(layer);
+	        Map.add_raster_layer(layer);
 	        resolve();
 		});
 	});

@@ -4,7 +4,7 @@ let L = window.L;
 
 import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
 
-let map;
+let map, draw_control;
 let instance = null;
 
 let Map = {
@@ -20,6 +20,19 @@ let Map = {
         // add map
         map = L.map('map').setView([0, 0], 2);
         map.options.minZoom = 2;
+
+        // add draw controls
+        let draw_options = {
+            /*draw: {
+                rectangle: {
+                    shapeOptions: {
+                        clickable: false
+                    }
+                }
+            }*/
+        }
+        draw_control = new L.Control.Draw(draw_options);
+        map.addControl(draw_control);
 
         // add osm basemap
         let OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -37,6 +50,9 @@ let Map = {
         map.addControl(searchControl);
 
         map.on('click', e => this.notify('map-click', e.latlng));
+        map.on('draw:created', e => {
+            if (e.layerType === 'rectangle') this.notify('rectangle', e)
+        })
     },
 
     subscribe(subscriber) {
@@ -52,7 +68,7 @@ let Map = {
         this.subscribers.forEach(subscriber => subscriber.listen(event_type, message));
     },
 
-    add_layer(layer) {
+    add_raster_layer(layer) {
 
         // remove existing raster
         if (this.raster) map.removeLayer(this.raster);
@@ -72,12 +88,25 @@ let Map = {
         this.raster = layer;
     },
 
+    add_layer(layer) {
+        layer.addTo(map);
+    },
+
     add_marker(latlng) {
         return L.marker(latlng).addTo(map);
     },
 
-    remove_marker(marker) {
-        map.removeLayer(marker);
+    remove_layer(layer) {
+        map.removeLayer(layer);
+    },
+
+    start_draw_rectangle() {
+        this.rectangle = new L.Draw.Rectangle(map, draw_control.options.rectangle);
+        this.rectangle.enable();
+    },
+
+    stop_draw_rectangle() {
+        this.rectangle.disable();
     }
 }
 
