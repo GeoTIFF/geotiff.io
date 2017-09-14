@@ -48,13 +48,12 @@ class MeanTool extends React.Component {
     }
 
     close() {
-        if (this.state.layer) this.props.on_remove();
         if (this.state.layer) {
             Map.remove_layer(this.state.layer);
             Map.unsubscribe(this);
             this.setState({ layer: null });
         }
-        
+        this.props.on_remove();
     }
 
     render() {
