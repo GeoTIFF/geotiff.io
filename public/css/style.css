@@ -78,7 +78,7 @@ body #menu #content #tool-button-container .tool-button .material-icons {
 }
 html #menu #content #tool-button-container .tool-button:hover,
 body #menu #content #tool-button-container .tool-button:hover {
-  color: #ff4081;
+  background-color: #ff4081;
 }
 html #menu #content .tool,
 body #menu #content .tool {
