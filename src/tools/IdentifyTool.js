@@ -14,6 +14,7 @@ class IdentifyTool extends React.Component {
 			marker: null
 		}
 		this.change_mode = this.change_mode.bind(this);
+		this.close = this.close.bind(this);
 	}
 
 	change_mode() {
@@ -30,14 +31,14 @@ class IdentifyTool extends React.Component {
 				value: ''
 			});
 			Map.unsubscribe(this);
-			if (this.state.marker) Map.remove_marker(this.state.marker);
+			if (this.state.marker) Map.remove_layer(this.state.marker);
 		}
 	}
 
 	listen(event_type, message) {
 		if (event_type === 'map-click') {
 			let point = [message.lng, message.lat];
-			if (this.state.marker) Map.remove_marker(this.state.marker);
+			if (this.state.marker) Map.remove_layer(this.state.marker);
 			let marker = Map.add_marker(message);
 			this.setState({ 
 				value: gio.identify(Map.image, point),
@@ -46,12 +47,21 @@ class IdentifyTool extends React.Component {
 		}
 	}
 
+	close() {
+		this.props.on_remove();
+		if (this.state.marker) {
+			Map.remove_layer(this.state.marker);
+			Map.unsubscribe(this);
+			this.setState({	marker: null });
+		}
+	}
+
 	render() {
 		return (
 			<div id='identify-tool' className='tool'>
 				<section className='controls'>
 					<header>
-						<i className='material-icons gt-remove' onClick={this.props.on_remove}>clear</i>
+						<i className='material-icons gt-remove' onClick={this.close}>clear</i>
 						<h3 className='tool-title'>Identify a Pixel Value</h3>
 					</header>
 					<div className='content'>
