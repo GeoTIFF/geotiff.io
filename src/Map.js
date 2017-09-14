@@ -51,7 +51,7 @@ let Map = {
 
         map.on('click', e => this.notify('map-click', e.latlng));
         map.on('draw:created', e => {
-            if (e.layerType === 'rectangle') this.notify('rectangle', e)
+            if (e.layerType === 'rectangle') this.notify('rectangle', e);
         })
     },
 
