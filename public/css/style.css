@@ -124,6 +124,10 @@ html #map .leaflet-control a,
 body #map .leaflet-control a {
   border-radius: 0 !important;
 }
+html #map .leaflet-draw,
+body #map .leaflet-draw {
+  display: none;
+}
 html .modal-footer,
 body .modal-footer {
   margin: 0 auto;
