@@ -4,6 +4,10 @@ let ToolButton = require('./ToolButton');
 
 let Map = require('./Map');
 
+let Fuse = require("fuse.js");
+
+let _ = require("underscore");
+
 let components = {};
 
 let tool_info = fetch('data/tools.txt').then(response => {
@@ -18,6 +22,32 @@ let tool_info = fetch('data/tools.txt').then(response => {
             resolve(tools);
         });
     });
+});
+
+let build_search_engine = tool_info.then(tools => {
+
+    var options = {
+        includeScore: true,
+        shouldSort: true,
+        tokenize: true,
+        threshold: 0.0001,
+        location: 0,
+        distance: 100,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: [
+            {
+                name: "0",
+                weight: 0.5,
+            },
+            {
+                name: "2",
+                weight: 0.2,
+            }
+        ]
+    };
+
+    return new Fuse(tools, options);
 });
 
 class Menu extends React.Component {
@@ -59,8 +89,23 @@ class Menu extends React.Component {
     }
 
     search(event) {
-        let value = event.target.value;
-        console.log(value);
+
+        let value = event.target.value.trim();
+        /*
+            build_search_engine only runs after the tool info is loaded,
+            so we don't need the tool_info_promise
+        */
+        if (value === "") {
+            this.setState({
+                visible_tools: this.state.tools
+            });
+        } else {
+            build_search_engine.then(fuse => {
+                this.setState({
+                    visible_tools: _.pluck(fuse.search(value), "item")
+                });
+            });
+        }
     } 
 
     select_tool(tool) {
@@ -80,11 +125,12 @@ class Menu extends React.Component {
         this.setState({ focused: false });
     }
 
-    set_visible_tools() {
+    set_visible_tools(visible_tools) {
 
-        // for now just set it to all tools but need a search algorithm
+        if (!visible_tools) visible_tools = this.state.tools;
+
         this.setState({
-            visible_tools: this.state.tools
+            visible_tools: visible_tools
         });
     }
 
