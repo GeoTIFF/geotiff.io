@@ -78,7 +78,7 @@ body #menu #content #tool-button-container .tool-button .material-icons {
 }
 html #menu #content #tool-button-container .tool-button:hover,
 body #menu #content #tool-button-container .tool-button:hover {
-  color: #ff4081;
+  background-color: #ff4081;
 }
 html #menu #content .tool,
 body #menu #content .tool {
@@ -123,6 +123,10 @@ body #map .leaflet-control {
 html #map .leaflet-control a,
 body #map .leaflet-control a {
   border-radius: 0 !important;
+}
+html #map .leaflet-draw,
+body #map .leaflet-draw {
+  display: none;
 }
 html .modal-footer,
 body .modal-footer {
