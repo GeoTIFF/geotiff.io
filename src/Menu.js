@@ -29,7 +29,7 @@ class Menu extends React.Component {
             tools: [],
             visible_tools: [],
             active_component: null
-        }
+        };
         
         this.search = this.search.bind(this);
         this.select_tool = this.select_tool.bind(this);
@@ -77,7 +77,7 @@ class Menu extends React.Component {
     }
 
     listen(event_type, message) {
-        this.setState({ focused: false })
+        this.setState({ focused: false });
     }
 
     set_visible_tools() {
@@ -85,7 +85,7 @@ class Menu extends React.Component {
         // for now just set it to all tools but need a search algorithm
         this.setState({
             visible_tools: this.state.tools
-        })
+        });
     }
 
     on_remove() {
