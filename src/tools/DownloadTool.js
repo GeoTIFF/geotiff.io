@@ -15,12 +15,11 @@ class DownloadTool extends React.Component {
             filename: "downloaded.tiff",
             value: '',
             marker: null
-        }
+        };
         this["download"] = this["download"].bind(this);
     }
 
     download() {
-        console.log("startnig download");
         FileSaver.saveAs(new Blob([Map.image.dataView.buffer]), this.state.filename);
     }
 

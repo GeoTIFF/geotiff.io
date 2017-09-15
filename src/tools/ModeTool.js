@@ -10,7 +10,7 @@ class ModeTool extends React.Component {
         this.state = {
             value: null,
             layer: null
-        }
+        };
         this.draw_rectangle = this.draw_rectangle.bind(this);
         this.close = this.close.bind(this);
     }

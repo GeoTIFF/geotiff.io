@@ -30,7 +30,7 @@ let Map = {
                     }
                 }
             }*/
-        }
+        };
         draw_control = new L.Control.Draw(draw_options);
         map.addControl(draw_control);
 
@@ -52,7 +52,7 @@ let Map = {
         map.on('click', e => this.notify('map-click', e.latlng));
         map.on('draw:created', e => {
             if (e.layerType === 'rectangle') this.notify('rectangle', e);
-        })
+        });
     },
 
     subscribe(subscriber) {

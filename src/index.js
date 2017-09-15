@@ -3,6 +3,6 @@ let ReactDOM = require('react-dom');
 let App = require('./App');
 
 ReactDOM.render(
-  	<App />,
-  	document.getElementById('app')
+    <App />,
+    document.getElementById('app')
 );

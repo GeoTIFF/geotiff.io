@@ -13,10 +13,9 @@ class App extends React.Component {
             hide_menu: hide_menu,
             params: url_params
         };
-    }
+    } 
 
     componentDidMount() {
-        console.log("App mounted");
         var element = ReactDOM.findDOMNode(this.refs.main_app);
         element.setAttribute("hide_menu", this.state.hide_menu);
     }
