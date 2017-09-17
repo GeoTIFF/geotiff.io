@@ -48,6 +48,8 @@ html #menu #content,
 body #menu #content {
   padding: 1rem;
   margin-top: 1.5rem;
+  height: calc(100% - 10rem);
+  overflow-y: scroll;
 }
 html #menu #content #tool-button-container,
 body #menu #content #tool-button-container {

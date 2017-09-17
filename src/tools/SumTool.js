@@ -58,7 +58,7 @@ class SumTool extends React.Component {
 
     render() {
         return (
-            <div id='mean-tool' className='tool'>
+            <div id='sum-tool' className='tool'>
                 <section className='controls'>
                     <header>
                         <i className='material-icons gt-remove' onClick={this.close}>clear</i>
