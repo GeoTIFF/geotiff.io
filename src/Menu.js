@@ -4,6 +4,8 @@ let ToolButton = require('./ToolButton');
 
 let Map = require('./Map');
 
+let _ = require("underscore");
+
 let components = {};
 
 let tool_info = fetch('data/tools.txt').then(response => {
@@ -51,7 +53,12 @@ class Menu extends React.Component {
             var starting_tool = this.props.params.get("tool");
             console.log("starting_tool:", starting_tool);
 
+            var names_of_tools = _.pluck(tools, "2");
+            console.log("names_of_tools:", names_of_tools);
+            this.setState({ names_of_tools });
+
             if (starting_tool) {
+                console.log("components:", tools);
                 this.on_select(starting_tool);
             }
 
@@ -69,7 +76,11 @@ class Menu extends React.Component {
 
     on_select(component_name) {
         console.log("starting on_select with", component_name);
-        this.setState({ active_component: components[component_name] });
+        if (this.state.names_of_tools.includes(component_name)) {
+            this.setState({ active_component: components[component_name] });
+        } else {
+            alert("You tried to load " + component_name + ", which is not technical name of the tool");
+        }
     }
 
     on_search_focus() {
