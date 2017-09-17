@@ -39,10 +39,8 @@ class MedianTool extends React.Component {
             let latlngs = layer.getBounds();
             Map.add_layer(layer);
             let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-            this.setState({ 
-                value: gio.median(Map.image, coors).toString(),
-                layer
-            });
+            let value = gio.median(Map.image, coors).toFixed(2);
+            this.setState({ value, layer });
             Map.stop_draw_rectangle();
         }
     }
