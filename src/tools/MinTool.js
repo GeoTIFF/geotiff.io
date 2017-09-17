@@ -3,7 +3,7 @@ let React = require('react');
 let gio = require('@geotiff/gio');
 let Map = require('../Map');
 
-class ModeTool extends React.Component {
+class MinTool extends React.Component {
 
     constructor(props) {
         super(props);
@@ -40,7 +40,7 @@ class ModeTool extends React.Component {
             Map.add_layer(layer);
             let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
             this.setState({ 
-                value: gio.mode(Map.image, coors).toString(),
+                value: gio.min(Map.image, coors).toString(),
                 layer
             });
             Map.stop_draw_rectangle();
@@ -58,14 +58,14 @@ class ModeTool extends React.Component {
 
     render() {
         return (
-            <div id='mode-tool' className='tool'>
+            <div id='min-tool' className='tool'>
                 <section className='controls'>
                     <header>
                         <i className='material-icons gt-remove' onClick={this.close}>clear</i>
-                        <h3 className='tool-title'>Get the Mode Pixel Value of an Area</h3>
+                        <h3 className='tool-title'>Get the Min Pixel Value of an Area</h3>
                     </header>
                     <div className='content'>
-                        <p>Select a geometry type and draw a geometry to get the mode (most frequent value) of the pixels within that area.</p>
+                        <p>Select a geometry type and draw a geometry to get the min pixel value within that area.</p>
                         <button 
                             className='gt-button'
                             onClick={this.draw_rectangle}
@@ -78,7 +78,7 @@ class ModeTool extends React.Component {
                     this.state.value
                     ? 
                         <section className='results'>
-                            <h3>Mode: { this.state.value }</h3>
+                            <h3>Min: { this.state.value }</h3>
                         </section>
                     : ''
                 }
@@ -87,4 +87,4 @@ class ModeTool extends React.Component {
     }
 }
 
-module.exports = ModeTool;
+module.exports = MinTool;
