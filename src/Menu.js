@@ -14,7 +14,7 @@ let tool_info = fetch('data/tools.txt').then(response => {
     return new Promise(resolve => {
         response.text().then(str => {
             let tools = str.split('\n')
-                                .filter(Boolean) // filter out blank lines
+                .filter(Boolean) // filter out blank lines
                 .map(tool => tool.split('|'));
 
             tools.forEach(tool => components[tool[2]] = require(`./tools/${tool[2]}`));
@@ -68,7 +68,8 @@ class Menu extends React.Component {
         this.on_remove = this.on_remove.bind(this);
         this.on_search_focus = this.on_search_focus.bind(this);
         this.listen = this.listen.bind(this);
-        
+        this.lose_focus = this.lose_focus.bind(this);
+
         Map.subscribe(this);
     }
 
@@ -79,14 +80,10 @@ class Menu extends React.Component {
 
             //load a tool if passed one in a search parameter
             var starting_tool = this.props.params.get("tool");
-            console.log("starting_tool:", starting_tool);
-
             var names_of_tools = _.pluck(tools, "2");
-            console.log("names_of_tools:", names_of_tools);
             this.setState({ names_of_tools });
 
             if (starting_tool) {
-                console.log("components:", tools);
                 this.on_select(starting_tool);
             }
 
@@ -134,13 +131,13 @@ class Menu extends React.Component {
         this.setState({ focused: false });
     }
 
+    lose_focus() {
+        this.setState({ focused: false });
+    }
+
     set_visible_tools(visible_tools) {
-
         if (!visible_tools) visible_tools = this.state.tools;
-
-        this.setState({
-            visible_tools: visible_tools
-        });
+        this.setState({ visible_tools });
     }
 
     on_remove() {
@@ -168,7 +165,12 @@ class Menu extends React.Component {
                 <section id='content' className={this.state.focused ? 'focus' : ''}>
                     { 
                         this.state.active_component 
-                        ? React.createElement(this.state.active_component, { on_remove: this.on_remove })
+                        ? (
+                            React.createElement(
+                                this.state.active_component,
+                                { on_remove: this.on_remove, lose_focus: this.lose_focus }
+                            )
+                        )
                         : <div id='tool-button-container'>
                             { 
                                 this.state.visible_tools.map(tool => {

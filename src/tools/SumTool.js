@@ -24,6 +24,7 @@ class SumTool extends React.Component {
     }
 
     draw_rectangle() {
+        this.props.lose_focus();
         if (Map.tiff) {
             Map.start_draw_rectangle();
         } else {
