@@ -24,6 +24,7 @@ class MeanTool extends React.Component {
     }
 
     draw_rectangle() {
+        this.props.lose_focus();
         if (Map.tiff) {
             Map.start_draw_rectangle();
         } else {
@@ -39,10 +40,8 @@ class MeanTool extends React.Component {
             let latlngs = layer.getBounds();
             Map.add_layer(layer);
             let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-            this.setState({ 
-                value: gio.mean(Map.image, coors).toString(),
-                layer
-            });
+            let value = gio.mean(Map.image, coors).toFixed(2)
+            this.setState({ value, layer });
             Map.stop_draw_rectangle();
         }
     }

@@ -4,4 +4,6 @@ Mean|playlist_add_check|MeanTool
 Sum|playlist_add|SumTool
 Mode|view_column|ModeTool
 Median|view_array|MedianTool
+Min|chevron_left|MinTool
+Max|chevron_right|MaxTool
 Download|file_download|DownloadTool

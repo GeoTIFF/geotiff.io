@@ -24,6 +24,7 @@ class ModeTool extends React.Component {
     }
 
     draw_rectangle() {
+        this.props.lose_focus();
         if (Map.tiff) {
             Map.start_draw_rectangle();
         } else {
@@ -58,7 +59,7 @@ class ModeTool extends React.Component {
 
     render() {
         return (
-            <div id='mean-tool' className='tool'>
+            <div id='mode-tool' className='tool'>
                 <section className='controls'>
                     <header>
                         <i className='material-icons gt-remove' onClick={this.close}>clear</i>
