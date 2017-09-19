@@ -21,7 +21,7 @@
     "webpack": "^3.5.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run less && react-scripts start",
     "less": "lessc public/less/style.less public/css/style.css",
     "build": "npm install && react-scripts build && mv docs/CNAME . && rm -fr docs && cp -fr build docs && mv CNAME docs/.",
     "test": "react-scripts test --env=jsdom",
