@@ -167,6 +167,10 @@ body .gt-button {
   color: white;
   padding: .5rem 1rem;
 }
+html .gt-button.active,
+body .gt-button.active {
+  background: #ff4081;
+}
 html .gt-remove,
 body .gt-remove {
   border-radius: 50%;
