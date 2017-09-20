@@ -17,10 +17,17 @@ class IdentifyTool extends React.Component {
         this.close = this.close.bind(this);
     }
 
-    change_mode() {
+    componentDidMount() {
+        if (this.props.auto_start) {
+            console.log("auto-starting Identify tool");
+            this.change_mode(true);
+        }
+    }
+
+    change_mode(force) {
         if (this.state.button_text === 'Identify') {
             this.props.lose_focus();
-            if (Map.tiff) {
+            if (force || Map.tiff) {
                 this.setState({ button_text: 'Stop Identifying' });
                 Map.subscribe(this);
             } else {
