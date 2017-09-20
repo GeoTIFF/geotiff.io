@@ -9,7 +9,8 @@ class MedianTool extends React.Component {
         super(props);
         this.state = {
             value: null,
-            layer: null
+            layer: null,
+            in_draw_mode: false,
         };
         this.draw_rectangle = this.draw_rectangle.bind(this);
         this.close = this.close.bind(this);
@@ -26,6 +27,7 @@ class MedianTool extends React.Component {
     draw_rectangle() {
         this.props.lose_focus();
         if (Map.tiff) {
+            this.setState({ in_draw_mode: true });
             Map.start_draw_rectangle();
         } else {
             alert('Please load a GeoTIFF on the Map');
@@ -41,7 +43,8 @@ class MedianTool extends React.Component {
             Map.add_layer(layer);
             let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
             let value = gio.median(Map.image, coors).toFixed(2);
-            this.setState({ value, layer });
+            let in_draw_mode = false;
+            this.setState({ value, layer, in_draw_mode });
             Map.stop_draw_rectangle();
         }
     }
@@ -66,7 +69,7 @@ class MedianTool extends React.Component {
                     <div className='content'>
                         <p>Select a geometry type and draw a geometry to get the median of the pixels within that area.</p>
                         <button 
-                            className='gt-button'
+                            className={`gt-button ${this.state.in_draw_mode ? 'active' : '' }`}
                             onClick={this.draw_rectangle}
                         >
                             Rectangle

@@ -9,7 +9,8 @@ class MinTool extends React.Component {
         super(props);
         this.state = {
             value: null,
-            layer: null
+            layer: null,
+            in_draw_mode: false
         };
         this.draw_rectangle = this.draw_rectangle.bind(this);
         this.close = this.close.bind(this);
@@ -26,6 +27,7 @@ class MinTool extends React.Component {
     draw_rectangle() {
         this.props.lose_focus();
         if (Map.tiff) {
+            this.setState({ in_draw_mode: true });
             Map.start_draw_rectangle();
         } else {
             alert('Please load a GeoTIFF on the Map');
@@ -40,10 +42,9 @@ class MinTool extends React.Component {
             let latlngs = layer.getBounds();
             Map.add_layer(layer);
             let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-            this.setState({ 
-                value: gio.min(Map.image, coors).toString(),
-                layer
-            });
+            let value = gio.min(Map.image, coors).toString();
+            let in_draw_mode = false;
+            this.setState({ value, layer, in_draw_mode });
             Map.stop_draw_rectangle();
         }
     }
@@ -68,7 +69,7 @@ class MinTool extends React.Component {
                     <div className='content'>
                         <p>Select a geometry type and draw a geometry to get the min pixel value within that area.</p>
                         <button 
-                            className='gt-button'
+                            className={`gt-button ${this.state.in_draw_mode ? 'active' : '' }`}
                             onClick={this.draw_rectangle}
                         >
                             Rectangle
