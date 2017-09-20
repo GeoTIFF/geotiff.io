@@ -251,5 +251,25 @@ body .gt-remove {
   left: 0;
 }
 [hide_menu=true] #menu {
+  border: 0;
+  height: 0;
+  padding: 0;
+}
+[hide_menu=true] #menu #content {
+  margin: 0;
+  padding: 0;
+}
+[hide_menu=true] #menu #content .results {
+  position: fixed;
+  background: white;
+  width: 80%;
+  left: 10%;
+  bottom: 1rem;
+  box-shadow: -3px 3px 1px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid #00897B;
+}
+[hide_menu=true] #menu-header,
+[hide_menu=true] #search,
+[hide_menu=true] .controls {
   display: none;
 }
