@@ -58,7 +58,8 @@ class Menu extends React.Component {
             focused: false,
             tools: [],
             visible_tools: [],
-            active_component: null
+            active_component: null,
+            auto_start_tool: false
         };
         
         this.search = this.search.bind(this);
@@ -84,7 +85,7 @@ class Menu extends React.Component {
             this.setState({ names_of_tools });
 
             if (starting_tool) {
-                this.on_select(starting_tool);
+                this.on_select(starting_tool, { auto_start_tool: true });
             }
 
         });
@@ -114,10 +115,11 @@ class Menu extends React.Component {
         console.log('selecting tool...');
     }
 
-    on_select(component_name) {
+    on_select(component_name, options) {
         console.log("starting on_select with", component_name);
+        let auto_start_tool = options ? options.auto_start_tool || false : false;
         if (this.state.names_of_tools.includes(component_name)) {
-            this.setState({ active_component: components[component_name] });
+            this.setState({ active_component: components[component_name], auto_start_tool: auto_start_tool });
         } else {
             alert("You tried to load " + component_name + ", which is not technical name of the tool");
         }
@@ -168,7 +170,7 @@ class Menu extends React.Component {
                         ? (
                             React.createElement(
                                 this.state.active_component,
-                                { on_remove: this.on_remove, lose_focus: this.lose_focus }
+                                { on_remove: this.on_remove, lose_focus: this.lose_focus, auto_start: this.state.auto_start_tool }
                             )
                         )
                         : <div id='tool-button-container'>
