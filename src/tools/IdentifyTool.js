@@ -19,6 +19,7 @@ class IdentifyTool extends React.Component {
 
     change_mode() {
         if (this.state.button_text === 'Identify') {
+            this.props.lose_focus();
             if (Map.tiff) {
                 this.setState({ button_text: 'Stop Identifying' });
                 Map.subscribe(this);
