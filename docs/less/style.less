@@ -293,10 +293,28 @@ html, body {
 
 /* if user is hiding the menu, make the map take up the whole screen */
 [hide_menu=true] {
-    #map {
-        left: 0;
-    }
-    #menu {
-        display: none;
-    }
+	#map {
+        	left: 0;
+	}
+	#menu {
+		border: 0;
+		height: 0;
+		padding: 0;
+		#content {
+			margin: 0;
+			padding: 0;
+			.results {
+				position: fixed;
+				background: white;
+				width: 80%;
+				left: 10%;
+				bottom: 1rem;
+				box-shadow: @box-shadow-medium;
+				border: 1px solid @primary-color;
+			}
+		}
+	}
+	#menu-header, #search, .controls {
+		display: none;
+	}
 }
