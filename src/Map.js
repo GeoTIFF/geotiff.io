@@ -50,9 +50,7 @@ let Map = {
         map.addControl(searchControl);
 
         map.on('click', e => this.notify('map-click', e.latlng));
-        map.on('draw:created', e => {
-            if (e.layerType === 'rectangle') this.notify('rectangle', e);
-        });
+        map.on('draw:created', e => this.notify(e.layerType, e));
     },
 
     subscribe(subscriber) {
@@ -107,6 +105,15 @@ let Map = {
 
     stop_draw_rectangle() {
         this.rectangle.disable();
+    },
+
+    start_draw_polygon() {
+        this.polygon = new L.Draw.Polygon(map, draw_control.options.polygon);
+        this.polygon.enable();
+    },
+
+    stop_draw_polygon() {
+        this.polygon.disable();
     }
 }
 
