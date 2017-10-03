@@ -57,12 +57,14 @@ class ModeTool extends React.Component {
             if (event_type === 'rectangle') {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                value = gio.mode(Map.image, coors).join(', ');
+                let result = gio.mode(Map.image, coors)
+                value = typeof result === 'object' ? result.join(', ') : result;
                 Map.stop_draw_rectangle();
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
-                value = gio.mode(Map.image, coors).join(', ');
+                let result = gio.mode(Map.image, coors)
+                value = typeof result === 'object' ? result.join(', ') : result;
                 Map.stop_draw_polygon();
             }
 
@@ -107,7 +109,7 @@ class ModeTool extends React.Component {
                     </div>
                 </section>
                 {
-                    this.state.value
+                    this.state.value !== null
                     ? 
                         <section className='results'>
                             <h3>Mode: { this.state.value }</h3>

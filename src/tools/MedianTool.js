@@ -107,7 +107,7 @@ class MedianTool extends React.Component {
                     </div>
                 </section>
                 {
-                    this.state.value
+                    this.state.value !== null
                     ? 
                         <section className='results'>
                             <h3>Median: { this.state.value }</h3>

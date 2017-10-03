@@ -107,7 +107,7 @@ class MeanTool extends React.Component {
                     </div>
                 </section>
                 {
-                    this.state.value
+                    this.state.value !== null
                     ? 
                         <section className='results'>
                             <h3>Mean: { this.state.value }</h3>

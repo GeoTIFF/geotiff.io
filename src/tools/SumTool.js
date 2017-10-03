@@ -107,7 +107,7 @@ class SumTool extends React.Component {
                     </div>
                 </section>
                 {
-                    this.state.value
+                    this.state.value !== null
                     ? 
                         <section className='results'>
                             <h3>Sum: { this.state.value }</h3>
