@@ -10,9 +10,10 @@ class MaxTool extends React.Component {
         this.state = {
             value: null,
             layer: null,
-            in_draw_mode: false
+            draw_mode: 'none'
         };
         this.draw_rectangle = this.draw_rectangle.bind(this);
+        this.draw_polygon = this.draw_polygon.bind(this);
         this.close = this.close.bind(this);
     }
 
@@ -32,20 +33,41 @@ class MaxTool extends React.Component {
         } else {
             alert('Please load a GeoTIFF on the Map');
         }
-        
+    }
+
+    draw_polygon() {
+        this.props.lose_focus();
+        if (Map.tiff) {
+            this.setState({ draw_mode: 'polygon' });
+            Map.start_draw_polygon();
+        } else {
+            alert('Please load a GeoTIFF on the Map');
+        }
     }
 
     listen(event_type, message) {
-        if (this.state.layer) Map.remove_layer(this.state.layer);
-        if (event_type === 'rectangle') {
+        if (event_type === 'rectangle' || event_type === 'polygon') {
+            if (this.state.layer) {
+                Map.remove_layer(this.state.layer);
+            }
             let layer = message.layer;
-            let latlngs = layer.getBounds();
             Map.add_layer(layer);
-            let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-            let value = gio.max(Map.image, coors).toString();
-            let in_draw_mode = false;
-            this.setState({ value, layer, in_draw_mode });
-            Map.stop_draw_rectangle();
+
+            let value;
+            if (event_type === 'rectangle') {
+                let latlngs = layer.getBounds();
+                let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
+                value = gio.max(Map.image, coors).toFixed(2);
+                Map.stop_draw_rectangle();
+            } else {
+                let geojson = layer.toGeoJSON();
+                let coors = geojson.geometry.coordinates;
+                value = gio.max(Map.image, coors).toFixed(2);
+                Map.stop_draw_polygon();
+            }
+
+            let draw_mode = 'none';
+            this.setState({ value, layer, draw_mode });
         }
     }
 
@@ -68,16 +90,24 @@ class MaxTool extends React.Component {
                     </header>
                     <div className='content'>
                         <p>Select a geometry type and draw a geometry to get the max pixel value within that area.</p>
-                        <button 
-                            className={`gt-button ${this.state.in_draw_mode ? 'active' : '' }`}
-                            onClick={this.draw_rectangle}
-                        >
-                            Rectangle
-                        </button>
+                        <div className='content-row'>
+                            <button 
+                                className={`gt-button ${this.state.draw_mode === 'rectangle' ? 'active' : '' }`}
+                                onClick={this.draw_rectangle}
+                            >
+                                Draw Rectangle
+                            </button>
+                            <button
+                                className={`gt-button ${this.state.draw_mode === 'polygon' ? 'active' : '' }`}
+                                onClick={this.draw_polygon}
+                            >
+                                Draw Polygon
+                            </button>
+                        </div>
                     </div>
                 </section>
                 {
-                    this.state.value
+                    this.state.value !== null
                     ? 
                         <section className='results'>
                             <h3>Max: { this.state.value }</h3>
