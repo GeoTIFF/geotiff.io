@@ -52,6 +52,11 @@ body #menu #content {
   height: calc(100% - 10rem);
   overflow-y: scroll;
 }
+html #menu #content .content-row,
+body #menu #content .content-row {
+  display: flex;
+  justify-content: space-around;
+}
 html #menu #content #tool-button-container,
 body #menu #content #tool-button-container {
   display: flex;
@@ -106,11 +111,6 @@ body #menu #content .tool .controls .content {
   padding: 1rem;
   font-size: 14px;
 }
-html #menu #content .tool .controls .content .content-row,
-body #menu #content .tool .controls .content .content-row {
-  display: flex;
-  justify-content: space-around;
-}
 html #menu #content .tool .results,
 body #menu #content .tool .results {
   padding: 1rem;
@@ -150,6 +150,10 @@ html .or,
 body .or {
   text-align: center;
 }
+html #import-geojson-input,
+body #import-geojson-input {
+  display: none;
+}
 html .gt-input,
 body .gt-input {
   border-radius: 0;
@@ -173,10 +177,17 @@ body .gt-button {
   border: none;
   color: white;
   padding: .5rem 1rem;
+  margin-bottom: 0;
 }
 html .gt-button.active,
 body .gt-button.active {
   background: #ff4081;
+}
+html .gt-textarea,
+body .gt-textarea {
+  width: 90%;
+  position: relative;
+  margin: auto;
 }
 html .gt-remove,
 body .gt-remove {
