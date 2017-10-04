@@ -3,6 +3,8 @@ let React = require('react');
 let gio = require('@geotiff/gio');
 let Map = require('../Map');
 
+let ImportGeoJSON = require('../shared/ImportGeoJSON');
+
 class MinTool extends React.Component {
 
     constructor(props) {
@@ -15,6 +17,7 @@ class MinTool extends React.Component {
         this.draw_rectangle = this.draw_rectangle.bind(this);
         this.draw_polygon = this.draw_polygon.bind(this);
         this.close = this.close.bind(this);
+        this.add_geojson = this.add_geojson.bind(this);
     }
 
     componentWillMount() {
@@ -57,12 +60,12 @@ class MinTool extends React.Component {
             if (event_type === 'rectangle') {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                value = gio.min(Map.image, coors).toFixed(2);
+                value = gio.min(Map.image, coors);
                 Map.stop_draw_rectangle();
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
-                value = gio.min(Map.image, coors).toFixed(2);
+                value = gio.min(Map.image, coors);
                 Map.stop_draw_polygon();
             }
 
@@ -78,6 +81,17 @@ class MinTool extends React.Component {
             this.setState({ layer: null });
         }
         this.props.on_remove();
+    }
+
+    add_geojson(geojson) {
+        if (this.state.layer) {
+            Map.remove_layer(this.state.layer);
+        }
+        let value = gio.min(Map.image, geojson);
+        let draw_mode = 'none';
+        let layer = Map.create_geojson_layer(geojson);
+        Map.add_layer(layer);
+        this.setState({ value, draw_mode, layer });
     }
 
     render() {
@@ -104,6 +118,11 @@ class MinTool extends React.Component {
                                 Draw Polygon
                             </button>
                         </div>
+                        <br />
+                        <p className="or"><b>OR</b></p>
+                        <p>Add GeoJSON. You can either import a GeoJSON file or write it out yourself.</p>
+                        <br />
+                        <ImportGeoJSON add_geojson={this.add_geojson} />
                     </div>
                 </section>
                 {
