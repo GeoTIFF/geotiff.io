@@ -61,7 +61,7 @@ class ImportGeoJSON extends React.Component {
             <div className='import-geojson'>
                 <textarea 
                     className='gt-textarea'
-                    rows='8'
+                    rows='7'
                     onChange={this.onChange}
                     value={this.state.geojson}
                 ></textarea>
