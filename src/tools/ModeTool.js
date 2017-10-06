@@ -61,13 +61,13 @@ class ModeTool extends React.Component {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
                 let result = gio.mode(Map.image, coors)
-                value = typeof result === 'object' ? result.join(', ') : result;
+                value = result.map(band => `[${band.join(',')}]`).join(', ');
                 Map.stop_draw_rectangle();
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
                 let result = gio.mode(Map.image, coors)
-                value = typeof result === 'object' ? result.join(', ') : result;
+                value = result.map(band => `[${band.join(',')}]`).join(', ');
                 Map.stop_draw_polygon();
             }
 
@@ -124,7 +124,6 @@ class ModeTool extends React.Component {
                         <br />
                         <p className="or"><b>OR</b></p>
                         <p>Add GeoJSON. You can either import a GeoJSON file or write it out yourself.</p>
-                        <br />
                         <ImportGeoJSON add_geojson={this.add_geojson} />
                     </div>
                 </section>

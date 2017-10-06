@@ -60,12 +60,12 @@ class MaxTool extends React.Component {
             if (event_type === 'rectangle') {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                value = gio.max(Map.image, coors);
+                value = gio.max(Map.image, coors).join(', ');
                 Map.stop_draw_rectangle();
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
-                value = gio.max(Map.image, coors);
+                value = gio.max(Map.image, coors).join(', ');
                 Map.stop_draw_polygon();
             }
 
@@ -121,7 +121,6 @@ class MaxTool extends React.Component {
                         <br />
                         <p className="or"><b>OR</b></p>
                         <p>Add GeoJSON. You can either import a GeoJSON file or write it out yourself.</p>
-                        <br />
                         <ImportGeoJSON add_geojson={this.add_geojson} />
                     </div>
                 </section>
