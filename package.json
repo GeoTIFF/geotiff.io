@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@geotiff/gio": "0.0.25",
+    "@geotiff/gio": "0.0.31",
+    "chroma-js": "^1.3.4",
     "file-saver": "^1.3.3",
+    "fuse.js": "^3.1.0",
     "leaflet": "^1.1.0",
     "leaflet-canvaslayer-field": "^1.3.1",
     "leaflet-geosearch": "^2.5.0",
@@ -20,9 +22,9 @@
     "webpack": "^3.5.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run less && react-scripts start",
     "less": "lessc public/less/style.less public/css/style.css",
-    "build": "react-scripts build",
+    "build": "npm install && react-scripts build && mv docs/CNAME . && rm -fr docs && cp -fr build docs && mv CNAME docs/.",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

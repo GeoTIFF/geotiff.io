@@ -6,6 +6,8 @@ let gio = require('@geotiff/gio');
 
 let Map = require('../Map');
 
+let chroma = require("chroma-js");
+
 let load_raster = (input) => {
     return new Promise(resolve => {
         gio.load(input).then(geotiff => {
@@ -13,7 +15,10 @@ let load_raster = (input) => {
             Map.image = geotiff.getImage();
             let buffer = Map.image.dataView.buffer;
             let s = L.ScalarField.fromGeoTIFF(buffer);
-            let layer = L.canvasLayer.scalarField(s);
+            let layer = L.canvasLayer.scalarField(s, {
+                opacity: 0.7,
+                filter: (v) => v != -9999
+            });
             Map.add_raster_layer(layer);
             resolve();
         });
@@ -82,7 +87,7 @@ class LoadTool extends React.Component {
                             />
                         </div>
                         <br />
-                        <p class="or"><b>OR</b></p>
+                        <p className="or"><b>OR</b></p>
                         <label htmlFor="basic-url">Load File</label>
                             <div className="gt-input">
                             <input 
