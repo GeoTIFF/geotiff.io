@@ -89,7 +89,7 @@ class LoadTool extends React.Component {
                         <br />
                         <p className="or"><b>OR</b></p>
                         <label htmlFor="basic-url">Load File</label>
-                            <div className="gt-input">
+                        <div className="gt-input">
                             <input 
                                 type="file"
                                 onChange={this.change_input_from_file}

@@ -98,6 +98,10 @@ let Map = {
         map.removeLayer(layer);
     },
 
+    create_geojson_layer(geojson) {
+        return L.geoJSON(geojson);
+    },
+
     start_draw_rectangle() {
         this.rectangle = new L.Draw.Rectangle(map, draw_control.options.rectangle);
         this.rectangle.enable();
