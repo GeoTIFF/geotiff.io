@@ -76,7 +76,11 @@ let Map = {
 
         // create bounding box to highlight raster
         let layer_bounds = layer.getBounds();
-        map.flyToBounds(layer_bounds);
+
+        // commenting out flyToBounds because performance is very poor compared to fitBounds
+        // map.flyToBounds(layer_bounds);
+        map.fitBounds(layer_bounds);
+
         L.rectangle(layer_bounds, {
             color: "#ff0000",
             fillOpacity: 0,
