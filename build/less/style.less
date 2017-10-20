@@ -13,6 +13,7 @@
 html, body {
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 
 	.modal {
 
@@ -118,6 +119,11 @@ html, body {
 					.content {
 						padding: 1rem;
 						font-size: @font-size-small;
+
+						.content-row {
+							display: flex;
+							justify-content: space-around;
+						}
 					}
 
 
@@ -135,6 +141,7 @@ html, body {
 	#map {
 	    bottom: 0;
 	    left: 33%;
+	    height: 100%;
 	    position: absolute;
 	    right: 0;
 	    top: 0;
@@ -251,7 +258,8 @@ html, body {
 					padding: 1rem;
 					margin-top: 1.5rem;
 					overflow-y: scroll;
-					height: 20rem;
+					max-height: 20rem;
+					background: white;
 
 					#tool-button-container {
 						display: flex;
@@ -259,6 +267,11 @@ html, body {
 
 					.controls {
 						display: block;
+						z-index: 1;
+					}
+
+					.results {
+						z-index: -1;
 					}
 					
 					.tool {
@@ -293,28 +306,10 @@ html, body {
 
 /* if user is hiding the menu, make the map take up the whole screen */
 [hide_menu=true] {
-	#map {
-        	left: 0;
-	}
-	#menu {
-		border: 0;
-		height: 0;
-		padding: 0;
-		#content {
-			margin: 0;
-			padding: 0;
-			.results {
-				position: fixed;
-				background: white;
-				width: 80%;
-				left: 10%;
-				bottom: 1rem;
-				box-shadow: @box-shadow-medium;
-				border: 1px solid @primary-color;
-			}
-		}
-	}
-	#menu-header, #search, .controls {
-		display: none;
-	}
+    #map {
+        left: 0;
+    }
+    #menu {
+        display: none;
+    }
 }

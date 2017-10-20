@@ -5,15 +5,22 @@ Static website for viewing GeoTIFF's in the browser
 It's too much of a pain to view and manipulate raster data.  The aim of this project is to make it easier by just doing it in your web browser.
 
 # Current Features
-- View TIFF file
+- View TIFF File
 - Identify Pixel Value
+- Calculate Mean of Pixel Values in Rectangular Area
+- Calculate Sum of Pixel Values in Rectangular Area
+- Calculate Mode of Pixel Values in Rectangular Area
+- Calculate Median of Pixel Values in Rectangular Area
+- Calculate Min of Pixel Values in Rectangular Area
+- Calculate Max of Pixel Values in Rectangular Area
+- Download TIFF File
 
 # Features Coming Soon
-- Calculate Average of Values of Cells in Area
+- Calculate Average of Values of Cells in Non-rectangles
 - Draw Polygon
 - Upload Polygon
-- Sum Pixels inside Area
-- Basic Zonal Stats inside Area
+- Sum Pixels inside Non-rectangles
+- Basic Zonal Stats inside Non-rectangles
 - Clip Raster by Another Raster
 
 ## Very Simple
