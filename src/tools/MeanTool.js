@@ -60,12 +60,14 @@ class MeanTool extends React.Component {
             if (event_type === 'rectangle') {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                value = gio.mean(Map.image, coors).join(', ');
+                value = gio.mean(Map.image, coors)
+                    .map(value => value.toFixed(2)).join(', ');
                 Map.stop_draw_rectangle();
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
-                value = gio.mean(Map.image, geojson).join(', ');
+                value = gio.mean(Map.image, geojson)
+                    .map(value => value.toFixed(2)).join(', ');
                 Map.stop_draw_polygon();
             }
 
