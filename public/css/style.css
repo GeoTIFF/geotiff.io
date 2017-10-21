@@ -111,6 +111,10 @@ body #menu #content .tool .controls .content {
   padding: 1rem;
   font-size: 14px;
 }
+html #menu #content .tool .controls .content .content-row .gt-button,
+body #menu #content .tool .controls .content .content-row .gt-button {
+  margin: .5rem;
+}
 html #menu #content .tool .results,
 body #menu #content .tool .results {
   padding: 1rem;
