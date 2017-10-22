@@ -67,3 +67,6 @@ typings/
 
 # backups
 *bak*
+
+# python
+*.pyc
