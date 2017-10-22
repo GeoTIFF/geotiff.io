@@ -60,15 +60,24 @@ class SumTool extends React.Component {
             if (event_type === 'rectangle') {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                value = gio.sum(Map.image, coors)
-                    .map(value => value.toFixed(2)).join(', ');
                 Map.stop_draw_rectangle();
+                try { 
+                    value = gio.sum(Map.image, coors)
+                        .map(value => value.toFixed(2)).join(', ');
+                } catch(e) {
+                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
+                }
+                
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
-                value = gio.sum(Map.image, coors)
-                    .map(value => value.toFixed(2)).join(', ');
                 Map.stop_draw_polygon();
+                try { 
+                    value = gio.sum(Map.image, coors)
+                        .map(value => value.toFixed(2)).join(', ');
+                } catch(e) {
+                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
+                }
             }
 
             let draw_mode = 'none';
