@@ -51,6 +51,10 @@ let Map = {
 
         map.on('click', e => this.notify('map-click', e.latlng));
         map.on('draw:created', e => this.notify(e.layerType, e));
+
+        // add marker at 0, 0 for debugging purposes
+        L.marker([0, 0]).addTo(map);
+
     },
 
     subscribe(subscriber) {
