@@ -60,15 +60,23 @@ class ModeTool extends React.Component {
             if (event_type === 'rectangle') {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                let result = gio.mode(Map.image, coors)
-                value = result.map(band => `[${band.join(',')}]`).join(', ');
                 Map.stop_draw_rectangle();
+                try {
+                    let result = gio.mode(Map.image, coors)
+                    value = result.map(band => `[${band.join(',')}]`).join(', ');
+                } catch(e) {
+                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
+                }
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
-                let result = gio.mode(Map.image, coors)
-                value = result.map(band => `[${band.join(',')}]`).join(', ');
                 Map.stop_draw_polygon();
+                try {
+                    let result = gio.mode(Map.image, coors)
+                    value = result.map(band => `[${band.join(',')}]`).join(', ');
+                } catch(e) {
+                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
+                }
             }
 
             let draw_mode = 'none';
