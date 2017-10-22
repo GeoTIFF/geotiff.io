@@ -52,6 +52,10 @@ body #menu #content {
   height: calc(100% - 10rem);
   overflow-y: scroll;
 }
+html #menu #content p,
+body #menu #content p {
+  margin-bottom: .1rem;
+}
 html #menu #content .content-row,
 body #menu #content .content-row {
   display: flex;
@@ -157,6 +161,17 @@ body .or {
 html #import-geojson-input,
 body #import-geojson-input {
   display: none;
+}
+html .gt-dropdown,
+body .gt-dropdown {
+  border-radius: 0;
+  border: 1px solid #00897B;
+  padding: .5rem;
+  margin: auto;
+  display: block;
+  background: white;
+  max-width: 30rem;
+  width: 80%;
 }
 html .gt-input,
 body .gt-input {
