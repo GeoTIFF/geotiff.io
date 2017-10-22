@@ -51,6 +51,10 @@ let Map = {
 
         map.on('click', e => this.notify('map-click', e.latlng));
         map.on('draw:created', e => this.notify(e.layerType, e));
+
+        // add marker at 0, 0 for debugging purposes
+        L.marker([0, 0]).addTo(map);
+
     },
 
     subscribe(subscriber) {
@@ -76,7 +80,11 @@ let Map = {
 
         // create bounding box to highlight raster
         let layer_bounds = layer.getBounds();
-        map.flyToBounds(layer_bounds);
+
+        // commenting out flyToBounds because performance is very poor compared to fitBounds
+        // map.flyToBounds(layer_bounds);
+        map.fitBounds(layer_bounds);
+
         L.rectangle(layer_bounds, {
             color: "#ff0000",
             fillOpacity: 0,
@@ -96,6 +104,10 @@ let Map = {
 
     remove_layer(layer) {
         map.removeLayer(layer);
+    },
+
+    create_geojson_layer(geojson) {
+        return L.geoJSON(geojson);
     },
 
     start_draw_rectangle() {

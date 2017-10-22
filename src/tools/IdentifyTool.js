@@ -48,10 +48,8 @@ class IdentifyTool extends React.Component {
             let point = [message.lng, message.lat];
             if (this.state.marker) Map.remove_layer(this.state.marker);
             let marker = Map.add_marker(message);
-            this.setState({ 
-                value: gio.identify(Map.image, point),
-                marker
-            });
+            let value = gio.identify(Map.image, point).join(', ');
+            this.setState({ value, marker });
         }
     }
 

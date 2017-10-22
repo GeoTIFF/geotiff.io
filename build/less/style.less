@@ -65,6 +65,11 @@ html, body {
 			height: ~'calc(100% - 10rem)';
 			overflow-y: scroll;
 
+			.content-row {
+				display: flex;
+				justify-content: space-around;
+			}
+
 			#tool-button-container {
 				display: flex;
 				flex-wrap: wrap;
@@ -121,8 +126,10 @@ html, body {
 						font-size: @font-size-small;
 
 						.content-row {
-							display: flex;
-							justify-content: space-around;
+
+							.gt-button {
+								margin: .5rem;
+							}
 						}
 					}
 
@@ -172,6 +179,10 @@ html, body {
 	    text-align: center;
 	}
 
+    #import-geojson-input {
+    	display: none;
+    }
+
 	.gt-input {
 		border-radius: @border-radius;
 		border: 1px solid @primary-color;
@@ -194,10 +205,17 @@ html, body {
 		border: none;
 		color: white;
 		padding: .5rem 1rem;
+		margin-bottom: 0;
 
 		&.active {
 			background: @accent-color;
 		}
+	}
+
+	.gt-textarea {
+		width: 90%;
+		position: relative;
+		margin: auto;
 	}
 
 	.gt-remove {
