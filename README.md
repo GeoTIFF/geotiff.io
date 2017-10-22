@@ -7,21 +7,22 @@ It's too much of a pain to view and manipulate raster data.  The aim of this pro
 # Current Features
 - View TIFF File
 - Identify Pixel Value
-- Calculate Mean of Pixel Values in Rectangular Area
-- Calculate Sum of Pixel Values in Rectangular Area
-- Calculate Mode of Pixel Values in Rectangular Area
-- Calculate Median of Pixel Values in Rectangular Area
-- Calculate Min of Pixel Values in Rectangular Area
-- Calculate Max of Pixel Values in Rectangular Area
+- Calculate Mean of Pixel Values
+- Calculate Sum of Pixel Values
+- Calculate Mode of Pixel Values
+- Calculate Median of Pixel Values
+- Calculate Min of Pixel Values
+- Calculate Max of Pixel Values
+- Calculate Histogram
 - Download TIFF File
+- Draw Polygon
+- Upload GeoJSON
 
 # Features Coming Soon
-- Calculate Average of Values of Cells in Non-rectangles
-- Draw Polygon
-- Upload Polygon
-- Sum Pixels inside Non-rectangles
-- Basic Zonal Stats inside Non-rectangles
+- Band Calculations (e.g. NDVI)
+- Stretching
 - Clip Raster by Another Raster
+- Creating new TIFF Files
 
 ## Very Simple
 GeoTIFF.io redesigns the traditional GIS approach.  No longer, must you learn buttonology, what every icon stands for and where to find it.  GeoTIFF.io has a simple search interface where you can find everything you need.
