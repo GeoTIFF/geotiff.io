@@ -64,3 +64,9 @@ typings/
 *swn
 *swo
 *swp
+
+# backups
+*bak*
+
+# python
+*.pyc
