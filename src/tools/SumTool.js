@@ -120,7 +120,6 @@ class SumTool extends React.Component {
                                 Draw Polygon
                             </button>
                         </div>
-                        <br />
                         <p className="or"><b>OR</b></p>
                         <p>Add GeoJSON. You can either import a GeoJSON file or write it out yourself.</p>
                         <ImportGeoJSON add_geojson={this.add_geojson} />
