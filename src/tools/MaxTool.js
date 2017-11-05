@@ -30,7 +30,7 @@ class MaxTool extends React.Component {
 
     draw_rectangle() {
         this.props.lose_focus();
-        if (Map.tiff) {
+        if (Map.georaster) {
             this.setState({ in_draw_mode: true });
             Map.start_draw_rectangle();
         } else {
@@ -40,7 +40,7 @@ class MaxTool extends React.Component {
 
     draw_polygon() {
         this.props.lose_focus();
-        if (Map.tiff) {
+        if (Map.georaster) {
             this.setState({ draw_mode: 'polygon' });
             Map.start_draw_polygon();
         } else {
@@ -97,7 +97,7 @@ class MaxTool extends React.Component {
         if (this.state.layer) {
             Map.remove_layer(this.state.layer);
         }
-        let value = gio.max(Map.image, geojson);
+        let value = gio.max(Map.georaster, geojson);
         let draw_mode = 'none';
         let layer = Map.create_geojson_layer(geojson);
         Map.add_layer(layer);

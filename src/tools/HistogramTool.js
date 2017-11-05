@@ -55,7 +55,7 @@ class HistogramTool extends React.Component {
 
     draw_rectangle() {
         this.props.lose_focus();
-        if (Map.tiff) {
+        if (Map.georaster) {
             this.setState({ draw_mode: 'rectangle' });
             Map.start_draw_rectangle();
         } else {
@@ -65,7 +65,7 @@ class HistogramTool extends React.Component {
 
     draw_polygon() {
         this.props.lose_focus();
-        if (Map.tiff) {
+        if (Map.georaster) {
             this.setState({ draw_mode: 'polygon' });
             Map.start_draw_polygon();
         } else {
