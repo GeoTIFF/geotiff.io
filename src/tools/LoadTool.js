@@ -8,26 +8,19 @@ let Map = require('../Map');
 
 let chroma = require("chroma-js");
 
-let GeoTIFFLayer = require("geotiff-layer-for-leaflet");
-console.log("GeoTIFFLayer:", GeoTIFFLayer);
+let GeoRasterLayer = require("georaster-layer-for-leaflet");
+console.log("GeoRasterLayer:", GeoRasterLayer);
 
 let load_raster = (input) => {
     return new Promise(resolve => {
-        gio.load(input).then(geotiff => {
+        gio.load(input).then(georaster => {
             try {
-                Map.tiff = geotiff;
-                Map.image = geotiff.getImage();
-                let buffer = Map.image.dataView.buffer;
-            /*let s = L.ScalarField.fromGeoTIFF(buffer);
-            let layer = L.canvasLayer.scalarField(s, {
-                opacity: 0.7,
-                filter: (v) => v != -9999
-            });*/
+                Map.georaster = georaster;
                 let options = {
-                    geotiff: geotiff,
+                    georaster: georaster,
                     opacity: 0.7
                 };
-                let layer = new GeoTIFFLayer(options);
+                let layer = new GeoRasterLayer(options);
                 Map.add_raster_layer(layer);
                 resolve();
             } catch (error) {

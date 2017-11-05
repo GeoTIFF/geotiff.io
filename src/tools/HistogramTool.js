@@ -55,7 +55,7 @@ class HistogramTool extends React.Component {
 
     draw_rectangle() {
         this.props.lose_focus();
-        if (Map.tiff) {
+        if (Map.georaster) {
             this.setState({ draw_mode: 'rectangle' });
             Map.start_draw_rectangle();
         } else {
@@ -65,7 +65,7 @@ class HistogramTool extends React.Component {
 
     draw_polygon() {
         this.props.lose_focus();
-        if (Map.tiff) {
+        if (Map.georaster) {
             this.setState({ draw_mode: 'polygon' });
             Map.start_draw_polygon();
         } else {
@@ -132,7 +132,7 @@ class HistogramTool extends React.Component {
         }
 
         // convert to list because react doesn't like storing objects in state
-        let results_objs = gio.histogram(Map.image, geometry, { scale_type, class_type, num_classes });
+        let results_objs = gio.histogram(Map.georaster, geometry, { scale_type, class_type, num_classes });
         let results_lists = results_objs.map(band_results => {
             return _.keys(band_results).map(bin => [bin, band_results[bin]]);
         });

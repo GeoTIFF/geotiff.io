@@ -30,7 +30,7 @@ class MedianTool extends React.Component {
 
     draw_rectangle() {
         this.props.lose_focus();
-        if (Map.tiff) {
+        if (Map.georaster) {
             this.setState({ draw_mode: 'rectangle' });
             Map.start_draw_rectangle();
         } else {
@@ -40,7 +40,7 @@ class MedianTool extends React.Component {
 
     draw_polygon() {
         this.props.lose_focus();
-        if (Map.tiff) {
+        if (Map.georaster) {
             this.setState({ draw_mode: 'polygon' });
             Map.start_draw_polygon();
         } else {
@@ -62,7 +62,7 @@ class MedianTool extends React.Component {
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
                 Map.stop_draw_rectangle();
                 try {
-                    value = gio.median(Map.image, coors)
+                    value = gio.median(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
@@ -72,7 +72,7 @@ class MedianTool extends React.Component {
                 let coors = geojson.geometry.coordinates;
                 Map.stop_draw_polygon();
                 try {
-                    value = gio.median(Map.image, coors)
+                    value = gio.median(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
@@ -97,7 +97,7 @@ class MedianTool extends React.Component {
         if (this.state.layer) {
             Map.remove_layer(this.state.layer);
         }
-        let value = gio.median(Map.image, geojson);
+        let value = gio.median(Map.georaster, geojson);
         let draw_mode = 'none';
         let layer = Map.create_geojson_layer(geojson);
         Map.add_layer(layer);

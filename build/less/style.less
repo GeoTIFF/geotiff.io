@@ -65,6 +65,10 @@ html, body {
 			height: ~'calc(100% - 10rem)';
 			overflow-y: scroll;
 
+			p {
+				margin-bottom: .1rem;
+			}
+
 			.content-row {
 				display: flex;
 				justify-content: space-around;
@@ -124,6 +128,13 @@ html, body {
 					.content {
 						padding: 1rem;
 						font-size: @font-size-small;
+
+						.content-row {
+
+							.gt-button {
+								margin: .5rem;
+							}
+						}
 					}
 
 
@@ -174,6 +185,17 @@ html, body {
 
     #import-geojson-input {
     	display: none;
+    }
+
+    .gt-dropdown {
+    	border-radius: @border-radius;
+		border: 1px solid @primary-color;
+		padding: .5rem;
+		margin: auto;
+		display: block;
+		background: white;
+		max-width: 30rem;
+		width: 80%;
     }
 
 	.gt-input {

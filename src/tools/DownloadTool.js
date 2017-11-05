@@ -20,7 +20,7 @@ class DownloadTool extends React.Component {
     }
 
     download() {
-        FileSaver.saveAs(new Blob([Map.image.dataView.buffer]), this.state.filename);
+        FileSaver.saveAs(new Blob([Map.georaster._arrayBuffer]), this.state.filename);
     }
 
     render() {
