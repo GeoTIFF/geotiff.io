@@ -62,7 +62,7 @@ class MaxTool extends React.Component {
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
                 Map.stop_draw_rectangle();
                 try {
-                    value = gio.max(Map.image, coors)
+                    value = gio.max(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
@@ -72,7 +72,7 @@ class MaxTool extends React.Component {
                 let coors = geojson.geometry.coordinates;
                 Map.stop_draw_polygon();
                 try {
-                    value = gio.max(Map.image, coors)
+                    value = gio.max(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');

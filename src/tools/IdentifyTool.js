@@ -48,7 +48,7 @@ class IdentifyTool extends React.Component {
             let point = [message.lng, message.lat];
             if (this.state.marker) Map.remove_layer(this.state.marker);
             let marker = Map.add_marker(message);
-            let value = gio.identify(Map.image, point).join(', ');
+            let value = gio.identify(Map.georaster, point).join(', ');
             this.setState({ value, marker });
         }
     }
