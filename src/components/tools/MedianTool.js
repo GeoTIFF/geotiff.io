@@ -1,18 +1,16 @@
-let React = require('react');
+import React, { Component } from 'react';
+import gio from '@geotiff/gio';
+import Map from '../Map';
+import ImportGeoJSON from '../shared/ImportGeoJSON';
 
-let gio = require('@geotiff/gio');
-let Map = require('../Map');
-
-let ImportGeoJSON = require('../shared/ImportGeoJSON');
-
-class MinTool extends React.Component {
+class MedianTool extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             value: null,
             layer: null,
-            draw_mode: 'none'
+            draw_mode: 'none',
         };
         this.draw_rectangle = this.draw_rectangle.bind(this);
         this.draw_polygon = this.draw_polygon.bind(this);
@@ -31,7 +29,7 @@ class MinTool extends React.Component {
     draw_rectangle() {
         this.props.lose_focus();
         if (Map.georaster) {
-            this.setState({ in_draw_mode: true });
+            this.setState({ draw_mode: 'rectangle' });
             Map.start_draw_rectangle();
         } else {
             alert('Please load a GeoTIFF on the Map');
@@ -62,7 +60,7 @@ class MinTool extends React.Component {
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
                 Map.stop_draw_rectangle();
                 try {
-                    value = gio.min(Map.georaster, coors)
+                    value = gio.median(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
@@ -72,7 +70,7 @@ class MinTool extends React.Component {
                 let coors = geojson.geometry.coordinates;
                 Map.stop_draw_polygon();
                 try {
-                    value = gio.min(Map.georaster, coors)
+                    value = gio.median(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
@@ -97,7 +95,7 @@ class MinTool extends React.Component {
         if (this.state.layer) {
             Map.remove_layer(this.state.layer);
         }
-        let value = gio.min(Map.georaster, geojson);
+        let value = gio.median(Map.georaster, geojson);
         let draw_mode = 'none';
         let layer = Map.create_geojson_layer(geojson);
         Map.add_layer(layer);
@@ -106,14 +104,14 @@ class MinTool extends React.Component {
 
     render() {
         return (
-            <div id='min-tool' className='tool'>
+            <div id='mean-tool' className='tool'>
                 <section className='controls'>
                     <header>
                         <i className='material-icons gt-remove' onClick={this.close}>clear</i>
-                        <h3 className='tool-title'>Get the Min Pixel Value of an Area</h3>
+                        <h3 className='tool-title'>Get the Median Pixel Value of an Area</h3>
                     </header>
                     <div className='content'>
-                        <p>Select a geometry type and draw a geometry to get the min pixel value within that area.</p>
+                        <p>Select a geometry type and draw a geometry to get the median of the pixels within that area.</p>
                         <div className='content-row'>
                             <button 
                                 className={`gt-button ${this.state.draw_mode === 'rectangle' ? 'active' : '' }`}
@@ -137,7 +135,7 @@ class MinTool extends React.Component {
                     this.state.value !== null
                     ? 
                         <section className='results'>
-                            <h3>Min: { this.state.value }</h3>
+                            <h3>Median: { this.state.value }</h3>
                         </section>
                     : ''
                 }
@@ -146,4 +144,4 @@ class MinTool extends React.Component {
     }
 }
 
-module.exports = MinTool;
+export default MedianTool;

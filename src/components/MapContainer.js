@@ -1,6 +1,5 @@
-let React = require('react');
-
-let Map = require('./Map');
+import React, { Component } from 'react';
+import Map from './Map';
 
 class MapContainer extends React.Component {
     
@@ -19,4 +18,4 @@ class MapContainer extends React.Component {
     }
 }
 
-module.exports = MapContainer;
+export default MapContainer;

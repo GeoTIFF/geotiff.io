@@ -1,9 +1,7 @@
-let _ = require('underscore');
-
-let L = window.L;
-
+import _ from 'underscore';
 import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
 
+let L = window.L;
 let map, draw_control;
 let instance = null;
 
@@ -53,7 +51,7 @@ let Map = {
         map.on('draw:created', e => this.notify(e.layerType, e));
 
         // add marker at 0, 0 for debugging purposes
-        L.marker([0, 0]).addTo(map);
+        // L.marker([0, 0]).addTo(map);
 
     },
 
@@ -129,4 +127,4 @@ let Map = {
     }
 }
 
-module.exports = Map;
+export default Map;

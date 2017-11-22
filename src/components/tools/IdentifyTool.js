@@ -1,10 +1,8 @@
-let React = require('react');
+import React, { Component } from 'react';
+import gio from '@geotiff/gio';
+import Map from '../Map';
 
-let gio = require('@geotiff/gio');
-
-let Map = require('../Map');
-
-class IdentifyTool extends React.Component {
+class IdentifyTool extends Component {
 
     constructor(props) {
         super(props);
@@ -93,4 +91,4 @@ class IdentifyTool extends React.Component {
     }
 }
 
-module.exports = IdentifyTool;
+export default IdentifyTool;

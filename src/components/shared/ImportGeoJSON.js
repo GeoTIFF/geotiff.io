@@ -1,9 +1,8 @@
-let React = require('react');
+import React, { Component } from 'react';
+import gio from '@geotiff/gio';
+import Map from '../Map';
 
-let gio = require('@geotiff/gio');
-let Map = require('../Map');
-
-class ImportGeoJSON extends React.Component {
+class ImportGeoJSON extends Component {
 
     constructor(props) {
         super(props);
@@ -85,4 +84,4 @@ class ImportGeoJSON extends React.Component {
     }
 }
 
-module.exports = ImportGeoJSON;
+export default ImportGeoJSON;

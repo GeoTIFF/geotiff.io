@@ -1,13 +1,10 @@
-let React = require('react');
+import React, { Component } from 'react';
+import _ from 'underscore';
+import gio from '@geotiff/gio';
+import Map from '../Map';
+import ImportGeoJSON from '../shared/ImportGeoJSON';
 
-let _ = require('underscore');
-
-let gio = require('@geotiff/gio');
-let Map = require('../Map');
-
-let ImportGeoJSON = require('../shared/ImportGeoJSON');
-
-class HistogramTool extends React.Component {
+class HistogramTool extends Component {
 
     constructor(props) {
         super(props);
@@ -236,4 +233,4 @@ class HistogramTool extends React.Component {
     }
 }
 
-module.exports = HistogramTool;
+export default HistogramTool;

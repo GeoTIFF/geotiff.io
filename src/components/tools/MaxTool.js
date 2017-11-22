@@ -1,11 +1,9 @@
-let React = require('react');
+import React, { Component } from 'react';
+import gio from '@geotiff/gio';
+import Map from '../Map';
+import ImportGeoJSON from '../shared/ImportGeoJSON';
 
-let gio = require('@geotiff/gio');
-let Map = require('../Map');
-
-let ImportGeoJSON = require('../shared/ImportGeoJSON');
-
-class MeanTool extends React.Component {
+class MaxTool extends Component {
 
     constructor(props) {
         super(props);
@@ -31,7 +29,7 @@ class MeanTool extends React.Component {
     draw_rectangle() {
         this.props.lose_focus();
         if (Map.georaster) {
-            this.setState({ draw_mode: 'rectangle' });
+            this.setState({ in_draw_mode: true });
             Map.start_draw_rectangle();
         } else {
             alert('Please load a GeoTIFF on the Map');
@@ -62,17 +60,17 @@ class MeanTool extends React.Component {
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
                 Map.stop_draw_rectangle();
                 try {
-                    value = gio.mean(Map.georaster, coors)
+                    value = gio.max(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
-                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.')
+                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
                 }
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
                 Map.stop_draw_polygon();
                 try {
-                    value = gio.mean(Map.georaster, geojson)
+                    value = gio.max(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
@@ -97,7 +95,7 @@ class MeanTool extends React.Component {
         if (this.state.layer) {
             Map.remove_layer(this.state.layer);
         }
-        let value = gio.mean(Map.georaster, geojson);
+        let value = gio.max(Map.georaster, geojson);
         let draw_mode = 'none';
         let layer = Map.create_geojson_layer(geojson);
         Map.add_layer(layer);
@@ -106,14 +104,14 @@ class MeanTool extends React.Component {
 
     render() {
         return (
-            <div id='mean-tool' className='tool'>
+            <div id='max-tool' className='tool'>
                 <section className='controls'>
                     <header>
                         <i className='material-icons gt-remove' onClick={this.close}>clear</i>
-                        <h3 className='tool-title'>Get the Mean Pixel Value of an Area</h3>
+                        <h3 className='tool-title'>Get the Max Pixel Value of an Area</h3>
                     </header>
                     <div className='content'>
-                        <p>Select a geometry type and draw a geometry to get the mean value of the pixels within that area.</p>
+                        <p>Select a geometry type and draw a geometry to get the max pixel value within that area.</p>
                         <div className='content-row'>
                             <button 
                                 className={`gt-button ${this.state.draw_mode === 'rectangle' ? 'active' : '' }`}
@@ -137,7 +135,7 @@ class MeanTool extends React.Component {
                     this.state.value !== null
                     ? 
                         <section className='results'>
-                            <h3>Mean: { this.state.value }</h3>
+                            <h3>Max: { this.state.value }</h3>
                         </section>
                     : ''
                 }
@@ -146,4 +144,4 @@ class MeanTool extends React.Component {
     }
 }
 
-module.exports = MeanTool;
+export default MaxTool;

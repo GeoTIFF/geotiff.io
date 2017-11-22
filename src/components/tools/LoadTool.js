@@ -1,15 +1,10 @@
-let React = require('react');
+import React, { Component } from 'react';
+import gio from '@geotiff/gio';
+import Map from '../Map';
+import chroma from 'chroma-js';
+import GeoRasterLayer from 'georaster-layer-for-leaflet';
 
 let L = window.L;
-
-let gio = require('@geotiff/gio');
-
-let Map = require('../Map');
-
-let chroma = require("chroma-js");
-
-let GeoRasterLayer = require("georaster-layer-for-leaflet");
-console.log("GeoRasterLayer:", GeoRasterLayer);
 
 let load_raster = (input) => {
     return new Promise(resolve => {
@@ -30,15 +25,13 @@ let load_raster = (input) => {
     });
 }
 
-
 var url_to_tiff = new URLSearchParams(window.location.search).get("url");
-console.log("URL:", url_to_tiff);
+
 if (url_to_tiff) {
     load_raster(url_to_tiff);
 }
 
-
-class LoadTool extends React.Component {
+class LoadTool extends Component {
 
     constructor(props) {
         super(props);
@@ -111,4 +104,4 @@ class LoadTool extends React.Component {
 
 window.load_raster = load_raster;
 
-module.exports = LoadTool;
+export default LoadTool;

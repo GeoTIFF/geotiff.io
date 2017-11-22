@@ -1,9 +1,9 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
-let MapContainer = require('./MapContainer');
-let Menu = require('./Menu');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import MapContainer from './MapContainer';
+import Menu from '../containers/Menu';
 
-class App extends React.Component {
+class App extends Component {
 
     constructor(props) {
         super(props);
@@ -30,4 +30,4 @@ class App extends React.Component {
     }
 }
 
-module.exports = App;
+export default App;

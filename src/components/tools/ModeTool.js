@@ -1,11 +1,9 @@
-let React = require('react');
+import React, { Component } from 'react';
+import gio from '@geotiff/gio';
+import Map from '../Map';
+import ImportGeoJSON from '../shared/ImportGeoJSON';
 
-let gio = require('@geotiff/gio');
-let Map = require('../Map');
-
-let ImportGeoJSON = require('../shared/ImportGeoJSON');
-
-class SumTool extends React.Component {
+class ModeTool extends React.Component {
 
     constructor(props) {
         super(props);
@@ -61,20 +59,19 @@ class SumTool extends React.Component {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
                 Map.stop_draw_rectangle();
-                try { 
-                    value = gio.sum(Map.georaster, coors)
-                        .map(value => value.toFixed(2)).join(', ');
+                try {
+                    let result = gio.mode(Map.georaster, coors)
+                    value = result.map(band => `[${band.join(',')}]`).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
                 }
-                
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
                 Map.stop_draw_polygon();
-                try { 
-                    value = gio.sum(Map.georaster, coors)
-                        .map(value => value.toFixed(2)).join(', ');
+                try {
+                    let result = gio.mode(Map.georaster, coors)
+                    value = result.map(band => `[${band.join(',')}]`).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
                 }
@@ -98,7 +95,8 @@ class SumTool extends React.Component {
         if (this.state.layer) {
             Map.remove_layer(this.state.layer);
         }
-        let value = gio.sum(Map.georaster, geojson);
+        let result = gio.mode(Map.georaster, geojson);
+        let value = typeof result === 'object' ? result.join(', ') : result;
         let draw_mode = 'none';
         let layer = Map.create_geojson_layer(geojson);
         Map.add_layer(layer);
@@ -107,14 +105,14 @@ class SumTool extends React.Component {
 
     render() {
         return (
-            <div id='sum-tool' className='tool'>
+            <div id='mode-tool' className='tool'>
                 <section className='controls'>
                     <header>
                         <i className='material-icons gt-remove' onClick={this.close}>clear</i>
-                        <h3 className='tool-title'>Get the Sum Pixel Value of an Area</h3>
+                        <h3 className='tool-title'>Get the Mode Pixel Value of an Area</h3>
                     </header>
                     <div className='content'>
-                        <p>Select a geometry type and draw a geometry to get the sum of the pixels within that area.</p>
+                        <p>Select a geometry type and draw a geometry to get the mode (most frequent value) of the pixels within that area.</p>
                         <div className='content-row'>
                             <button 
                                 className={`gt-button ${this.state.draw_mode === 'rectangle' ? 'active' : '' }`}
@@ -138,7 +136,7 @@ class SumTool extends React.Component {
                     this.state.value !== null
                     ? 
                         <section className='results'>
-                            <h3>Sum: { this.state.value }</h3>
+                            <h3>Mode: { this.state.value }</h3>
                         </section>
                     : ''
                 }
@@ -147,4 +145,4 @@ class SumTool extends React.Component {
     }
 }
 
-module.exports = SumTool;
+export default ModeTool;

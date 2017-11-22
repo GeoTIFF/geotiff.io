@@ -1,12 +1,9 @@
-let React = require('react');
+import React, { Component } from 'react';
+import gio from '@geotiff/gio';
+import Map from '../Map';
+import FileSaver from 'file-saver';
 
-let gio = require('@geotiff/gio');
-
-let Map = require('../Map');
-
-let FileSaver = require('file-saver');
-
-class DownloadTool extends React.Component {
+class DownloadTool extends Component {
 
     constructor(props) {
         super(props);
@@ -46,4 +43,4 @@ class DownloadTool extends React.Component {
     }
 }
 
-module.exports = DownloadTool;
+export default DownloadTool;

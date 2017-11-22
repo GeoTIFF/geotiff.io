@@ -1,11 +1,9 @@
-let React = require('react');
+import React, { Component } from 'react';
+import gio from '@geotiff/gio';
+import Map from '../Map';
+import ImportGeoJSON from '../shared/ImportGeoJSON';
 
-let gio = require('@geotiff/gio');
-let Map = require('../Map');
-
-let ImportGeoJSON = require('../shared/ImportGeoJSON');
-
-class MaxTool extends React.Component {
+class SumTool extends Component {
 
     constructor(props) {
         super(props);
@@ -31,7 +29,7 @@ class MaxTool extends React.Component {
     draw_rectangle() {
         this.props.lose_focus();
         if (Map.georaster) {
-            this.setState({ in_draw_mode: true });
+            this.setState({ draw_mode: 'rectangle' });
             Map.start_draw_rectangle();
         } else {
             alert('Please load a GeoTIFF on the Map');
@@ -61,18 +59,19 @@ class MaxTool extends React.Component {
                 let latlngs = layer.getBounds();
                 let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
                 Map.stop_draw_rectangle();
-                try {
-                    value = gio.max(Map.georaster, coors)
+                try { 
+                    value = gio.sum(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
                 }
+                
             } else {
                 let geojson = layer.toGeoJSON();
                 let coors = geojson.geometry.coordinates;
                 Map.stop_draw_polygon();
-                try {
-                    value = gio.max(Map.georaster, coors)
+                try { 
+                    value = gio.sum(Map.georaster, coors)
                         .map(value => value.toFixed(2)).join(', ');
                 } catch(e) {
                     alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
@@ -97,7 +96,7 @@ class MaxTool extends React.Component {
         if (this.state.layer) {
             Map.remove_layer(this.state.layer);
         }
-        let value = gio.max(Map.georaster, geojson);
+        let value = gio.sum(Map.georaster, geojson);
         let draw_mode = 'none';
         let layer = Map.create_geojson_layer(geojson);
         Map.add_layer(layer);
@@ -106,14 +105,14 @@ class MaxTool extends React.Component {
 
     render() {
         return (
-            <div id='max-tool' className='tool'>
+            <div id='sum-tool' className='tool'>
                 <section className='controls'>
                     <header>
                         <i className='material-icons gt-remove' onClick={this.close}>clear</i>
-                        <h3 className='tool-title'>Get the Max Pixel Value of an Area</h3>
+                        <h3 className='tool-title'>Get the Sum Pixel Value of an Area</h3>
                     </header>
                     <div className='content'>
-                        <p>Select a geometry type and draw a geometry to get the max pixel value within that area.</p>
+                        <p>Select a geometry type and draw a geometry to get the sum of the pixels within that area.</p>
                         <div className='content-row'>
                             <button 
                                 className={`gt-button ${this.state.draw_mode === 'rectangle' ? 'active' : '' }`}
@@ -137,7 +136,7 @@ class MaxTool extends React.Component {
                     this.state.value !== null
                     ? 
                         <section className='results'>
-                            <h3>Max: { this.state.value }</h3>
+                            <h3>Sum: { this.state.value }</h3>
                         </section>
                     : ''
                 }
@@ -146,4 +145,4 @@ class MaxTool extends React.Component {
     }
 }
 
-module.exports = MaxTool;
+export default SumTool;
