@@ -28,7 +28,7 @@ class LoadToolComponent extends Component {
                     <header>
                         <i 
                             className='material-icons gt-remove'
-                            onClick={this.props.on_remove}
+                            onClick={this.props.close}
                         >
                             clear
                         </i>
