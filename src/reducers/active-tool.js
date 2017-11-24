@@ -5,7 +5,7 @@ const active_tool = (state = null, action) => {
         case 'ACTIVE_TOOL_UNMOUNT':
             return null;
         default:
-            return null;
+            return state;
     }
 }
 

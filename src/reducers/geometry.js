@@ -23,7 +23,7 @@ const geometry = (state: null, action) => {
             Map.remove_layer(state);
             return null;
         default:
-            return null;
+            return state;
     }
 }
 

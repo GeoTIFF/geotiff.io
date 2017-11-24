@@ -9,7 +9,7 @@ const raster = (state = null, action) => {
             Map.remove_raster();
             return null;
         default:
-            return null;
+            return state;
     }
 }
 
