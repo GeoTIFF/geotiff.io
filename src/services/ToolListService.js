@@ -16,9 +16,11 @@ let ToolListService = {
                             .filter(Boolean) // filter out blank lines
                             .map(tool => tool.split('|'));
 
-                        tools.forEach(tool => {
-                            tool[3] = require(`../components/tools/${tool[2]}`).default;
-                        });
+                        tools
+                            .filter(tool => tool[0][0] !== '#') // this is temporary
+                            .forEach(tool => {
+                                tool[3] = require(`../containers/tools/${tool[2]}`).default;
+                            });
                         this.tool_list = tools;
                         resolve(tools);
                     });

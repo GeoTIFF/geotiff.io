@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import gio from '@geotiff/gio';
-import Map from '../Map';
 
 class IdentifyTool extends Component {
 
@@ -23,41 +22,41 @@ class IdentifyTool extends Component {
     }
 
     change_mode(force) {
-        if (this.state.button_text === 'Identify') {
-            this.props.lose_focus();
-            if (force || Map.georaster) {
-                this.setState({ button_text: 'Stop Identifying' });
-                Map.subscribe(this);
-            } else {
-                alert('Please load a GeoTIFF on the Map');
-            }   
-        } else {
-            this.setState({ 
-                button_text: 'Identify',
-                value: ''
-            });
-            Map.unsubscribe(this);
-            if (this.state.marker) Map.remove_layer(this.state.marker);
-        }
+        // if (this.state.button_text === 'Identify') {
+        //     this.props.lose_focus();
+        //     if (force || Map.georaster) {
+        //         this.setState({ button_text: 'Stop Identifying' });
+        //         Map.subscribe(this);
+        //     } else {
+        //         alert('Please load a GeoTIFF on the Map');
+        //     }   
+        // } else {
+        //     this.setState({ 
+        //         button_text: 'Identify',
+        //         value: ''
+        //     });
+        //     Map.unsubscribe(this);
+        //     if (this.state.marker) Map.remove_layer(this.state.marker);
+        // }
     }
 
     listen(event_type, message) {
-        if (event_type === 'map-click') {
-            let point = [message.lng, message.lat];
-            if (this.state.marker) Map.remove_layer(this.state.marker);
-            let marker = Map.add_marker(message);
-            let value = gio.identify(Map.georaster, point).join(', ');
-            this.setState({ value, marker });
-        }
+        // if (event_type === 'map-click') {
+        //     let point = [message.lng, message.lat];
+        //     if (this.state.marker) Map.remove_layer(this.state.marker);
+        //     let marker = Map.add_marker(message);
+        //     let value = gio.identify(Map.georaster, point).join(', ');
+        //     this.setState({ value, marker });
+        // }
     }
 
     close() {
         this.props.on_remove();
-        if (this.state.marker) {
-            Map.remove_layer(this.state.marker);
-            Map.unsubscribe(this);
-            this.setState({ marker: null });
-        }
+        // if (this.state.marker) {
+        //     Map.remove_layer(this.state.marker);
+        //     Map.unsubscribe(this);
+        //     this.setState({ marker: null });
+        // }
     }
 
     render() {

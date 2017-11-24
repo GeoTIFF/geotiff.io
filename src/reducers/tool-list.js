@@ -1,5 +1,4 @@
 const tool_list = (state = [], action) => {
-    console.error('action: ', action);
     switch (action.type) {
         case 'TOOL_LIST_LOAD':
             return action.tools;

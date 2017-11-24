@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import gio from '@geotiff/gio';
-import Map from '../Map';
 import FileSaver from 'file-saver';
 
 class DownloadTool extends Component {

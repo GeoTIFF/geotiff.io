@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import gio from '@geotiff/gio';
-import Map from '../Map';
 import DrawGeometry from '../shared/DrawGeometry';
 import ImportGeoJSON from '../shared/ImportGeoJSON';
 
@@ -48,59 +47,59 @@ class MeanTool extends Component {
     // }
 
     listen(event_type, message) {
-        if (event_type === 'rectangle' || event_type === 'polygon') {
-            if (this.state.layer) {
-                Map.remove_layer(this.state.layer);
-            }
-            let layer = message.layer;
-            Map.add_layer(layer);
+        // if (event_type === 'rectangle' || event_type === 'polygon') {
+        //     if (this.state.layer) {
+        //         Map.remove_layer(this.state.layer);
+        //     }
+        //     let layer = message.layer;
+        //     Map.add_layer(layer);
 
-            let value;
-            if (event_type === 'rectangle') {
-                let latlngs = layer.getBounds();
-                let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                Map.stop_draw_rectangle();
-                try {
-                    value = gio.mean(Map.georaster, coors)
-                        .map(value => value.toFixed(2)).join(', ');
-                } catch(e) {
-                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.')
-                }
-            } else {
-                let geojson = layer.toGeoJSON();
-                let coors = geojson.geometry.coordinates;
-                Map.stop_draw_polygon();
-                try {
-                    value = gio.mean(Map.georaster, geojson)
-                        .map(value => value.toFixed(2)).join(', ');
-                } catch(e) {
-                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
-                }
-            }
+        //     let value;
+        //     if (event_type === 'rectangle') {
+        //         let latlngs = layer.getBounds();
+        //         let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
+        //         Map.stop_draw_rectangle();
+        //         try {
+        //             value = gio.mean(Map.georaster, coors)
+        //                 .map(value => value.toFixed(2)).join(', ');
+        //         } catch(e) {
+        //             alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.')
+        //         }
+        //     } else {
+        //         let geojson = layer.toGeoJSON();
+        //         let coors = geojson.geometry.coordinates;
+        //         Map.stop_draw_polygon();
+        //         try {
+        //             value = gio.mean(Map.georaster, geojson)
+        //                 .map(value => value.toFixed(2)).join(', ');
+        //         } catch(e) {
+        //             alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
+        //         }
+        //     }
 
-            let draw_mode = 'none';
-            this.setState({ value, layer, draw_mode });
-        }
+        //     let draw_mode = 'none';
+        //     this.setState({ value, layer, draw_mode });
+        // }
     }
 
     close() {
-        if (this.state.layer) {
-            Map.remove_layer(this.state.layer);
-            Map.unsubscribe(this);
-            this.setState({ layer: null });
-        }
+        // if (this.state.layer) {
+        //     Map.remove_layer(this.state.layer);
+        //     Map.unsubscribe(this);
+        //     this.setState({ layer: null });
+        // }
         this.props.on_remove();
     }
 
     add_geojson(geojson) {
-        if (this.state.layer) {
-            Map.remove_layer(this.state.layer);
-        }
-        let value = gio.mean(Map.georaster, geojson);
-        let draw_mode = 'none';
-        let layer = Map.create_geojson_layer(geojson);
-        Map.add_layer(layer);
-        this.setState({ value, draw_mode, layer });
+        // if (this.state.layer) {
+        //     Map.remove_layer(this.state.layer);
+        // }
+        // let value = gio.mean(Map.georaster, geojson);
+        // let draw_mode = 'none';
+        // let layer = Map.create_geojson_layer(geojson);
+        // Map.add_layer(layer);
+        // this.setState({ value, draw_mode, layer });
     }
 
     render() {

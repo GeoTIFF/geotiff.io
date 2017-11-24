@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'underscore';
 import gio from '@geotiff/gio';
-import Map from '../Map';
 import ImportGeoJSON from '../shared/ImportGeoJSON';
 
 class HistogramTool extends Component {
@@ -27,14 +26,6 @@ class HistogramTool extends Component {
         this.get_histogram = this.get_histogram.bind(this);
     }
 
-    componentWillMount() {
-        Map.subscribe(this);
-    }
-
-    componentWillUnmount() {
-        Map.unsubscribe(this);
-    }
-
     set_scale_type(event) {
         let scale_type = event.target.value;
         this.setState({ scale_type });
@@ -52,66 +43,66 @@ class HistogramTool extends Component {
 
     draw_rectangle() {
         this.props.lose_focus();
-        if (Map.georaster) {
-            this.setState({ draw_mode: 'rectangle' });
-            Map.start_draw_rectangle();
-        } else {
-            alert('Please load a GeoTIFF on the Map');
-        }
+        // if (Map.georaster) {
+        //     this.setState({ draw_mode: 'rectangle' });
+        //     Map.start_draw_rectangle();
+        // } else {
+        //     alert('Please load a GeoTIFF on the Map');
+        // }
     }
 
     draw_polygon() {
         this.props.lose_focus();
-        if (Map.georaster) {
-            this.setState({ draw_mode: 'polygon' });
-            Map.start_draw_polygon();
-        } else {
-            alert('Please load a GeoTIFF on the Map');
-        }
+        // if (Map.georaster) {
+        //     this.setState({ draw_mode: 'polygon' });
+        //     Map.start_draw_polygon();
+        // } else {
+        //     alert('Please load a GeoTIFF on the Map');
+        // }
     }
 
     listen(event_type, message) {
-        if (event_type === 'rectangle' || event_type === 'polygon') {
-            if (this.state.layer) {
-                Map.remove_layer(this.state.layer);
-            }
-            let layer = message.layer;
-            Map.add_layer(layer);
+        // if (event_type === 'rectangle' || event_type === 'polygon') {
+        //     if (this.state.layer) {
+        //         Map.remove_layer(this.state.layer);
+        //     }
+        //     let layer = message.layer;
+        //     Map.add_layer(layer);
 
-            if (event_type === 'rectangle') {
-                let latlngs = layer.getBounds();
-                let geometry = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                this.setState({ geometry });
-                Map.stop_draw_rectangle();
-            } else {
-                let geojson = layer.toGeoJSON();
-                let geometry = geojson.geometry.coordinates;
-                this.setState({ geometry });
-                Map.stop_draw_polygon();
-            }
+        //     if (event_type === 'rectangle') {
+        //         let latlngs = layer.getBounds();
+        //         let geometry = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
+        //         this.setState({ geometry });
+        //         Map.stop_draw_rectangle();
+        //     } else {
+        //         let geojson = layer.toGeoJSON();
+        //         let geometry = geojson.geometry.coordinates;
+        //         this.setState({ geometry });
+        //         Map.stop_draw_polygon();
+        //     }
 
-            let draw_mode = 'none';
-            this.setState({ layer, draw_mode });
-        }
+        //     let draw_mode = 'none';
+        //     this.setState({ layer, draw_mode });
+        // }
     }
 
     close() {
-        if (this.state.layer) {
-            Map.remove_layer(this.state.layer);
-            Map.unsubscribe(this);
-            this.setState({ layer: null });
-        }
+        // if (this.state.layer) {
+        //     Map.remove_layer(this.state.layer);
+        //     Map.unsubscribe(this);
+        //     this.setState({ layer: null });
+        // }
         this.props.on_remove();
     }
 
     add_geojson(geojson) {
-        if (this.state.layer) {
-            Map.remove_layer(this.state.layer);
-        }
-        let draw_mode = 'none';
-        let layer = Map.create_geojson_layer(geojson);
-        Map.add_layer(layer);
-        this.setState({ draw_mode, layer, geometry: geojson });
+        // if (this.state.layer) {
+        //     Map.remove_layer(this.state.layer);
+        // }
+        // let draw_mode = 'none';
+        // let layer = Map.create_geojson_layer(geojson);
+        // Map.add_layer(layer);
+        // this.setState({ draw_mode, layer, geometry: geojson });
     }
 
     get_histogram() {

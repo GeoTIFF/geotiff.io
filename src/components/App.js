@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import MapContainer from './MapContainer';
+import MapContainerComponent from './MapContainerComponent';
 import Menu from '../containers/Menu';
 
 class App extends Component {
@@ -23,8 +23,8 @@ class App extends Component {
     render() {
         return (
             <div className="App" ref="main_app">
-                <Menu params={this.state.params}/>;
-                <MapContainer params={this.state.params}/>
+                <Menu />
+                <MapContainerComponent />
             </div>
         );
     }

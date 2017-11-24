@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Map from '../Map';
 
 class DrawGeometry extends Component {
 
@@ -10,21 +9,13 @@ class DrawGeometry extends Component {
         }
     }
 
-    componentWillMount() {
-        Map.subscribe(this);
-    }
-
-    componentWillUnmount() {
-        Map.unsubscribe(this);
-    }
-
     draw(draw_type) {
         if (Map.georaster) {
             this.setState({ draw_mode: draw_type });
             if (draw_type === 'rectangle') {
-                Map.start_draw_rectangle();
+                // Map.start_draw_rectangle();
             } else if (draw_type === 'polygon') {
-                Map.start_draw_polygon();
+                // Map.start_draw_polygon();
             } else {
                 alert('The draw type specified is not valid');
             }

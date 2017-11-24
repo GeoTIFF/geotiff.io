@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import gio from '@geotiff/gio';
-import Map from '../Map';
 import ImportGeoJSON from '../shared/ImportGeoJSON';
 
 class SumTool extends Component {
@@ -18,89 +17,81 @@ class SumTool extends Component {
         this.add_geojson = this.add_geojson.bind(this);
     }
 
-    componentWillMount() {
-        Map.subscribe(this);
-    }
-
-    componentWillUnmount() {
-        Map.unsubscribe(this);
-    }
-
     draw_rectangle() {
         this.props.lose_focus();
-        if (Map.georaster) {
-            this.setState({ draw_mode: 'rectangle' });
-            Map.start_draw_rectangle();
-        } else {
-            alert('Please load a GeoTIFF on the Map');
-        }
+        // if (Map.georaster) {
+        //     this.setState({ draw_mode: 'rectangle' });
+        //     Map.start_draw_rectangle();
+        // } else {
+        //     alert('Please load a GeoTIFF on the Map');
+        // }
     }
 
     draw_polygon() {
         this.props.lose_focus();
-        if (Map.georaster) {
-            this.setState({ draw_mode: 'polygon' });
-            Map.start_draw_polygon();
-        } else {
-            alert('Please load a GeoTIFF on the Map');
-        }
+        // if (Map.georaster) {
+        //     this.setState({ draw_mode: 'polygon' });
+        //     Map.start_draw_polygon();
+        // } else {
+        //     alert('Please load a GeoTIFF on the Map');
+        // }
     }
 
     listen(event_type, message) {
-        if (event_type === 'rectangle' || event_type === 'polygon') {
-            if (this.state.layer) {
-                Map.remove_layer(this.state.layer);
-            }
-            let layer = message.layer;
-            Map.add_layer(layer);
+        // if (event_type === 'rectangle' || event_type === 'polygon') {
+            // if (this.state.layer) {
+            //     Map.remove_layer(this.state.layer);
+            // }
+            // let layer = message.layer;
+            // Map.add_layer(layer);
 
-            let value;
-            if (event_type === 'rectangle') {
-                let latlngs = layer.getBounds();
-                let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
-                Map.stop_draw_rectangle();
-                try { 
-                    value = gio.sum(Map.georaster, coors)
-                        .map(value => value.toFixed(2)).join(', ');
-                } catch(e) {
-                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
-                }
+            // let value;
+            // if (event_type === 'rectangle') {
+            //     let latlngs = layer.getBounds();
+            //     let coors = [latlngs.getWest(), latlngs.getSouth(), latlngs.getEast(), latlngs.getNorth()];
+            //     Map.stop_draw_rectangle();
+            //     try { 
+            //         value = gio.sum(Map.georaster, coors)
+            //             .map(value => value.toFixed(2)).join(', ');
+            //     } catch(e) {
+            //         alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
+            //     }
                 
-            } else {
-                let geojson = layer.toGeoJSON();
-                let coors = geojson.geometry.coordinates;
-                Map.stop_draw_polygon();
-                try { 
-                    value = gio.sum(Map.georaster, coors)
-                        .map(value => value.toFixed(2)).join(', ');
-                } catch(e) {
-                    alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
-                }
-            }
+            // } else {
+            //     let geojson = layer.toGeoJSON();
+            //     let coors = geojson.geometry.coordinates;
+            //     Map.stop_draw_polygon();
+            //     try { 
+            //         value = gio.sum(Map.georaster, coors)
+            //             .map(value => value.toFixed(2)).join(', ');
+            //     } catch(e) {
+            //         alert('An unexpected error occurred when trying to run the calculation using this geometry. Please use a different geometry.');
+            //     }
+            // }
 
-            let draw_mode = 'none';
-            this.setState({ value, layer, draw_mode });
-        }
+        //     let draw_mode = 'none';
+        //     this.setState({ value, layer, draw_mode });
+        // }
     }
 
     close() {
-        if (this.state.layer) {
-            Map.remove_layer(this.state.layer);
-            Map.unsubscribe(this);
-            this.setState({ layer: null });
-        }
+        // if (this.state.layer) {
+        //     Map.remove_layer(this.state.layer);
+        //     Map.unsubscribe(this);
+        //     this.setState({ layer: null });
+        // }
         this.props.on_remove();
     }
 
     add_geojson(geojson) {
-        if (this.state.layer) {
-            Map.remove_layer(this.state.layer);
-        }
-        let value = gio.sum(Map.georaster, geojson);
-        let draw_mode = 'none';
-        let layer = Map.create_geojson_layer(geojson);
-        Map.add_layer(layer);
-        this.setState({ value, draw_mode, layer });
+        // if (this.state.layer) {
+        //     Map.remove_layer(this.state.layer);
+        // }
+        // let value = gio.sum(Map.georaster, geojson);
+        // let draw_mode = 'none';
+        // let layer = Map.create_geojson_layer(geojson);
+        // Map.add_layer(layer);
+        // this.setState({ value, draw_mode, layer });
     }
 
     render() {

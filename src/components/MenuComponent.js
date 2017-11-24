@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ToolButtonComponent from './ToolButtonComponent';
 
-const MenuComponent = ({ params, active_tool, tool_list, select_tool, search_tools }) => (
+const MenuComponent = ({ active_tool, tool_list, select_tool, search_tools }) => (
     <div id='menu'>
         <header id='menu-header'>
             <h3>GeoTIFF.io</h3>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const ToolButtonComponent = ({ name, icon, component, select }) => (
     <button className='tool-button' onClick={() => select(component)}>
