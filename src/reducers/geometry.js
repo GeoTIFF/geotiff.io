@@ -1,6 +1,6 @@
 import Map from '../Map';
 
-const geometry = (state: null, action) => {
+const geometry = (state = null, action) => {
     switch (action.type) {
         case 'MAP_GEOMETRY_ADD':
             if (state) { // first remove the existing layer is present
