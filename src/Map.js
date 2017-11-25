@@ -53,9 +53,8 @@ let Map = {
 
         // map.on('click', e => this.notify('map-click', e.latlng));
         map.on('draw:created', e => {
-            self.drawing = e.layer;
             store.dispatch(stop_drawing());
-            store.dispatch(add_geometry(self.drawing, 'polygon'));
+            store.dispatch(add_geometry(e.layer, 'polygon'));
         });
     },
 

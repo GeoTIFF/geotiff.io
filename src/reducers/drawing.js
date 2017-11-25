@@ -1,6 +1,6 @@
 import Map from '../Map';
 
-const drawing = (state = null, action) => {
+const drawing = (state = false, action) => {
     switch (action.type) {
         case 'MAP_DRAW_START':
             if (action.format === 'rectangle') {
@@ -10,11 +10,11 @@ const drawing = (state = null, action) => {
             } else {
                 throw 'Invalid format specified. Please use either "rectangle" or "polygon"';
             }
-            return null;
+            return action.format;
         case 'MAP_DRAW_STOP':
             Map.stop_draw_rectangle();
             Map.stop_draw_polygon();
-            return Map.drawing;
+            return false;
         default:
             return state;
     }
