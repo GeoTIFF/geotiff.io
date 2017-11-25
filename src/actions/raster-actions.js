@@ -2,7 +2,6 @@ import RasterService from '../services/RasterService';
 
 export const add_raster = input => {
     return dispatch => {
-        console.error('adding raster...');
         return RasterService.create_raster(input).then(raster => {
             return dispatch({ type: 'MAP_RASTER_ADD', raster });
         });

@@ -8,7 +8,7 @@ import Map from './Map';
 
 let store = build_store();
 store.dispatch(load_tools());
-window.store = store; // made this global temporarily so the add_raster action can be dispatched from main.js
+window.store = store; // made this global so it can be accessed from Map
 
 ReactDOM.render(
     <Provider store={store}>

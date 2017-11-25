@@ -1,6 +1,9 @@
 import _ from 'underscore';
 import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
+import { add_geometry } from './actions/geometry-actions';
+import { stop_drawing } from './actions/drawing-actions';
 
+let store;
 let L = window.L;
 let map, draw_control;
 
@@ -13,6 +16,8 @@ let Map = {
     subscribers: [],
 
     initialize(params) {
+        let self = this;
+        store = window.store;
 
         // add map
         map = L.map('map').setView([0, 0], 2);
@@ -47,22 +52,18 @@ let Map = {
         map.addControl(searchControl);
 
         // map.on('click', e => this.notify('map-click', e.latlng));
-        // map.on('draw:created', e => this.notify(e.layerType, e));
+        map.on('draw:created', e => {
+            self.drawing = e.layer;
+            store.dispatch(stop_drawing());
+            store.dispatch(add_geometry(self.drawing, 'polygon'));
+        });
     },
 
     add_raster(layer) {
-
-        // remove existing raster
         if (this.raster) map.removeLayer(this.raster);
-
-        // add new raster
         layer.addTo(map);
 
-        // create bounding box to highlight raster
         let layer_bounds = layer.getBounds();
-
-        // commenting out flyToBounds because performance is very poor compared to fitBounds
-        // map.flyToBounds(layer_bounds);
         map.fitBounds(layer_bounds);
 
         L.rectangle(layer_bounds, {
@@ -96,21 +97,25 @@ let Map = {
     },
 
     start_draw_rectangle() {
-        this.rectangle = new L.Draw.Rectangle(map, draw_control.options.rectangle);
-        this.rectangle.enable();
+        this.rectangle_drawer = new L.Draw.Rectangle(map, draw_control.options.rectangle);
+        this.rectangle_drawer.enable();
     },
 
     stop_draw_rectangle() {
-        this.rectangle.disable();
+        if (this.rectangle_drawer) {
+            this.rectangle_drawer.disable();
+        }
     },
 
     start_draw_polygon() {
-        this.polygon = new L.Draw.Polygon(map, draw_control.options.polygon);
-        this.polygon.enable();
+        this.polygon_drawer = new L.Draw.Polygon(map, draw_control.options.polygon);
+        this.polygon_drawer.enable();
     },
 
     stop_draw_polygon() {
-        this.polygon.disable();
+        if (this.polygon_drawer) {
+            this.polygon_drawer.disable();
+        }
     }
 }
 
