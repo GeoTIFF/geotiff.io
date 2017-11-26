@@ -1,5 +1,5 @@
 import gio from '@geotiff/gio';
-import BaseAreaTool from './BaseAreaTool';
+import BaseStatsTool from './BaseStatsTool';
 import MinToolComponent from '../../components/tools/MinToolComponent';
 import { withProps } from 'recompose';
 
@@ -10,6 +10,6 @@ const calculate_min = (raster, coors) => {
 
 const MinTool = withProps(
     { func: calculate_min }
-)(BaseAreaTool(MinToolComponent));
+)(BaseStatsTool(MinToolComponent));
 
 export default MinTool;

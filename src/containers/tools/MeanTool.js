@@ -1,5 +1,5 @@
 import gio from '@geotiff/gio';
-import BaseAreaTool from './BaseAreaTool';
+import BaseStatsTool from './BaseStatsTool';
 import MeanToolComponent from '../../components/tools/MeanToolComponent';
 import { withProps } from 'recompose';
 
@@ -10,6 +10,6 @@ const calculate_mean = (raster, coors) => {
 
 const MeanTool = withProps(
     { func: calculate_mean }
-)(BaseAreaTool(MeanToolComponent));
+)(BaseStatsTool(MeanToolComponent));
 
 export default MeanTool;

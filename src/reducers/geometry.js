@@ -20,7 +20,7 @@ const geometry = (state = null, action) => {
                 throw 'Invalid format for geometry was specified, please use either "polygon" or "point".'
             }
         case 'MAP_GEOMETRY_REMOVE':
-            Map.remove_layer(state);
+            if (state) Map.remove_layer(state);
             return null;
         default:
             return state;

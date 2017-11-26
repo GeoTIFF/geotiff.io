@@ -1,5 +1,5 @@
 import gio from '@geotiff/gio';
-import BaseAreaTool from './BaseAreaTool';
+import BaseStatsTool from './BaseStatsTool';
 import MaxToolComponent from '../../components/tools/MaxToolComponent';
 import { withProps } from 'recompose';
 
@@ -10,6 +10,6 @@ const calculate_max = (raster, coors) => {
 
 const MaxTool = withProps(
     { func: calculate_max }
-)(BaseAreaTool(MaxToolComponent));
+)(BaseStatsTool(MaxToolComponent));
 
 export default MaxTool;

@@ -1,5 +1,5 @@
 import gio from '@geotiff/gio';
-import BaseAreaTool from './BaseAreaTool';
+import BaseStatsTool from './BaseStatsTool';
 import MedianToolComponent from '../../components/tools/MedianToolComponent';
 import { withProps } from 'recompose';
 
@@ -10,6 +10,6 @@ const calculate_median = (raster, coors) => {
 
 const MedianTool = withProps(
     { func: calculate_median }
-)(BaseAreaTool(MedianToolComponent));
+)(BaseStatsTool(MedianToolComponent));
 
 export default MedianTool;

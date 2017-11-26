@@ -22,11 +22,11 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const BaseAreaTool = component => {
+const BaseStatsTool = component => {
     return connect(
         mapStateToProps,
         mapDispatchToProps
     )(component);
 }
 
-export default BaseAreaTool;
+export default BaseStatsTool;

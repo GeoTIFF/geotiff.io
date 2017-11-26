@@ -1,5 +1,5 @@
 import gio from '@geotiff/gio';
-import BaseAreaTool from './BaseAreaTool';
+import BaseStatsTool from './BaseStatsTool';
 import ModeToolComponent from '../../components/tools/ModeToolComponent';
 import { withProps } from 'recompose';
 
@@ -14,7 +14,7 @@ const calculate_mode = (raster, coors) => {
 
 const ModeTool = withProps(
     { func: calculate_mode }
-)(BaseAreaTool(ModeToolComponent));
+)(BaseStatsTool(ModeToolComponent));
 
 export default ModeTool;
 

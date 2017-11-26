@@ -1,5 +1,5 @@
 import gio from '@geotiff/gio';
-import BaseAreaTool from './BaseAreaTool';
+import BaseStatsTool from './BaseStatsTool';
 import SumToolComponent from '../../components/tools/SumToolComponent';
 import { withProps } from 'recompose';
 
@@ -10,6 +10,6 @@ const calculate_sum = (raster, coors) => {
 
 const SumTool = withProps(
     { func: calculate_sum }
-)(BaseAreaTool(SumToolComponent));
+)(BaseStatsTool(SumToolComponent));
 
 export default SumTool;
