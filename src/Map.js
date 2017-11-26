@@ -12,6 +12,7 @@ let Map = {
     tiff: null,
     image: null,
     raster: null,
+    drawing_points: null,
 
     subscribers: [],
 
@@ -51,7 +52,12 @@ let Map = {
         });
         map.addControl(searchControl);
 
-        // map.on('click', e => this.notify('map-click', e.latlng));
+        map.on('click', e => {
+            if (self.drawing_points) {
+                if (self.layer) self.remove_layer(self.layer);
+                store.dispatch(add_geometry(e.latlng, 'point'));
+            }
+        });
         map.on('draw:created', e => {
             store.dispatch(stop_drawing());
             store.dispatch(add_geometry(e.layer, 'polygon'));
@@ -84,7 +90,8 @@ let Map = {
     },
 
     add_point(latlng) {
-        return L.marker(latlng).addTo(map);
+        this.layer = L.marker(latlng);
+        return this.layer.addTo(map);
     },
 
     remove_layer(layer) {
@@ -115,6 +122,14 @@ let Map = {
         if (this.polygon_drawer) {
             this.polygon_drawer.disable();
         }
+    },
+
+    start_draw_point() {
+        this.drawing_points = true;
+    },
+
+    stop_draw_point() {
+        this.drawing_points = false;
     }
 }
 
