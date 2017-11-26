@@ -2,10 +2,10 @@ import React from 'react';
 import DrawGeometry from '../../containers/shared/DrawGeometry';
 // import ImportGeoJSON from '../../containers/shared/ImportGeoJSON';
 
-const MeanToolComponent = ({ 
+const ModeToolComponent = ({ 
     results, raster, geometry, execute, close, func
 }) => (
-    <div id='mean-tool' className='tool'>
+    <div id='mode-tool' className='tool'>
         <section className='controls'>
             <header>
                 <i 
@@ -15,12 +15,12 @@ const MeanToolComponent = ({
                     clear
                 </i>
                 <h3 className='tool-title'>
-                    Get the Mean Pixel Value of an Area
+                    Get the Mode (Most Common) Pixel Value of an Area
                 </h3>
             </header>
             <div className='content'>
                 <p>
-                    Select a geometry type and draw a geometry to get the mean value of the pixels within that area.
+                    Select a geometry type and draw a geometry to get the mode of the pixels within that area.
                 </p>
                 <DrawGeometry />
                 <div className='content-row'>
@@ -28,7 +28,7 @@ const MeanToolComponent = ({
                         className='gt-button'
                         onClick={() => execute(raster, geometry, func)}
                     >
-                        Calculate Mean
+                        Calculate Mode
                     </button>
                 </div>
             </div>
@@ -38,14 +38,14 @@ const MeanToolComponent = ({
             results
             ? 
                 <section className='results'>
-                    <h3>Mean: {results}</h3>
+                    <h3>Mode: {results}</h3>
                 </section>
             : ''
         }
     </div>
 );
 
-export default MeanToolComponent;
+export default ModeToolComponent;
 
 
                 // <p className="or">
