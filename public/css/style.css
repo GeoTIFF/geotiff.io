@@ -202,6 +202,21 @@ html .gt-button.active,
 body .gt-button.active {
   background: #ff4081;
 }
+html .gt-button-accent,
+body .gt-button-accent {
+  cursor: pointer;
+  border-radius: 0;
+  background: #00897B;
+  border: none;
+  color: white;
+  padding: .5rem 1rem;
+  margin-bottom: 0;
+  background: #ff4081;
+}
+html .gt-button-accent.active,
+body .gt-button-accent.active {
+  background: #ff4081;
+}
 html .gt-textarea,
 body .gt-textarea {
   width: 90%;

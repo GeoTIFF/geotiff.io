@@ -1,6 +1,6 @@
 import React from 'react';
 import DrawGeometry from '../../containers/shared/DrawGeometry';
-// import ImportGeoJSON from '../../containers/shared/ImportGeoJSON';
+import ImportGeoJSON from '../../containers/shared/ImportGeoJSON';
 
 const MinToolComponent = ({ 
     results, raster, geometry, execute, close, func
@@ -23,6 +23,13 @@ const MinToolComponent = ({
                     Select a geometry type and draw a geometry to get the minimum value of the pixels within that area.
                 </p>
                 <DrawGeometry />
+                <p className="or">
+                    <b>OR</b>
+                </p>
+                <p>
+                    Add GeoJSON. You can either import a GeoJSON file or write it out yourself.
+                </p>
+                <ImportGeoJSON />
                 <div className='content-row'>
                     <button 
                         className='gt-button'
@@ -32,7 +39,6 @@ const MinToolComponent = ({
                     </button>
                 </div>
             </div>
-
         </section>
         {
             results
@@ -46,12 +52,3 @@ const MinToolComponent = ({
 );
 
 export default MinToolComponent;
-
-
-                // <p className="or">
-                //     <b>OR</b>
-                // </p>
-                // <p>
-                //     Add GeoJSON. You can either import a GeoJSON file or write it out yourself.
-                // </p>
-                // <ImportGeoJSON add_geojson={this.add_geojson} />

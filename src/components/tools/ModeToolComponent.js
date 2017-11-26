@@ -1,6 +1,6 @@
 import React from 'react';
 import DrawGeometry from '../../containers/shared/DrawGeometry';
-// import ImportGeoJSON from '../../containers/shared/ImportGeoJSON';
+import ImportGeoJSON from '../../containers/shared/ImportGeoJSON';
 
 const ModeToolComponent = ({ 
     results, raster, geometry, execute, close, func
@@ -23,6 +23,13 @@ const ModeToolComponent = ({
                     Select a geometry type and draw a geometry to get the mode of the pixels within that area.
                 </p>
                 <DrawGeometry />
+                <p className="or">
+                    <b>OR</b>
+                </p>
+                <p>
+                    Add GeoJSON. You can either import a GeoJSON file or write it out yourself.
+                </p>
+                <ImportGeoJSON />
                 <div className='content-row'>
                     <button 
                         className='gt-button'
@@ -46,12 +53,3 @@ const ModeToolComponent = ({
 );
 
 export default ModeToolComponent;
-
-
-                // <p className="or">
-                //     <b>OR</b>
-                // </p>
-                // <p>
-                //     Add GeoJSON. You can either import a GeoJSON file or write it out yourself.
-                // </p>
-                // <ImportGeoJSON add_geojson={this.add_geojson} />
