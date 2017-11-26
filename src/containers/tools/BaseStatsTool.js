@@ -10,8 +10,7 @@ const mapStateToProps = state => ({
 
 const execute = (raster, geometry, func) => {
     let geojson = geometry.toGeoJSON();
-    let coors = geojson.geometry.coordinates;
-    let results = func(raster, coors);
+    let results = func(raster, geojson);
     return set_results(results);
 }
 
