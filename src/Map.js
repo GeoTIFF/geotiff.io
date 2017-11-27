@@ -1,7 +1,9 @@
 import _ from 'underscore';
 import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
-import { add_geometry } from './actions/geometry-actions';
+import gio from '@geotiff/gio';
+import { add_geometry, remove_geometry } from './actions/geometry-actions';
 import { stop_drawing } from './actions/drawing-actions';
+import { set_results } from './actions/results-actions';
 
 let store;
 let L = window.L;
@@ -54,8 +56,15 @@ let Map = {
 
         map.on('click', e => {
             if (self.drawing_points) {
-                if (self.layer) self.remove_layer(self.layer);
+                store.dispatch(remove_geometry());
                 store.dispatch(add_geometry(e.latlng, 'point'));
+
+                // temporary - setting results for identify here since
+                // i can't find a good way of getting it in to the identify
+                // tool while using leaflet for mapping
+                let latlng = [e.latlng.lng, e.latlng.lat];
+                let results = gio.identify(self.raster.georaster, latlng);
+                store.dispatch(set_results(results));
             }
         });
         map.on('draw:created', e => {
@@ -90,8 +99,7 @@ let Map = {
     },
 
     add_point(latlng) {
-        this.layer = L.marker(latlng);
-        return this.layer.addTo(map);
+        return L.marker(latlng).addTo(map);
     },
 
     remove_layer(layer) {

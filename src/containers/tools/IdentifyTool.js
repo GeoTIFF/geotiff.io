@@ -1,7 +1,7 @@
 import IdentifyToolComponent from '../../components/tools/IdentifyToolComponent';
 import gio from '@geotiff/gio';
 import { start_drawing, stop_drawing } from '../../actions/drawing-actions';
-import { add_geometry } from '../../actions/geometry-actions';
+import { add_geometry, remove_geometry } from '../../actions/geometry-actions';
 import { set_results } from '../../actions/results-actions';
 import { unmount_tool } from '../../actions/active-tool-actions';
 import { connect } from 'react-redux';
@@ -9,11 +9,19 @@ import { compose, withState, withHandlers } from 'recompose';
 
 let mapStateToProps = state => ({ results: state.results });
 
+const stop_and_remove_geometry = dispatch => {
+    dispatch(remove_geometry());
+    dispatch(stop_drawing());
+}
+
 let mapDispatchToProps = dispatch => {
     return {
-        close: () => dispatch(unmount_tool()),
+        close: () => {
+            stop_and_remove_geometry(dispatch);
+            dispatch(unmount_tool());
+        },
         start_drawing: () => dispatch(start_drawing('point')),
-        stop_drawing: () => dispatch(stop_drawing())
+        stop_drawing: () => stop_and_remove_geometry(dispatch)
     }
 }
 

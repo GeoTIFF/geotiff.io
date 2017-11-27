@@ -10,8 +10,8 @@ const geometry = (state = null, action) => {
                 Map.add_polygon(action.geometry);
                 return action.geometry;
             } else if (action.format === 'point') {
-                Map.add_point(action.geometry);
-                return action.geometry;
+                let point = Map.add_point(action.geometry);
+                return point;
             } else if (action.format === 'geojson') {
                 let layer = Map.create_geojson_layer(action.geometry);
                 Map.add_polygon(layer);
@@ -20,6 +20,7 @@ const geometry = (state = null, action) => {
                 throw 'Invalid format for geometry was specified, please use either "polygon" or "point".'
             }
         case 'MAP_GEOMETRY_REMOVE':
+            console.error('map: ', Map, Map.remove_layer)
             if (state) Map.remove_layer(state);
             return null;
         default:
