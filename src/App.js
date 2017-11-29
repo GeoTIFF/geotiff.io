@@ -2,6 +2,7 @@ let React = require('react');
 let ReactDOM = require('react-dom');
 let MapContainer = require('./MapContainer');
 let Menu = require('./Menu');
+let WelcomePopup = require("./WelcomePopup");
 
 class App extends React.Component {
 
@@ -23,6 +24,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="App" ref="main_app">
+                <WelcomePopup />
                 <Menu params={this.state.params}/>;
                 <MapContainer params={this.state.params}/>
             </div>
