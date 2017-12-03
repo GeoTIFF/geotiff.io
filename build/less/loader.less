@@ -1,4 +1,4 @@
-.main-loader {
+.loader-container {
     background: rgba(0,0,0,0.5);
     bottom: 0;
     left: 0;
@@ -7,13 +7,24 @@
     top: 0;
     z-index: 1001;
 
-    .sk-spinner {
-        height: 40%;
+    .loader {
+        text-align: center;
         left: 30%;
-        position: fixed;
+        position: absolute;
         right: 10%;
         top: 30%;
-        width: 40%;        
-    }
 
+        h3 {
+            font-weight: bold;
+            width: 40%;
+            top: 20%;
+            position: fixed;
+        }
+
+        .sk-spinner {
+            height: 40%;
+            position: fixed;
+            width: 40%;
+        }
+    }
 }
