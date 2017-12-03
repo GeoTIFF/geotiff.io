@@ -19,9 +19,6 @@ const ModeToolComponent = ({
                 </h3>
             </header>
             <div className='content'>
-                <p>
-                    Select a geometry type and draw a geometry to get the mode of the pixels within that area.
-                </p>
                 <DrawGeometry />
                 <p className="or">
                     <b>OR</b>

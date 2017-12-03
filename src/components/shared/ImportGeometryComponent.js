@@ -2,6 +2,7 @@ import React from 'react';
 
 const ImportGeometryComponent = ({ geometry, import_geometry }) => (
     <div className='import-geojson'>
+        <p>Import a Geometry from a file:</p>
         <div className='content-row'>
             <label 
                 className='gt-button'

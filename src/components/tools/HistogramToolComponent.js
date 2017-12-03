@@ -52,7 +52,7 @@ const HistogramToolComponent = ({
                     <option value='quantile'>Quantile</option>
                 </select>
                 <br />
-                <p>4. Select a geometry. Either draw a geometry using the buttons below</p>
+                <p>4. Select a geometry.</p>
                 <DrawGeometry />
                 <p className="or"><b>OR</b></p>
                 <ImportGeometry />
