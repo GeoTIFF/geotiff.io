@@ -1,6 +1,6 @@
 import React from 'react';
 import DrawGeometry from '../../containers/shared/DrawGeometry';
-import ImportGeoJSON from '../../containers/shared/ImportGeoJSON';
+import ImportGeometry from '../../containers/shared/ImportGeometry';
 
 const MedianToolComponent = ({ 
     results, raster, geometry, execute, close, func
@@ -29,7 +29,7 @@ const MedianToolComponent = ({
                 <p>
                     Add GeoJSON. You can either import a GeoJSON file or write it out yourself.
                 </p>
-                <ImportGeoJSON />
+                <ImportGeometry />
                 <div className='content-row'>
                     <button 
                         className='gt-button'
