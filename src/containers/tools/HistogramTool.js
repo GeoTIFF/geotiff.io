@@ -1,5 +1,5 @@
 import HistogramToolComponent from '../../components/tools/HistogramToolComponent';
-import gio from '@geotiff/gio';
+import geoblaze from 'geoblaze';
 import _ from 'underscore';
 import { unmount_tool } from '../../actions/active-tool-actions';
 import { set_results } from '../../actions/results-actions';
@@ -28,7 +28,7 @@ const get_histogram = (raster, geometry, options) => {
     let { scale_type, num_classes, class_type } = options;
 
     // make sure parameters are valid
-    if (!num_classes % 1) {
+    if (num_classes % 1 !== 0) {
         alert('Please make sure the number of classes is an integer.');
         return;
     }
@@ -39,7 +39,7 @@ const get_histogram = (raster, geometry, options) => {
 
     // convert to list because react doesn't like storing objects in state
     let geojson = geometry.toGeoJSON();
-    let results_objs = gio.histogram(raster, geojson, options);
+    let results_objs = geoblaze.histogram(raster, geojson, options);
     let results_lists = results_objs.map(band_results => {
         return _.keys(band_results).map(bin => [bin, band_results[bin]]);
     });

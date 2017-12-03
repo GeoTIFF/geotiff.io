@@ -1,5 +1,5 @@
 import IdentifyToolComponent from '../../components/tools/IdentifyToolComponent';
-import gio from '@geotiff/gio';
+import geoblaze from 'geoblaze';
 import { start_drawing, stop_drawing } from '../../actions/drawing-actions';
 import { add_geometry, remove_geometry } from '../../actions/geometry-actions';
 import { set_results } from '../../actions/results-actions';

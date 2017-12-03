@@ -1,10 +1,10 @@
-import gio from '@geotiff/gio';
+import geoblaze from 'geoblaze';
 import BaseStatsTool from './BaseStatsTool';
 import SumToolComponent from '../../components/tools/SumToolComponent';
 import { withProps } from 'recompose';
 
 const calculate_sum = (raster, coors) => {
-    return gio.sum(raster, coors)
+    return geoblaze.sum(raster, coors)
         .map(value => value.toFixed(2)).join(', ');
 }
 
