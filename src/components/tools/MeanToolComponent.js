@@ -26,9 +26,6 @@ const MeanToolComponent = ({
                 <p className="or">
                     <b>OR</b>
                 </p>
-                <p>
-                    Add GeoJSON. You can either import a GeoJSON file or write it out yourself.
-                </p>
                 <ImportGeometry />
                 <div className='content-row'>
                     <button 

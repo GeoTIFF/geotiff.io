@@ -55,7 +55,6 @@ const HistogramToolComponent = ({
                 <p>4. Select a geometry. Either draw a geometry using the buttons below</p>
                 <DrawGeometry />
                 <p className="or"><b>OR</b></p>
-                <p>Add GeoJSON. You can either import a GeoJSON file or write it out yourself.</p>
                 <ImportGeometry />
                 <button
                     className='gt-button'
