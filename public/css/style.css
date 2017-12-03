@@ -310,7 +310,7 @@ body .gt-remove {
 [data-layout='hide-menu'] #menu {
   display: none;
 }
-.main-loader {
+.loader-container {
   background: rgba(0, 0, 0, 0.5);
   bottom: 0;
   left: 0;
@@ -319,11 +319,21 @@ body .gt-remove {
   top: 0;
   z-index: 1001;
 }
-.main-loader .sk-spinner {
-  height: 40%;
+.loader-container .loader {
+  text-align: center;
   left: 30%;
-  position: fixed;
+  position: absolute;
   right: 10%;
   top: 30%;
+}
+.loader-container .loader h3 {
+  font-weight: bold;
+  width: 40%;
+  top: 20%;
+  position: fixed;
+}
+.loader-container .loader .sk-spinner {
+  height: 40%;
+  position: fixed;
   width: 40%;
 }

@@ -6,6 +6,7 @@ import geometry from './geometry';
 import results from './results';
 import drawing from './drawing';
 import layout from './layout';
+import loading from './loading';
 
 const root_reducer = combineReducers({
     results,
@@ -14,7 +15,8 @@ const root_reducer = combineReducers({
     raster,
     geometry,
     drawing,
-    layout
+    layout,
+    loading
 });
 
 export default root_reducer;
