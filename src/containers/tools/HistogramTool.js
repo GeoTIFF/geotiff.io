@@ -28,7 +28,7 @@ const get_histogram = (raster, geometry, options) => {
     let { scale_type, num_classes, class_type } = options;
 
     // make sure parameters are valid
-    if (!num_classes % 1) {
+    if (num_classes % 1 !== 0) {
         alert('Please make sure the number of classes is an integer.');
         return;
     }
