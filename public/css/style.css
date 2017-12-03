@@ -310,3 +310,20 @@ body .gt-remove {
 [data-layout='hide-menu'] #menu {
   display: none;
 }
+.main-loader {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1001;
+}
+.main-loader .sk-spinner {
+  height: 40%;
+  left: 30%;
+  position: fixed;
+  right: 10%;
+  top: 30%;
+  width: 40%;
+}

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import MapContainerComponent from './MapContainerComponent';
-import Menu from '../containers/Menu';
+let React = require('react');
+let ReactDOM = require('react-dom');
+let MapContainer = require('./MapContainer');
+let Menu = require('./Menu');
+let WelcomePopup = require("./WelcomePopup");
 
 class App extends Component {
 
@@ -23,8 +24,9 @@ class App extends Component {
     render() {
         return (
             <div className="App" ref="main_app">
-                <Menu />
-                <MapContainerComponent />
+                <WelcomePopup />
+                <Menu params={this.state.params}/>;
+                <MapContainer params={this.state.params}/>
             </div>
         );
     }
