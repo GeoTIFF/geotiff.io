@@ -304,9 +304,9 @@ body .gt-remove {
   }
 }
 /* if user is hiding the menu, make the map take up the whole screen */
-[hide_menu=true] #map {
+[data-layout='hide-menu'] #map {
   left: 0;
 }
-[hide_menu=true] #menu {
+[data-layout='hide-menu'] #menu {
   display: none;
 }

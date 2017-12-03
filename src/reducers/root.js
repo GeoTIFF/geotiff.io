@@ -5,6 +5,7 @@ import raster from './raster';
 import geometry from './geometry';
 import results from './results';
 import drawing from './drawing';
+import layout from './layout';
 
 const root_reducer = combineReducers({
     results,
@@ -12,7 +13,8 @@ const root_reducer = combineReducers({
     tool_list,
     raster,
     geometry,
-    drawing
+    drawing,
+    layout
 });
 
 export default root_reducer;
