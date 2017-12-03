@@ -202,6 +202,21 @@ html .gt-button.active,
 body .gt-button.active {
   background: #ff4081;
 }
+html .gt-button-accent,
+body .gt-button-accent {
+  cursor: pointer;
+  border-radius: 0;
+  background: #00897B;
+  border: none;
+  color: white;
+  padding: .5rem 1rem;
+  margin-bottom: 0;
+  background: #ff4081;
+}
+html .gt-button-accent.active,
+body .gt-button-accent.active {
+  background: #ff4081;
+}
 html .gt-textarea,
 body .gt-textarea {
   width: 90%;
@@ -289,13 +304,13 @@ body .gt-remove {
   }
 }
 /* if user is hiding the menu, make the map take up the whole screen */
-[hide_menu=true] #map {
+[data-layout='hide-menu'] #map {
   left: 0;
 }
-[hide_menu=true] #menu {
+[data-layout='hide-menu'] #menu {
   display: none;
 }
-.main-loader {
+.loader-container {
   background: rgba(0, 0, 0, 0.5);
   bottom: 0;
   left: 0;
@@ -304,11 +319,21 @@ body .gt-remove {
   top: 0;
   z-index: 1001;
 }
-.main-loader .sk-spinner {
-  height: 40%;
+.loader-container .loader {
+  text-align: center;
   left: 30%;
-  position: fixed;
+  position: absolute;
   right: 10%;
   top: 30%;
+}
+.loader-container .loader h3 {
+  font-weight: bold;
+  width: 40%;
+  top: 20%;
+  position: fixed;
+}
+.loader-container .loader .sk-spinner {
+  height: 40%;
+  position: fixed;
   width: 40%;
 }

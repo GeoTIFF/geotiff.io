@@ -11,11 +11,17 @@
     "georaster-layer-for-leaflet": "0.0.4",
     "leaflet": "^1.1.0",
     "leaflet-geosearch": "^2.5.0",
+    "less": "^2.7.3",
     "pako": "^1.0.6",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
     "react-scripts": "0.9.5",
     "react-spinkit": "^3.0.0",
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

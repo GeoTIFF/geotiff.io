@@ -53,6 +53,40 @@
     </head>
     <body>
         <div id="app"></div>
+        <div class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Welcome to GeoTIFF.io</h5>
+                        <button type="button" data-dismiss="modal" aria-label="Close">
+                            <i class='material-icons gt-remove'>clear</i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Welcome to GeoTIFF.io, a simple website for viewing GeoTIFF files in your browser.</p>
+                        </br>
+                        <p>You have two ways to link to your GeoTIFF. Add a url or upload a file.</p>
+                        <label for="basic-url">URL to Your GeoTIFF</label>
+                        <div>
+                            <input type="text" class="gt-input" id="url-to-raster">
+                        </div>
+                        </br>
+                        <p class="or"><b>OR</b></p>
+                        <label for="basic-url">Load File</label>
+                        <div class="gt-input">
+                            <input type="file" class="form-control" id="file">
+                        </div>
+                        </br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="gt-button" id="go">GO</button>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Log feature requests and issues <a href="https://github.com/danieljdufour/geotiff.io/issues">here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="js/main.js"></script> 
 
         <!-- Google Analytics -->
