@@ -1,18 +1,20 @@
 import React from 'react';
 import ToolButtonComponent from './ToolButtonComponent';
 
-const MenuComponent = ({ active_tool, tool_list, select_tool, search_tools }) => (
+const MenuComponent = ({ 
+    active_tool, tool_list, select_tool, search_tools, on_submit
+}) => (
     <div id='menu'>
         <header id='menu-header'>
             <h3>GeoTIFF.io</h3>
         </header>
         <section id='search'>
-            <form action={select_tool}>
+            <form onSubmit={on_submit}>
                 <input 
                     id='search-input'
                     className='gt-input'
                     type='text'
-                    placeholder='Search Tools'
+                    placeholder='Search Here for Your Tool'
                     onChange={search_tools}
                 />
             </form>
