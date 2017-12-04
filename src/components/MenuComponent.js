@@ -14,7 +14,7 @@ const MenuComponent = ({
                     id='search-input'
                     className='gt-input'
                     type='text'
-                    placeholder='Search Tools'
+                    placeholder='Search Here for Your Tool'
                     onChange={search_tools}
                 />
             </form>
