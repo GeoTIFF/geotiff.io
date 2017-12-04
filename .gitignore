@@ -70,3 +70,5 @@ typings/
 
 # python
 *.pyc
+
+package-lock.json
