@@ -1,4 +1,4 @@
-import ImportGeoJSONComponent from '../../components/shared/ImportGeoJSONComponent';
+import ImportGeometryComponent from '../../components/shared/ImportGeometryComponent';
 import { add_geometry } from '../../actions/geometry-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
@@ -43,17 +43,17 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const ImportGeoJSON = compose(
+const ImportGeometry = compose(
     connect(null, mapDispatchToProps),
-    withState('geojson', 'update_geojson', ''),
+    withState('geometry', 'update_geometry', ''),
     withHandlers({
-        on_change: ({ update_geojson }) => event => {
-            update_geojson(event.target.value)
-        },
-        import_geojson: ({ update_geojson }) => event => {
-            import_geojson(event).then(update_geojson);
+        import_geometry: ({ update_geometry, add_geojson }) => event => {
+            import_geojson(event).then(geometry => {
+                update_geometry(geometry);
+                add_geojson(geometry);
+            });
         }
     })
-)(ImportGeoJSONComponent);
+)(ImportGeometryComponent);
 
-export default ImportGeoJSON;
+export default ImportGeometry;
