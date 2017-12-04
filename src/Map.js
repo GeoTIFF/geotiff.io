@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
-import gio from '@geotiff/gio';
+import geoblaze from 'geoblaze';
 import { add_geometry, remove_geometry } from './actions/geometry-actions';
 import { stop_drawing } from './actions/drawing-actions';
 import { set_results } from './actions/results-actions';
@@ -63,7 +63,7 @@ let Map = {
                 // i can't find a good way of getting it in to the identify
                 // tool while using leaflet for mapping
                 let latlng = [e.latlng.lng, e.latlng.lat];
-                let results = gio.identify(self.raster.georaster, latlng);
+                let results = geoblaze.identify(self.raster.georaster, latlng);
                 store.dispatch(set_results(results));
             }
         });

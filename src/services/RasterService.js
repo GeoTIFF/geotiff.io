@@ -1,4 +1,4 @@
-import gio from '@geotiff/gio';
+import geoblaze from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
 import chroma from 'chroma-js';
 
@@ -6,7 +6,7 @@ const RasterService = {
     
     create_raster(input) {
         return new Promise(resolve => {
-            gio.load(input).then(georaster => {
+            geoblaze.load(input).then(georaster => {
                 try {
                     let options = {
                         georaster: georaster,

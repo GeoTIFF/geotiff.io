@@ -1,10 +1,10 @@
-import gio from '@geotiff/gio';
+import geoblaze from 'geoblaze';
 import BaseStatsTool from './BaseStatsTool';
 import ModeToolComponent from '../../components/tools/ModeToolComponent';
 import { withProps } from 'recompose';
 
 const calculate_mode = (raster, coors) => {
-    let result = gio.mode(raster, coors);
+    let result = geoblaze.mode(raster, coors);
     return result.map(band => {
         return typeof band === 'number'
             ? `[${band}]`

@@ -1,10 +1,10 @@
-import gio from '@geotiff/gio';
+import geoblaze from 'geoblaze';
 import BaseStatsTool from './BaseStatsTool';
 import MeanToolComponent from '../../components/tools/MeanToolComponent';
 import { withProps } from 'recompose';
 
 const calculate_mean = (raster, coors) => {
-    return gio.mean(raster, coors)
+    return geoblaze.mean(raster, coors)
         .map(value => value.toFixed(2)).join(', ');
 }
 

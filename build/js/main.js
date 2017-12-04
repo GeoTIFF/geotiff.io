@@ -18,7 +18,8 @@ try {
             var input_url = files[0];
         }
 
-        load_raster(input_url).then(() => $(".modal").modal('hide'));
+        window.store.dispatch(window.add_raster(input_url));
+        $(".modal").modal('hide');
 
        //  fetch(input_url).then(
        //      r => r.arrayBuffer(),
