@@ -7,6 +7,7 @@ import results from './results';
 import drawing from './drawing';
 import layout from './layout';
 import loading from './loading';
+import menu_focus from './menu-focus';
 
 const root_reducer = combineReducers({
     results,
@@ -16,7 +17,8 @@ const root_reducer = combineReducers({
     geometry,
     drawing,
     layout,
-    loading
+    loading,
+    menu_focus
 });
 
 export default root_reducer;

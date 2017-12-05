@@ -4,6 +4,7 @@ import geoblaze from 'geoblaze';
 import { add_geometry, remove_geometry } from './actions/geometry-actions';
 import { stop_drawing } from './actions/drawing-actions';
 import { set_results } from './actions/results-actions';
+import { unfocus_menu } from './actions/menu-focus-actions';
 
 let store;
 let L = window.L;
@@ -55,6 +56,7 @@ let Map = {
         map.addControl(searchControl);
 
         map.on('click', e => {
+            store.dispatch(unfocus_menu());
             if (self.drawing_points) {
                 store.dispatch(remove_geometry());
                 store.dispatch(add_geometry(e.latlng, 'point'));
