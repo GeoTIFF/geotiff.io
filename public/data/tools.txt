@@ -6,4 +6,5 @@ Mode|view_column|ModeTool
 Median|view_array|MedianTool
 Min|chevron_left|MinTool
 Max|chevron_right|MaxTool
+Histogram|equalizer|HistogramTool
 Download|file_download|DownloadTool

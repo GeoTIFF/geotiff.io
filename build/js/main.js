@@ -7,19 +7,6 @@ try {
         $(".modal").modal();
     }
 
-    console.log("starting main.js");
-
- //    var map = L.map('map').setView([0, 0], 2);
- //    map.options.minZoom = 2;
-
- //    var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	// maxZoom: 19,
-	// attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
- //    });
-
- //    OpenStreetMap_Mapnik.addTo(map);
-
-
     $('#go').on('click', function (e) {
         var url_to_raster = $("#url-to-raster").val().trim();
         if (url_to_raster) {
@@ -31,7 +18,8 @@ try {
             var input_url = files[0];
         }
 
-        load_raster(input_url).then(() => $(".modal").modal('hide'));
+        window.store.dispatch(window.add_raster(input_url));
+        $(".modal").modal('hide');
 
        //  fetch(input_url).then(
        //      r => r.arrayBuffer(),
