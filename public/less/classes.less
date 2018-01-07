@@ -1,0 +1,68 @@
+.or {
+    text-align: center;
+}
+
+#import-geojson-input {
+    display: none;
+}
+
+.gt-dropdown {
+    border-radius: @border-radius;
+    border: 1px solid @primary-color;
+    padding: .5rem;
+    margin: auto;
+    display: block;
+    background: white;
+    max-width: 30rem;
+    width: 80%;
+}
+
+.gt-input {
+    border-radius: @border-radius;
+    border: 1px solid @primary-color;
+    padding: .1rem .5rem;
+    margin: auto;
+    display: block;
+    max-width: 30rem;
+    width: 80%;
+
+    > input {
+        border: none;
+        padding: .5rem;
+    }
+}
+
+.gt-button {
+    cursor: pointer;
+    border-radius: @border-radius;
+    background: @primary-color;
+    border: none;
+    color: white;
+    padding: .5rem 1rem;
+    margin-bottom: 0;
+
+    &.active {
+        background: @accent-color;
+    }
+}
+
+.gt-button-accent {
+    .gt-button;
+    background: @accent-color;
+}
+
+.gt-textarea {
+    width: 90%;
+    position: relative;
+    margin: auto;
+}
+
+.gt-remove {
+    border-radius: 50%;
+    box-shadow: @box-shadow-small;
+    cursor: pointer;
+    float: right;
+    background: @accent-color;
+    color: white;
+    padding: .25rem;
+}
