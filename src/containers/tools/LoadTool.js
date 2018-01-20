@@ -9,13 +9,13 @@ import { compose, withState, withHandlers } from 'recompose';
 
 const mapDispatchToProps = dispatch => {
     return {
-        add_raster: input => add_raster(input),
+        add_raster: input => dispatch(add_raster(input)),
         close: () => dispatch(unmount_tool())
     }
 }
 
 const LoadTool = compose(
-    connect(null, mapDispatchToProps(LoadToolComponent)),
+    connect(null, mapDispatchToProps),
     withState('url_input', 'set_url_input', ''),
     withState('file_input', 'set_file_input', ''),
     withHandlers({
