@@ -1,5 +1,6 @@
 import React from 'react';
-import Spinner from 'react-spinkit';
+// import Spinner from 'react-spinkit';
+// <Spinner name='circle' color="#00897B" />
 
 const LoaderComponent = ({ loading }) => {
     if (loading) {
@@ -7,7 +8,6 @@ const LoaderComponent = ({ loading }) => {
             <div className="loader-container">
                 <div className='loader'>
                     <h3>{loading}</h3>
-                    <Spinner name='circle' color="#00897B" />
                 </div>
             </div>
         )

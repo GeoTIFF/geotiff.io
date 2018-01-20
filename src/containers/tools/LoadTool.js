@@ -9,12 +9,15 @@ import { compose, withState, withHandlers } from 'recompose';
 
 const mapDispatchToProps = dispatch => {
     return {
-        add_raster: input => dispatch(add_raster(input)),
+        add_raster: input => {
+            console.error('adding...');
+            dispatch(add_raster(input));
+        },
         close: () => dispatch(unmount_tool())
     }
 }
 
-const LoadTool = compose(
+export const load_state = compose(
     connect(null, mapDispatchToProps),
     withState('url_input', 'set_url_input', ''),
     withState('file_input', 'set_file_input', ''),
@@ -26,13 +29,26 @@ const LoadTool = compose(
             return set_file_input(event.target.files[0]);
         },
         load_raster: ({ url_input, file_input, add_raster }) => () => {
-            try {
-                url_input !== '' ? add_raster(url_input) : add_raster(file_input);
-            } catch (e) {
-                alert('The raster you tried to load is not a valid geotiff. Please try again with a different file.');
-            }
+            return new Promise((resolve, reject) => {
+                try {
+                    if (url_input !== '') {
+                        add_raster(url_input);
+                        resolve(true);
+                    } else if (file_input !== '') {
+                        add_raster(file_input);
+                        resolve(true);
+                    } else {
+                        alert('Please add either a url or a geotiff file');
+                    }
+                } catch (e) {
+                    alert('The raster you tried to load is not a valid geotiff. Please try again with a different file.');
+                    reject();
+                }
+            });
         }
-    }),
-)(LoadToolComponent)
+    })
+);
+
+const LoadTool = compose(load_state)(LoadToolComponent)
 
 export default LoadTool;
