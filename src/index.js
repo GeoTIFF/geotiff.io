@@ -25,7 +25,7 @@ if (tool_name) {
     ToolListService.get_tool_list().then(tools => {
         let tool = _.find(tools, tool => tool[2] === tool_name);
         if (tool) store.dispatch(mount_tool(tool[3]));
-    });    
+    });
 }
 
 ReactDOM.render(
