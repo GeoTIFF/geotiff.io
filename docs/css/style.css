@@ -17,7 +17,7 @@
 .gt-input {
   border-radius: 3px;
   border: 1px solid #00897B;
-  padding: .25rem 1rem;
+  padding: .35rem .5rem;
   margin: auto;
   display: block;
   max-width: 30rem;
@@ -89,23 +89,41 @@ body {
   height: 100%;
   overflow: hidden;
 }
-.modal .modal-content {
+.ReactModal__Overlay {
   border-radius: 3px;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.75) !important;
 }
-.modal .modal-content .modal-header {
+.ReactModal__Overlay .ReactModal__Content {
+  max-width: 500px;
+  margin: auto;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+  transition: opacity 200ms ease-in-out;
+}
+.ReactModal__Overlay .ReactModal__Content--after-open {
+  opacity: 1;
+}
+.ReactModal__Overlay .ReactModal__Content--before-close {
+  opacity: 0;
+}
+.ReactModal__Overlay .ReactModal__Content header {
   background: #00897B;
   color: white;
+  padding: 1rem;
 }
-.modal .modal-content .modal-header button {
-  background: none;
-  border: none;
+.ReactModal__Overlay .ReactModal__Content header h3 {
+  margin-bottom: 0;
 }
-.modal .modal-content .modal-footer {
-  margin: 0 auto;
+.ReactModal__Overlay .ReactModal__Content .content {
+  padding: 1rem;
+}
+.ReactModal__Overlay .ReactModal__Content .content .gt-input {
+  margin-top: 1rem;
+}
+.ReactModal__Overlay .ReactModal__Content .footer {
   text-align: center;
-}
-.modal .modal-content .modal-footer button {
-  cursor: pointer;
 }
 #menu {
   bottom: 0;
@@ -316,9 +334,23 @@ body {
   font-weight: bold;
   color: white;
 }
-.loader-container .loader .sk-spinner {
-  margin: auto;
+.loader-container .loader .spinner {
+  border: 2rem solid rgba(255, 255, 255, 0.2);
+  /* Light grey */
+  border-top: 2rem solid #00897B;
+  /* Blue */
+  border-radius: 50%;
   width: 15rem;
   height: 15rem;
-  margin: 3rem auto;
+  animation: spin 2s linear infinite;
+  position: relative;
+  margin: auto;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

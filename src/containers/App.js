@@ -13,7 +13,7 @@ const set_layout = () => {
         return set_default_layout();
     }
 }
-    
+
 const mapStateToProps = state => ({ layout: state.layout });
 
 const mapDispatchToProps = dispatch => {
