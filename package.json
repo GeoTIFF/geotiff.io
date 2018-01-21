@@ -19,7 +19,6 @@
     "react-modal": "^3.1.11",
     "react-redux": "^5.0.6",
     "react-scripts": "0.9.5",
-    "react-spinkit": "^3.0.0",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",

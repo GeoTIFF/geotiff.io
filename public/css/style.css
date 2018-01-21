@@ -93,7 +93,6 @@ body {
   border-radius: 3px;
   z-index: 2000;
   background: rgba(0, 0, 0, 0.75) !important;
-  transition: .5s;
 }
 .ReactModal__Overlay .ReactModal__Content {
   max-width: 500px;
@@ -335,9 +334,23 @@ body {
   font-weight: bold;
   color: white;
 }
-.loader-container .loader .sk-spinner {
-  margin: auto;
+.loader-container .loader .spinner {
+  border: 2rem solid rgba(255, 255, 255, 0.2);
+  /* Light grey */
+  border-top: 2rem solid #00897B;
+  /* Blue */
+  border-radius: 50%;
   width: 15rem;
   height: 15rem;
-  margin: 3rem auto;
+  animation: spin 2s linear infinite;
+  position: relative;
+  margin: auto;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
