@@ -9,6 +9,13 @@
         padding: 0 !important;
         border: none !important;
         overflow: hidden !important;
+        transition: opacity 200ms ease-in-out;
+        &--after-open {
+            opacity: 1;
+        }
+        &--before-close {
+            opacity: 0;
+        }
 
         header {
             background: @primary-color;
@@ -22,6 +29,15 @@
 
         .content {
             padding: 1rem;
+
+            .gt-input {
+                margin-top: 1rem;
+            }
+
+        }
+
+        .footer {
+            text-align: center;
         }
     }
 }

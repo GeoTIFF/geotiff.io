@@ -8,6 +8,8 @@ const ModalComponent = ({
     <Modal
         isOpen={is_open}
         shouldCloseOnOverlayClick={true}
+        onRequestClose={close}
+        closeTimeoutMS={200}
     >
         <header>
             <i
@@ -46,7 +48,7 @@ const ModalComponent = ({
             </div>
             <br />
         </section>
-        <section className='content'>
+        <section className='footer'>
             <button
                 className='gt-button to-right'
                 onClick={load_raster_and_close_modal}

@@ -9,10 +9,7 @@ import { compose, withState, withHandlers } from 'recompose';
 
 const mapDispatchToProps = dispatch => {
     return {
-        add_raster: input => {
-            console.error('adding...');
-            dispatch(add_raster(input));
-        },
+        add_raster: input => dispatch(add_raster(input)),
         close: () => dispatch(unmount_tool())
     }
 }

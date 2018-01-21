@@ -93,6 +93,7 @@ body {
   border-radius: 3px;
   z-index: 2000;
   background: rgba(0, 0, 0, 0.75) !important;
+  transition: .5s;
 }
 .ReactModal__Overlay .ReactModal__Content {
   max-width: 500px;
@@ -100,6 +101,13 @@ body {
   padding: 0 !important;
   border: none !important;
   overflow: hidden !important;
+  transition: opacity 200ms ease-in-out;
+}
+.ReactModal__Overlay .ReactModal__Content--after-open {
+  opacity: 1;
+}
+.ReactModal__Overlay .ReactModal__Content--before-close {
+  opacity: 0;
 }
 .ReactModal__Overlay .ReactModal__Content header {
   background: #00897B;
@@ -111,6 +119,12 @@ body {
 }
 .ReactModal__Overlay .ReactModal__Content .content {
   padding: 1rem;
+}
+.ReactModal__Overlay .ReactModal__Content .content .gt-input {
+  margin-top: 1rem;
+}
+.ReactModal__Overlay .ReactModal__Content .footer {
+  text-align: center;
 }
 #menu {
   bottom: 0;
