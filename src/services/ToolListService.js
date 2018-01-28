@@ -19,7 +19,7 @@ let ToolListService = {
                         tools
                             .filter(tool => tool[0][0] !== '#') // this is temporary
                             .forEach(tool => {
-                                tool[3] = require(`../containers/tools/${tool[2]}`).default;
+                                tool[3] = require(`../components/tools/${tool[2]}/index`).default;
                             });
                         this.tool_list = tools;
                         resolve(tools);

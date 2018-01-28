@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
+import App from './components/app';
 import build_store from './build-store';
 import { Provider } from 'react-redux';
 import { load_tools } from './actions/tool-list-actions';
