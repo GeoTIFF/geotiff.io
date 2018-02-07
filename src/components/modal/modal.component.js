@@ -21,8 +21,6 @@ const ModalComponent = ({
             <h3>Welcome to GeoTIFF.io</h3>
         </header>
         <section className='content'>
-            <p>Welcome to GeoTIFF.io, a simple website for viewing GeoTIFF files in your browser.</p>
-            <br />
             <p>You have two ways to link to your GeoTIFF. Add a url or upload a file.</p>
             <br />
             <label htmlFor="basic-url">
