@@ -1,0 +1,40 @@
+#map {
+    bottom: 0;
+    left: 33%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .leaflet-control {
+        border-radius: @border-radius !important;
+
+        a {
+            border-radius: @border-radius !important;
+        }
+    }
+
+    .leaflet-draw {
+        display: none;
+    }
+}
+
+/* if user is hiding the menu, make the map take up the whole screen */
+[data-layout='hide-menu'] {
+    #map {
+        left: 0;
+    }
+}
+
+// mobile
+@media screen and (max-width: 45.5em) {
+
+    #map {
+        left: 0;
+
+        .leaflet-top {
+            top: 7.5rem;
+        }
+
+    }
+}

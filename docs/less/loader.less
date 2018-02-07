@@ -23,11 +23,20 @@
             color: white;
         }
 
-        .sk-spinner {
-            margin: auto;
+        .spinner {
+            border: 2rem solid rgba(255, 255, 255, .2); /* Light grey */
+            border-top: 2rem solid @primary-color; /* Blue */
+            border-radius: 50%;
             width: 15rem;
             height: 15rem;
-            margin: 3rem auto;
+            animation: spin 2s linear infinite;
+            position: relative;
+            margin: auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     }
 }
