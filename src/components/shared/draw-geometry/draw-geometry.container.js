@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 const mapStateToProps = state => ({ drawing: state.drawing });
 
 const mapDispatchToProps = dispatch => {
-    return {
-        draw: format => dispatch(start_drawing(format))
-    }
+  return {
+    draw: format => dispatch(start_drawing(format))
+  }
 }
 
 const DrawGeometryContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(DrawGeometryComponent);
 
 export default DrawGeometryContainer;

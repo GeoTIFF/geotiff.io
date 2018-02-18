@@ -4,12 +4,12 @@ import MaxComponent from './max.component';
 import { withProps } from 'recompose';
 
 const calculate_max = (raster, coors) => {
-    return geoblaze.max(raster, coors)
-        .map(value => value.toFixed(2)).join(', ');
+  return geoblaze.max(raster, coors)
+    .map(value => value.toFixed(2)).join(', ');
 }
 
 const MaxContainer = withProps(
-    { func: calculate_max }
+  { func: calculate_max }
 )(BaseStats(MaxComponent));
 
 export default MaxContainer;

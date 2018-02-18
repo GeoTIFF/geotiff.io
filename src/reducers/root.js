@@ -10,15 +10,15 @@ import loading from './loading';
 import menu_focus from './menu-focus';
 
 const root_reducer = combineReducers({
-    results,
-    active_tool,
-    tool_list,
-    raster,
-    geometry,
-    drawing,
-    layout,
-    loading,
-    menu_focus
+  results,
+  active_tool,
+  tool_list,
+  raster,
+  geometry,
+  drawing,
+  layout,
+  loading,
+  menu_focus
 });
 
 export default root_reducer;
