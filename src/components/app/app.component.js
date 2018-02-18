@@ -6,15 +6,15 @@ import Modal from '../modal';
 import Loader from '../loader';
 
 const AppComponent = ({ layout, set_layout }) => (
-    <div
-        className="App"
-        data-layout={layout}
-    >
-        <Loader />
-        <Menu />
-        <MapContainer />
-        <Modal />
-    </div>
+  <div
+    className="App"
+    data-layout={layout}
+  >
+    <Loader />
+    <Menu />
+    <MapContainer />
+    <Modal />
+  </div>
 );
 
 export default AppComponent;
