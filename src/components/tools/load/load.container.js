@@ -3,12 +3,21 @@ import { add_raster } from '../../../actions/raster-actions';
 import { unmount_tool } from '../../../actions/active-tool-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
+import { show_alert } from '../../../actions/alert-actions';
 
 // let url_to_tiff = new URLSearchParams(window.location.search).get("url");
 // if (url_to_tiff) window.load_raster(url_to_tiff);
 
+const urlIsValid = url => {
+  return /^http|^https/.test(url);
+}
+
 const mapDispatchToProps = dispatch => {
   return {
+    show_alert: message => {
+      console.error('gonna show alert: ', message);
+      dispatch(show_alert(message))
+    },
     add_raster: input => dispatch(add_raster(input)),
     close: () => dispatch(unmount_tool())
   }
@@ -25,20 +34,24 @@ export const load_state = compose(
     update_file_input: ({ set_file_input }) => event => {
       return set_file_input(event.target.files[0]);
     },
-    load_raster: ({ url_input, file_input, add_raster }) => () => {
+    load_raster: ({ url_input, file_input, add_raster, show_alert }) => () => {
       return new Promise((resolve, reject) => {
         try {
-          if (url_input !== '') {
-            add_raster(url_input);
-            resolve(true);
+          if (url_input !== '' ) {
+            if (urlIsValid(url_input)) {
+              add_raster(url_input);
+              resolve(true);
+            } else {
+              show_alert('Please make sure you are using a valid url. It must start with either http or https.');
+            }
           } else if (file_input !== '') {
             add_raster(file_input);
             resolve(true);
           } else {
-            alert('Please add either a url or a geotiff file');
+            show_alert('Please add either a url or a geotiff file');
           }
         } catch (e) {
-          alert('The raster you tried to load is not a valid geotiff. Please try again with a different file.');
+          show_alert('The raster you tried to load is not a valid geotiff. Please try again with a different file.');
           reject();
         }
       });
