@@ -3,6 +3,7 @@ import geoblaze from 'geoblaze';
 import _ from 'underscore';
 import { unmount_tool } from '../../../actions/active-tool-actions';
 import { set_results } from '../../../actions/results-actions';
+import { show_alert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
@@ -19,7 +20,11 @@ const mapDispatchToProps = dispatch => {
   return {
     close: () => dispatch(unmount_tool()),
     get_histogram: (raster, geometry, options) => {
-      return dispatch(get_histogram(raster, geometry, options))
+      try {
+        dispatch(get_histogram(raster, geometry, options));
+      } catch (error) {
+        dispatch(show_alert(error.message));
+      }
     }
   }
 }
@@ -29,11 +34,11 @@ const get_histogram = (raster, geometry, options) => {
 
   // make sure parameters are valid
   if (num_classes % 1 !== 0) {
-    alert('Please make sure the number of classes is an integer.');
+    throw new Error('Please make sure the number of classes is an integer.');
     return;
   }
   if (!geometry) {
-    alert('Please make sure to select a geography to run the tool on.');
+    throw new Error('Please make sure to select a geography to run the tool on.');
     return;
   }
 

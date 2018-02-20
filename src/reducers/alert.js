@@ -1,5 +1,4 @@
 const alert = (state = null, action) => {
-  console.error('look an action: ', action);
   switch(action.type) {
     case 'ALERT_HIDE':
       return null;

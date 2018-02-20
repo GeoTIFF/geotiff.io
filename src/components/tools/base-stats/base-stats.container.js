@@ -1,5 +1,6 @@
 import { set_results } from '../../../actions/results-actions';
 import { unmount_tool } from '../../../actions/active-tool-actions';
+import { show_alert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
@@ -16,7 +17,17 @@ const execute = (raster, geometry, func) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    execute: (raster, geometry, func) => dispatch(execute(raster, geometry, func)),
+    execute: (raster, geometry, func) => {
+      if (!raster) {
+        dispatch(show_alert('Please make sure a geotiff is loaded before running this tool. You can load a geotiff using the Load Tool."'));
+        return;
+      }
+      if (!geometry) {
+        dispatch(show_alert('Please draw an area of interest or import a GeoJSON file before running this tool.'));
+        return;
+      }
+      dispatch(execute(raster, geometry, func));
+    },
     close: () => dispatch(unmount_tool())
   }
 }

@@ -15,7 +15,6 @@ const RasterService = {
           let raster = new GeoRasterLayer(options);
           resolve(raster);
         }, error => {
-          console.error(error);
           reject(error);
         });
     });
