@@ -2,8 +2,8 @@ import React from 'react';
 import Modal from 'react-modal';
 
 const ModalComponent = ({
-    is_open, url_input, file_input, close, update_url_input,
-    update_file_input, load_raster_and_close_modal
+  is_open, url_input, file_input, close, update_url_input,
+  update_file_input, load_raster_and_close_modal
 }) => (
     <Modal
         isOpen={is_open}

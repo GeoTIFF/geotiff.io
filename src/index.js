@@ -17,22 +17,22 @@ window.store = store; // made this global so it can be accessed from Map
 
 let url = UrlService.get('url');
 if (url) {
-    store.dispatch(add_raster(url));
+  store.dispatch(add_raster(url));
 }
 
 let tool_name = UrlService.get('tool');
 if (tool_name) {
-    ToolListService.get_tool_list().then(tools => {
-        let tool = _.find(tools, tool => tool[2] === tool_name);
-        if (tool) store.dispatch(mount_tool(tool[3]));
-    });
+  ToolListService.get_tool_list().then(tools => {
+    let tool = _.find(tools, tool => tool[2] === tool_name);
+    if (tool) store.dispatch(mount_tool(tool[3]));
+  });
 }
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('app')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
 );
 
 Map.initialize();
