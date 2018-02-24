@@ -202,6 +202,7 @@ body {
 #menu #content .tool .controls header h3 {
   padding-top: .5rem;
   font-size: 18px;
+  display: inline;
 }
 #menu #content .tool .controls .content {
   padding: 1rem;
@@ -321,27 +322,28 @@ body {
 }
 .loader-container .loader {
   text-align: center;
-  width: 40%;
+  width: 30%;
   min-width: 20rem;
   margin: auto;
   padding: 2rem;
   position: relative;
-  top: 20%;
-  height: 60%;
+  top: 25%;
+  height: 50%;
   background: rgba(0, 0, 0, 0.5);
 }
 .loader-container .loader h3 {
   font-weight: bold;
   color: white;
+  margin-bottom: 2rem;
 }
 .loader-container .loader .spinner {
-  border: 2rem solid rgba(255, 255, 255, 0.2);
+  border: 1.5rem solid rgba(255, 255, 255, 0.2);
   /* Light grey */
-  border-top: 2rem solid #00897B;
+  border-top: 1.5rem solid #00897B;
   /* Blue */
   border-radius: 50%;
-  width: 15rem;
-  height: 15rem;
+  width: 12rem;
+  height: 12rem;
   animation: spin 2s linear infinite;
   position: relative;
   margin: auto;

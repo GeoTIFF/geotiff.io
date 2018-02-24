@@ -4,6 +4,7 @@ import { start_drawing, stop_drawing } from '../../../actions/drawing-actions';
 import { add_geometry, remove_geometry } from '../../../actions/geometry-actions';
 import { set_results } from '../../../actions/results-actions';
 import { unmount_tool } from '../../../actions/active-tool-actions';
+import { show_alert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
