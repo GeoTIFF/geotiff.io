@@ -1,0 +1,43 @@
+.ReactModal__Overlay {
+  border-radius: @border-radius;
+  z-index: 2000;
+  background: rgba(0, 0, 0, .75) !important;
+
+  .ReactModal__Content {
+    max-width: 500px;
+    margin: auto;
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    transition: opacity 200ms ease-in-out;
+    &--after-open {
+      opacity: 1;
+    }
+    &--before-close {
+      opacity: 0;
+    }
+
+    header {
+      background: @primary-color;
+      color: white;
+      padding: 1rem;
+
+      h3 {
+        margin-bottom: 0;
+      }
+    }
+
+    .content {
+      padding: 1rem;
+
+      .gt-input {
+        margin-top: 1rem;
+      }
+
+    }
+
+    .footer {
+      text-align: center;
+    }
+  }
+}
