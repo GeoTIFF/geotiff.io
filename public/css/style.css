@@ -6,7 +6,7 @@
 }
 .gt-dropdown {
   border-radius: 3px;
-  border: 1px solid #00897B;
+  border: 1px solid #31b98d;
   padding: .5rem;
   margin: auto;
   display: block;
@@ -16,26 +16,23 @@
 }
 .gt-input {
   border-radius: 3px;
-  border: 1px solid #00897B;
-  padding: .35rem .5rem;
-  margin: auto;
+  border: 2px solid rgba(19, 41, 61, 0.7);
   display: block;
-  max-width: 30rem;
-  width: 80%;
+  width: 100%;
+  padding: 12px;
 }
 .gt-input > input {
   border: none;
-  padding: .5rem;
+  line-height: 1.5;
 }
 .gt-input:focus {
   outline: 0;
-  box-shadow: 0 0 3px #00897B;
 }
 .gt-button {
   font-weight: bold;
   cursor: pointer;
   border-radius: 3px;
-  background: #00897B;
+  background: #31b98d;
   border: none;
   color: white;
   padding: .5rem 1rem;
@@ -43,28 +40,28 @@
   margin-bottom: .5rem;
 }
 .gt-button:hover {
-  background: #32a095;
+  background: rgba(49, 185, 141, 0.3);
 }
 .gt-button.active {
-  background: #ff4081;
+  background: #ff4380;
 }
 .gt-button-accent {
   font-weight: bold;
   cursor: pointer;
   border-radius: 3px;
-  background: #00897B;
+  background: #31b98d;
   border: none;
   color: white;
   padding: .5rem 1rem;
   margin-top: .5rem;
   margin-bottom: .5rem;
-  background: #ff4081;
+  background: #ff4380;
 }
 .gt-button-accent:hover {
-  background: #32a095;
+  background: rgba(49, 185, 141, 0.3);
 }
 .gt-button-accent.active {
-  background: #ff4081;
+  background: #ff4380;
 }
 .gt-textarea {
   width: 90%;
@@ -73,15 +70,15 @@
 }
 .gt-remove {
   border-radius: 50%;
-  box-shadow: -2px 2px 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.3);
   cursor: pointer;
   float: right;
-  background: #ff4081;
+  background: #ff4380;
   color: white;
   padding: .25rem;
 }
 .gt-remove:hover {
-  background: #ff669a;
+  background: rgba(49, 185, 141, 0.3);
 }
 html,
 body {
@@ -109,7 +106,7 @@ body {
   opacity: 0;
 }
 .ReactModal__Overlay .ReactModal__Content header {
-  background: #00897B;
+  background: #31b98d;
   color: white;
   padding: 1rem;
 }
@@ -126,40 +123,47 @@ body {
   text-align: center;
 }
 #menu {
+  color: #13293D;
+  background: white;
+  font-family: 'Open Sans';
   bottom: 0;
+  box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.3);
+  height: 100%;
   left: 0;
+  padding: 24px;
   position: absolute;
   top: 0;
-  width: 33%;
-  height: 100%;
-  background: white;
+  width: 400px;
   z-index: 1000;
-  box-shadow: 3px 0px 4px 0 rgba(0, 0, 0, 0.15);
 }
 #menu header {
-  background: #00897B;
+  padding: 16px;
   text-align: center;
-  color: white;
-  padding: 1rem;
 }
 #menu header h3 {
-  margin-bottom: 0;
+  font-family: 'Lalezar';
+  letter-spacing: 2px;
+  font-size: 36px;
+  color: #13293D;
+  margin: 0;
 }
 #menu #search {
-  padding: 1rem;
+  width: 100%;
 }
 #menu #content {
-  padding: 1rem;
-  margin-top: 1.5rem;
-  height: calc(100% - 10rem);
-  overflow-y: scroll;
+  height: calc(100% - 150px);
+  margin-top: 24px;
+  overflow-y: auto;
 }
-#menu #content p {
-  margin-bottom: .1rem;
+#menu #content::-webkit-scrollbar {
+  width: 4px;
 }
-#menu #content .content-row {
-  display: flex;
-  justify-content: space-around;
+#menu #content::-webkit-scrollbar-track {
+  box-shadow: 0 1px 3px 0 rgba(49, 185, 141, 0.3);
+  background: rgba(49, 185, 141, 0.3);
+}
+#menu #content::-webkit-scrollbar-thumb {
+  background-color: #31b98d;
 }
 #menu #content #tool-button-container {
   display: flex;
@@ -167,35 +171,39 @@ body {
   justify-content: space-around;
 }
 #menu #content #tool-button-container .tool-button {
+  background: white;
+  border-radius: 6px;
+  border: 2px solid #31b98d;
+  box-shadow: 0 1px 3px 0 rgba(49, 185, 141, 0.3);
   cursor: pointer;
-  background: #00897B;
-  color: white;
-  border-radius: 3px;
+  height: 103px;
+  margin: 12px;
   text-align: center;
-  height: 6rem;
-  width: 6rem;
-  margin: 1rem .4rem;
-  border: none;
-  box-shadow: -2px 2px 1px 0 rgba(0, 0, 0, 0.1);
-}
-#menu #content #tool-button-container .tool-button h3 {
-  font-size: 14px;
+  width: 150px;
 }
 #menu #content #tool-button-container .tool-button .material-icons {
-  font-size: 2.5rem;
+  font-size: 24px;
+  color: #31b98d;
+  margin-top: 16px;
+}
+#menu #content #tool-button-container .tool-button p {
+  color: #13293D;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 #menu #content #tool-button-container .tool-button:hover {
-  background-color: #ff4081;
+  border: 2px solid rgba(49, 185, 141, 0.8);
 }
 #menu #content .tool {
-  border: 1px solid #00897B;
+  border: 1px solid #31b98d;
   border-radius: 3px;
-  box-shadow: -3px 3px 1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 #menu #content .tool .controls header {
   width: 100%;
-  background: #00897B;
+  background: #31b98d;
   color: white;
   text-align: left;
 }
@@ -206,7 +214,7 @@ body {
 }
 #menu #content .tool .controls .content {
   padding: 1rem;
-  font-size: 14px;
+  font-size: 16px;
 }
 #menu #content .tool .controls .content .content-row .gt-button {
   margin: .5rem;
@@ -227,7 +235,7 @@ body {
     border-radius: 3px;
     padding: .75rem;
     text-align: center;
-    border: 1px solid #00897B;
+    border: 1px solid #31b98d;
   }
   #menu #menu-header {
     display: none;
@@ -270,7 +278,7 @@ body {
     z-index: -1;
   }
   #menu #content.focus .tool {
-    border: 1px solid #00897B;
+    border: 1px solid #31b98d;
   }
   #menu #content .results {
     position: fixed;
@@ -278,13 +286,13 @@ body {
     width: 80%;
     left: 10%;
     bottom: 1rem;
-    box-shadow: -3px 3px 1px 0 rgba(0, 0, 0, 0.15);
-    border: 1px solid #00897B;
+    box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.3);
+    border: 1px solid #31b98d;
   }
 }
 #map {
   bottom: 0;
-  left: 33%;
+  left: 400px;
   height: 100%;
   position: absolute;
   right: 0;
@@ -339,7 +347,7 @@ body {
 .loader-container .loader .spinner {
   border: 1.5rem solid rgba(255, 255, 255, 0.2);
   /* Light grey */
-  border-top: 1.5rem solid #00897B;
+  border-top: 1.5rem solid #31b98d;
   /* Blue */
   border-radius: 50%;
   width: 12rem;

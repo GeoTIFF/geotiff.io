@@ -7,7 +7,7 @@
 }
 
 .gt-dropdown {
-  border-radius: @border-radius;
+  border-radius: @border-radius-small;
   border: 1px solid @primary-color;
   padding: .5rem;
   margin: auto;
@@ -18,29 +18,27 @@
 }
 
 .gt-input {
-  border-radius: @border-radius;
-  border: 1px solid @primary-color;
-  padding: .35rem .5rem;
-  margin: auto;
+  border-radius: @border-radius-small;
+  border: 2px solid rgba(19,41,61,0.7);
   display: block;
-  max-width: 30rem;
-  width: 80%;
+  width: 100%;
+  padding: 12px;
 
   > input {
     border: none;
-    padding: .5rem;
+    line-height: 1.5;
   }
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 3px @primary-color;
+    // box-shadow: @box-shadow-thin;
   }
 }
 
 .gt-button {
   font-weight: bold;
   cursor: pointer;
-  border-radius: @border-radius;
+  border-radius: @border-radius-small;
   color: white;
   background: @primary-color;
   // background: white;
@@ -52,7 +50,7 @@
   margin-bottom: .5rem;
 
   &:hover {
-    background: @primary-color-focus;
+    background: @primary-color-light;
   }
 
   &.active {
@@ -73,7 +71,7 @@
 
 .gt-remove {
   border-radius: 50%;
-  box-shadow: @box-shadow-small;
+  box-shadow: @box-shadow;
   cursor: pointer;
   float: right;
   background: @accent-color;
@@ -81,6 +79,6 @@
   padding: .25rem;
 
   &:hover {
-    background: @accent-color-focus;
+    background: @accent-color-light;
   }
 }

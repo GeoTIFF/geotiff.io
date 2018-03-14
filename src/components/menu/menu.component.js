@@ -6,7 +6,7 @@ const MenuComponent = ({
 }) => (
   <div id='menu'>
     <header id='menu-header'>
-      <h3>GeoTIFF.io</h3>
+      <h3>GeoTIFF</h3>
     </header>
     <section
       id='search'
@@ -17,7 +17,7 @@ const MenuComponent = ({
           id='search-input'
           className='gt-input'
           type='text'
-          placeholder='Search Here for Your Tool'
+          placeholder='Search Tools...'
           onChange={search_tools}
         />
       </form>
