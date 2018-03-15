@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const IdentifyComponent = ({
   identifying, results, close, change_mode
@@ -6,12 +7,10 @@ const IdentifyComponent = ({
   <div id='identify-tool' className='tool'>
     <section className='controls'>
       <header>
-        <i
-          className='material-icons gt-remove'
-          onClick={close}
-        >
-          clear
-        </i>
+        <Link to="/">
+          <i className='gt-remove'></i>
+          <span>Back</span>
+        </Link>
         <h3 className='tool-title'>
           Identify a Pixel Value
         </h3>
@@ -19,7 +18,7 @@ const IdentifyComponent = ({
       <div className='content'>
         <p>Click a point on the map to identify the pixel value</p>
         <button
-          className='gt-button'
+          className='gt-button-accent full'
           onClick={change_mode}
         >
           { identifying ? 'Stop Identifying' : 'Identify'  }

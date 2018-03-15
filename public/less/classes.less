@@ -36,26 +36,33 @@
 }
 
 .gt-button {
-  font-weight: bold;
-  cursor: pointer;
   border-radius: @border-radius-small;
-  color: white;
-  background: @primary-color;
-  // background: white;
-  // border: 1px solid @primary-color;
   border: none;
+  box-shadow: @box-shadow-button;
   color: white;
-  padding: .5rem 1rem;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  cursor: pointer;
+  font-family: @font-family-title;
+  font-size: @font-size-medium;
+  padding: 12px @spacing-medium;
+  margin-right: @spacing-small;
 
-  &:hover {
-    background: @primary-color-light;
+  &.full {
+    width: 100%;
   }
+}
+
+.gt-button-primary {
+  .gt-button;
+  background: @primary-color;
 
   &.active {
-    background: @accent-color;
+    background: @primary-color-focus;
   }
+}
+
+.gt-button-secondary {
+  .gt-button;
+  background: @secondary-color;
 }
 
 .gt-button-accent {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LoadComponent = ({
   url_input, file_input, update_url_input, update_file_input, load_raster
@@ -6,11 +7,10 @@ const LoadComponent = ({
   <div id='load-tool' className='tool'>
     <section className='controls'>
       <header>
-        <i
-          className='material-icons gt-remove'
-        >
-          clear
-        </i>
+        <Link to="/">
+          <i className='gt-remove'></i>
+          <span>Back</span>
+        </Link>
         <h3 className='tool-title'>Load a GeoTIFF</h3>
       </header>
       <div className='content'>

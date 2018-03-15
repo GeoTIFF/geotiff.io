@@ -29,39 +29,66 @@
   outline: 0;
 }
 .gt-button {
-  font-weight: bold;
-  cursor: pointer;
   border-radius: 3px;
-  background: #31b98d;
   border: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   color: white;
-  padding: .5rem 1rem;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  cursor: pointer;
+  font-family: 'Lalezar';
+  font-size: 18px;
+  padding: 12px 24px;
+  margin-right: 16px;
 }
-.gt-button:hover {
-  background: rgba(49, 185, 141, 0.3);
+.gt-button.full {
+  width: 100%;
 }
-.gt-button.active {
-  background: #ff4380;
+.gt-button-primary {
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  cursor: pointer;
+  font-family: 'Lalezar';
+  font-size: 18px;
+  padding: 12px 24px;
+  margin-right: 16px;
+  background: #31b98d;
+}
+.gt-button-primary.full {
+  width: 100%;
+}
+.gt-button-primary.active {
+  background: rgba(49, 185, 141, 0.8);
+}
+.gt-button-secondary {
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  cursor: pointer;
+  font-family: 'Lalezar';
+  font-size: 18px;
+  padding: 12px 24px;
+  margin-right: 16px;
+  background: #13293D;
+}
+.gt-button-secondary.full {
+  width: 100%;
 }
 .gt-button-accent {
-  font-weight: bold;
-  cursor: pointer;
   border-radius: 3px;
-  background: #31b98d;
   border: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   color: white;
-  padding: .5rem 1rem;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  cursor: pointer;
+  font-family: 'Lalezar';
+  font-size: 18px;
+  padding: 12px 24px;
+  margin-right: 16px;
   background: #ff4380;
 }
-.gt-button-accent:hover {
-  background: rgba(49, 185, 141, 0.3);
-}
-.gt-button-accent.active {
-  background: #ff4380;
+.gt-button-accent.full {
+  width: 100%;
 }
 .gt-textarea {
   width: 90%;
