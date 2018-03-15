@@ -1,12 +1,11 @@
 import React from 'react';
 
-const DownloadComponent = ({ raster, close, download }) => (
+const DownloadComponent = ({ raster, download }) => (
   <div id='download-tool' className='tool'>
     <section className='controls'>
       <header>
         <i
           className='material-icons gt-remove'
-          onClick={close}
         >
           clear
         </i>

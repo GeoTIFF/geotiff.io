@@ -1,9 +1,9 @@
 import HistogramComponent from './histogram.component';
 import geoblaze from 'geoblaze';
 import _ from 'underscore';
-import { unmount_tool } from '../../../actions/active-tool-actions';
-import { set_results } from '../../../actions/results-actions';
+import { set_results, clear_results } from '../../../actions/results-actions';
 import { show_alert } from '../../../actions/alert-actions';
+import { remove_geometry } from '../../../actions/geometry-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
@@ -18,7 +18,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    close: () => dispatch(unmount_tool()),
+    close: () => {
+      dispatch(clear_results());
+      dispatch(remove_geometry());
+    },
     get_histogram: (raster, geometry, options) => {
       try {
         dispatch(get_histogram(raster, geometry, options));

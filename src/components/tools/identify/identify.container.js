@@ -2,8 +2,7 @@ import IdentifyComponent from './identify.component';
 import geoblaze from 'geoblaze';
 import { start_drawing, stop_drawing } from '../../../actions/drawing-actions';
 import { add_geometry, remove_geometry } from '../../../actions/geometry-actions';
-import { set_results } from '../../../actions/results-actions';
-import { unmount_tool } from '../../../actions/active-tool-actions';
+import { set_results, clear_results } from '../../../actions/results-actions';
 import { show_alert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
@@ -19,7 +18,7 @@ let mapDispatchToProps = dispatch => {
   return {
     close: () => {
       stop_and_remove_geometry(dispatch);
-      dispatch(unmount_tool());
+      dispatch(clear_results());
     },
     start_drawing: () => dispatch(start_drawing('point')),
     stop_drawing: () => stop_and_remove_geometry(dispatch)

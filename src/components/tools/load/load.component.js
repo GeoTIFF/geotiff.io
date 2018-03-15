@@ -1,14 +1,13 @@
 import React from 'react';
 
 const LoadComponent = ({
-  url_input, file_input, close, update_url_input, update_file_input, load_raster
+  url_input, file_input, update_url_input, update_file_input, load_raster
 }) => (
   <div id='load-tool' className='tool'>
     <section className='controls'>
       <header>
         <i
           className='material-icons gt-remove'
-          onClick={close}
         >
           clear
         </i>

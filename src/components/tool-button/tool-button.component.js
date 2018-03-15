@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ToolButtonComponent = ({ name, icon, component, select }) => (
-  <button className='tool-button' onClick={() => select(component)}>
+const ToolButtonComponent = ({ name, icon, path }) => (
+  <Link to={path} className='tool-button'>
     <i className='material-icons'>{icon}</i>
     <p>{name}</p>
-  </button>
+  </Link>
 );
 
 export default ToolButtonComponent;

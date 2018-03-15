@@ -1,10 +1,10 @@
-Load GeoTIFF|insert_photo|load
-Identify|add_location|identify
-Mean|playlist_add_check|mean
-Sum|playlist_add|sum
-Mode|view_column|mode
-Median|view_array|median
-Min|chevron_left|min
-Max|chevron_right|max
-Histogram|equalizer|histogram
-Download|file_download|download
+Load GeoTIFF|insert_photo|/load
+Identify|add_location|/identify
+Mean|playlist_add_check|/mean
+Sum|playlist_add|/sum
+Mode|view_column|/mode
+Median|view_array|/median
+Min|chevron_left|/min
+Max|chevron_right|/max
+Histogram|equalizer|/histogram
+Download|file_download|/download
