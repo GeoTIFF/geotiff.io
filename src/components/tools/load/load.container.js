@@ -29,7 +29,7 @@ export const load_state = compose(
   withState('file_input', 'set_file_input', ''),
   withHandlers({
     update_url_input: ({ set_url_input }) => event => {
-      return set_url_input(event.target.value);
+      return set_url_input(event.target.value.trim());
     },
     update_file_input: ({ set_file_input }) => event => {
       return set_file_input(event.target.files[0]);
