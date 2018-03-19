@@ -375,6 +375,24 @@ body {
 .tool > section.content::-webkit-scrollbar-thumb {
   background-color: #31b98d;
 }
+.tool > section.content .tool-results {
+  background: white;
+  border-radius: 3px;
+  border: 2px solid #13293D;
+  display: flex;
+  font-family: 'Lalezar';
+  justify-content: space-around;
+  width: 100%;
+}
+.tool > section.content .tool-results h3 {
+  color: #13293D;
+  font-size: 24px;
+  letter-spacing: 1.5px;
+}
+.tool > section.content .tool-results p {
+  color: #13293D;
+  font-size: 24px;
+}
 .tool .content-row {
   margin: 24px 0;
 }

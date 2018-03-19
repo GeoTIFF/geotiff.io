@@ -9,7 +9,7 @@ const ModeComponent = ({ results, raster, geometry, execute, func }) => (
   <div id='mode-tool' className='tool'>
     <ToolHeader
       logo_url="/images/mode.svg"
-      title="Get the mode (most common) pixel value of an area"
+      title="Get the mode pixel value of an area"
     />
     <section className='content'>
       <DrawGeometry />

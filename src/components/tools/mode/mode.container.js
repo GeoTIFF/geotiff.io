@@ -4,11 +4,10 @@ import ModeComponent from './mode.component';
 import { withProps } from 'recompose';
 
 const calculate_mode = (raster, coors) => {
-  let result = geoblaze.mode(raster, coors);
-  return result.map(band => {
-    return typeof band === 'number'
-      ? `[${band}]`
-      : `[${band.join(',')}]`.join(', ');
+  const modes = geoblaze.mode(raster, coors);
+  return modes.map(band => {
+    if (typeof band === 'number') return band;
+    return band.join(", ");
   });
 }
 

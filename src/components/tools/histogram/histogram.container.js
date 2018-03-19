@@ -1,3 +1,4 @@
+import React from 'react';
 import HistogramComponent from './histogram.component';
 import geoblaze from 'geoblaze';
 import _ from 'underscore';
@@ -58,7 +59,10 @@ const get_histogram = (raster, geometry, options) => {
       return _.sortBy(results_list, bin => Number(bin[0].split('- ')[1]));
     });
   }
-  return set_results(results);
+  const histogram = results.map(band => band.map(bin =>(
+    <p>{`${bin[0]}:   ${bin[1]}\n`}</p>
+  )));
+  return set_results(histogram);
 }
 
 const HistogramContainer = compose(
