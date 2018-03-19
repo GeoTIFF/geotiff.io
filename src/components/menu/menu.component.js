@@ -6,6 +6,7 @@ const MenuComponent = ({
 }) => (
   <div id='menu'>
     <header id='menu-header'>
+      <span className='menu-header-icon'></span>
       <h3>GeoTIFF</h3>
     </header>
     <section
@@ -32,7 +33,7 @@ const MenuComponent = ({
             return <ToolButton
               key={tool[0]}
               name={tool[0]}
-              icon={tool[1]}
+              icon_url={tool[1]}
               path={tool[2]}
             />
           })

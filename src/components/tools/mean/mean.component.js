@@ -1,46 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ToolHeader from '../../shared/tool-header';
+import ToolResults from '../../shared/tool-results';
+import ToolFooter from '../../shared/tool-footer';
 import DrawGeometry from '../../shared/draw-geometry';
 import ImportGeometry from '../../shared/import-geometry';
 
-const MeanComponent = ({
-  results, raster, geometry, execute, close, func
-}) => (
+const MeanComponent = ({ results, raster, geometry, execute, func }) => (
   <div id='mean-tool' className='tool'>
-    <section className='controls'>
-      <header>
-        <Link to="/">
-          <i className='gt-remove'></i>
-          <span>Back</span>
-        </Link>
-        <h3 className='tool-title'>
-          Get the Mean Pixel Value of an Area
-        </h3>
-      </header>
-      <div className='content'>
-        <DrawGeometry />
-        <p className="or">
-          <b>OR</b>
-        </p>
-        <ImportGeometry />
-        <div className='content-row'>
-          <button
-            className='gt-button-accent full'
-            onClick={() => execute(raster, geometry, func)}
-          >
-            Calculate Mean
-          </button>
-        </div>
+    <ToolHeader
+      logo_url="/images/mean.svg"
+      title="Get the mean pixel value of an area"
+    />
+    <section className='content'>
+      <DrawGeometry />
+      <ImportGeometry />
+      <div className='content-row submit-row'>
+        <button
+          className='gt-button-accent full'
+          onClick={() => execute(raster, geometry, func)}
+        >
+          Calculate Mean
+        </button>
       </div>
+      { results && <ToolResults results={results} /> }
     </section>
-    {
-      results
-      ?
-        <section className='results'>
-          <h3>Mean: {results}</h3>
-        </section>
-      : ''
-    }
+    <ToolFooter />
   </div>
 );
 

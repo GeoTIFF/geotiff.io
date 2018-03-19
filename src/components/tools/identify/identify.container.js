@@ -16,10 +16,6 @@ const stop_and_remove_geometry = dispatch => {
 
 let mapDispatchToProps = dispatch => {
   return {
-    close: () => {
-      stop_and_remove_geometry(dispatch);
-      dispatch(clear_results());
-    },
     start_drawing: () => dispatch(start_drawing('point')),
     stop_drawing: () => stop_and_remove_geometry(dispatch)
   }

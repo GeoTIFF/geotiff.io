@@ -7,22 +7,25 @@
 }
 
 .gt-dropdown {
-  border-radius: @border-radius-small;
-  border: 1px solid @primary-color;
-  padding: .5rem;
-  margin: auto;
-  display: block;
   background: white;
-  max-width: 30rem;
-  width: 80%;
+  border-radius: @border-radius-small;
+  border: 2px solid rgba(19,41,61,0.7);
+  display: block;
+  padding: 12px;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+    // box-shadow: @box-shadow-thin;
+  }
 }
 
 .gt-input {
   border-radius: @border-radius-small;
   border: 2px solid rgba(19,41,61,0.7);
   display: block;
-  width: 100%;
   padding: 12px;
+  width: 100%;
 
   > input {
     border: none;

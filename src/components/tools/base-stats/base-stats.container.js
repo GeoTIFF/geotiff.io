@@ -1,7 +1,5 @@
 import { set_results } from '../../../actions/results-actions';
 import { show_alert } from '../../../actions/alert-actions';
-import { clear_results } from '../../../actions/results-actions';
-import { remove_geometry } from '../../../actions/geometry-actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
@@ -28,10 +26,6 @@ const mapDispatchToProps = dispatch => {
         return;
       }
       dispatch(execute(raster, geometry, func));
-    },
-    close: () => {
-      dispatch(clear_results());
-      dispatch(remove_geometry());
     }
   }
 }

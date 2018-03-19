@@ -1,9 +1,9 @@
 #menu {
-  color: @secondary-color;
   background: white;
-  font-family: @font-family-content;
   bottom: 0;
   box-shadow: @box-shadow;
+  color: @secondary-color;
+  font-family: @font-family-content;
   height: 100%;
   left: 0;
   padding: @spacing-medium;
@@ -14,7 +14,17 @@
 
   header {
     padding: @spacing-small;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .menu-header-icon {
+      background-image: url('/images/logomark.svg');
+      background-size: cover;
+      width: @spacing-xlarge;
+      height: @spacing-xlarge;
+      margin-right: @spacing-small;
+    }
 
     h3 {
       font-family: @font-family-title;
@@ -37,12 +47,12 @@
       &::-webkit-scrollbar {
         width: @spacing-xxsmall;
       }
-       
+
       &::-webkit-scrollbar-track {
         box-shadow: @box-shadow-thin;
         background: @primary-color-light;
       }
-       
+
       &::-webkit-scrollbar-thumb {
         background-color: @primary-color;
       }
@@ -61,12 +71,15 @@
         height: 103px;
         margin: @spacing-medium / 2;
         text-align: center;
+        text-decoration: none;
         width: 150px;
 
-        .material-icons {
-          font-size: @font-size-large;
+        > i {
+          width: @spacing-medium;
+          height: @spacing-medium;
           color: @primary-color;
-          margin-top: @spacing-small;
+          display: block;
+          margin: @spacing-medium auto 0;
         }
 
         p {
@@ -82,48 +95,48 @@
       }
     }
 
-    .tool {
-      border: 1px solid @primary-color;
-      border-radius: @border-radius-small;
-      box-shadow: @box-shadow;
-      text-align: center;
+    // .tool {
+    //   border: 1px solid @primary-color;
+    //   border-radius: @border-radius-small;
+    //   box-shadow: @box-shadow;
+    //   text-align: center;
 
-      .controls {
+    //   .controls {
 
-        header {
-          width: 100%;
-          background: @primary-color;
-          color: white;
-          text-align: left;
+    //     header {
+    //       width: 100%;
+    //       background: @primary-color;
+    //       color: white;
+    //       text-align: left;
 
-          h3 {
-            padding-top: .5rem;
-            font-size: @font-size-medium;
-            display: inline;
-          }
-        }
+    //       h3 {
+    //         padding-top: .5rem;
+    //         font-size: @font-size-medium;
+    //         display: inline;
+    //       }
+    //     }
 
-        .content {
-          padding: 1rem;
-          font-size: @font-size-small;
+    //     .content {
+    //       padding: 1rem;
+    //       font-size: @font-size-small;
 
-          .content-row {
+    //       .content-row {
 
-            .gt-button {
-              margin: .5rem;
-            }
-          }
-        }
+    //         .gt-button {
+    //           margin: .5rem;
+    //         }
+    //       }
+    //     }
 
 
-      }
+    //   }
 
-      .results {
-        padding: 1rem;
-        margin-top: 1.5rem;
-      }
+    //   .results {
+    //     padding: 1rem;
+    //     margin-top: 1.5rem;
+    //   }
 
-    }
+    // }
   }
 }
 

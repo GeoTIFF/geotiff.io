@@ -1,18 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ToolHeader from '../../shared/tool-header';
+import ToolFooter from '../../shared/tool-footer';
 
 const DownloadComponent = ({ raster, download }) => (
   <div id='download-tool' className='tool'>
-    <section className='controls'>
-      <header>
-        <Link to="/">
-          <i className='gt-remove'></i>
-          <span>Back</span>
-        </Link>
-        <h3 className='tool-title'>Download the GeoTIFF</h3>
-      </header>
-      <div className='content'>
-        <p>Download the GeoTIFF displayed on the map</p>
+    <ToolHeader
+      logo_url="/images/download.svg"
+      title="Download the GeoTIFF"
+    />
+    <section className='content'>
+      <p>Download the GeoTIFF displayed on the map</p>
+      <div className='content-row submit-row'>
         <button
           className='gt-button-accent full'
           onClick={() => download(raster)}
@@ -21,6 +19,7 @@ const DownloadComponent = ({ raster, download }) => (
         </button>
       </div>
     </section>
+    <ToolFooter />
    </div>
 );
 

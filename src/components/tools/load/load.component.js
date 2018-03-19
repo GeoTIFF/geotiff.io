@@ -1,53 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ToolHeader from '../../shared/tool-header';
+import ToolFooter from '../../shared/tool-footer';
 
 const LoadComponent = ({
   url_input, file_input, update_url_input, update_file_input, load_raster
 }) => (
   <div id='load-tool' className='tool'>
-    <section className='controls'>
-      <header>
-        <Link to="/">
-          <i className='gt-remove'></i>
-          <span>Back</span>
-        </Link>
-        <h3 className='tool-title'>Load a GeoTIFF</h3>
-      </header>
-      <div className='content'>
-        <p className='tool-desc'>
-          You have two ways to add a GeoTIFF to the map. Add a url or upload a file
-        </p>
-        <br />
-        <label htmlFor="basic-url">
-          URL to Your GeoTIFF
-        </label>
-        <div className="input-group">
-          <input
-            type="text"
-            className="gt-input"
-            onChange={update_url_input}
-          />
-        </div>
-        <br />
-        <p className="or"><b>OR</b></p>
-        <label htmlFor="basic-url">
-          Load File
-        </label>
-        <div className="gt-input">
-          <input
-            type="file"
-            onChange={update_file_input}
-          />
-        </div>
-        <br />
+    <ToolHeader
+      logo_url="/images/load.svg"
+      title="Load a GeoTIFF"
+    />
+    <section className='content'>
+      <p className='tool-desc'>
+        You have two ways to add a GeoTIFF to the map. Add a url or upload a file
+      </p>
+      <br />
+      <label htmlFor="basic-url">
+        URL to Your GeoTIFF
+      </label>
+      <div className="input-group">
+        <input
+          type="text"
+          className="gt-input"
+          onChange={update_url_input}
+        />
+      </div>
+      <br />
+      <p className="or"><b>OR</b></p>
+      <label htmlFor="basic-url">
+        Load File
+      </label>
+      <div className="gt-input">
+        <input
+          type="file"
+          onChange={update_file_input}
+        />
+      </div>
+      <div className="content-row submit-row">
         <button
-          className='gt-button to-right'
+          className='gt-button-accent full'
           onClick={load_raster}
         >
           Load
         </button>
       </div>
     </section>
+    <ToolFooter />
   </div>
 );
 

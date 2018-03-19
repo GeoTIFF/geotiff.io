@@ -1,22 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ToolHeader from '../../shared/tool-header';
+import ToolResults from '../../shared/tool-results';
+import ToolFooter from '../../shared/tool-footer';
 
-const IdentifyComponent = ({
-  identifying, results, close, change_mode
-}) => (
+const IdentifyComponent = ({ identifying, results, change_mode }) => (
   <div id='identify-tool' className='tool'>
-    <section className='controls'>
-      <header>
-        <Link to="/">
-          <i className='gt-remove'></i>
-          <span>Back</span>
-        </Link>
-        <h3 className='tool-title'>
-          Identify a Pixel Value
-        </h3>
-      </header>
-      <div className='content'>
-        <p>Click a point on the map to identify the pixel value</p>
+    <ToolHeader
+      logo_url="/images/identify.svg"
+      title="Identify a pixel value"
+    />
+    <section className='content'>
+      <p>Click a point on the map to identify the pixel value</p>
+      <div className='content-row submit-row'>
         <button
           className='gt-button-accent full'
           onClick={change_mode}
@@ -24,15 +19,9 @@ const IdentifyComponent = ({
           { identifying ? 'Stop Identifying' : 'Identify'  }
         </button>
       </div>
-    </section>
-    {
-      identifying
-      ?
-        <section className='results'>
-          <h3>Pixel Value: { results }</h3>
-        </section>
-      : ''
-    }
+      { identifying && <ToolResults results={results} />}
+      </section>
+    <ToolFooter />
   </div>
 );
 

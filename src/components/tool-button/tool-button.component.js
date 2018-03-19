@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ToolButtonComponent = ({ name, icon, path }) => (
+const ToolButtonComponent = ({ name, icon_url, path }) => (
   <Link to={path} className='tool-button'>
-    <i className='material-icons'>{icon}</i>
+    <i style={{ backgroundImage: `url(${icon_url})` }}></i>
     <p>{name}</p>
   </Link>
 );
