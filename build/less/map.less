@@ -1,16 +1,16 @@
 #map {
   bottom: 0;
-  left: 33%;
+  left: @menu-width;
   height: 100%;
   position: absolute;
   right: 0;
   top: 0;
 
   .leaflet-control {
-    border-radius: @border-radius !important;
+    border-radius: @border-radius-small !important;
 
     a {
-      border-radius: @border-radius !important;
+      border-radius: @border-radius-small !important;
     }
   }
 
@@ -27,13 +27,13 @@
 }
 
 // mobile
-@media screen and (max-width: 45.5em) {
+@media screen and (max-width: @breakpoint-large) {
 
   #map {
     left: 0;
 
     .leaflet-top {
-      top: 7.5rem;
+      top: 150px;
     }
 
   }

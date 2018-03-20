@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
 import { hide_alert } from '../../actions/alert-actions';
 import AlertComponent from './alert.component';
 

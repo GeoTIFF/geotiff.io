@@ -16,12 +16,7 @@ let ToolListService = {
               .filter(Boolean) // filter out blank lines
               .map(tool => tool.split('|'));
 
-            tools
-              .filter(tool => tool[0][0] !== '#') // this is temporary
-              .forEach(tool => {
-                tool[3] = require(`../components/tools/${tool[2]}/index`).default;
-              });
-            this.tool_list = tools;
+            this.tool_list = tools.filter(tool => tool[0][0] !== '#'); // this is temporary
             resolve(tools);
           });
         });
