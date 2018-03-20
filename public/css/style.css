@@ -179,10 +179,6 @@ body {
 .ReactModal__Overlay .ReactModal__Content .content .gt-input {
   margin-top: 24px;
 }
-.ReactModal__Overlay .ReactModal__Content .footer {
-  padding: 32px;
-  text-align: center;
-}
 #menu {
   background: white;
   bottom: 0;
@@ -271,28 +267,24 @@ body {
 [data-layout='hide-menu'] #menu {
   display: none;
 }
-@media screen and (max-width: 45.5em) {
+@media screen and (max-width: 900px) {
   #menu {
-    z-index: 1000;
+    background: white;
     position: relative;
-    margin: 1em auto;
-    width: 80%;
-    border-radius: 3px;
-    padding: .75rem;
     text-align: center;
-    border: 1px solid #31b98d;
+    width: 100%;
+    z-index: 1000;
   }
   #menu #menu-header {
-    display: none;
+    padding-top: 0;
   }
-  #menu #search {
-    padding: 0;
+  #menu #menu-header .menu-header-icon {
+    width: 32px;
+    height: 32px;
   }
-  #menu #search #search-input {
-    padding: .5rem 1rem;
-    width: 100%;
-    display: block;
-    margin: 0 auto;
+  #menu #menu-header h3 {
+    letter-spacing: 1.5px;
+    font-size: 24px;
   }
   #menu #content {
     padding: 0;
@@ -302,37 +294,18 @@ body {
   #menu #content .controls {
     display: none;
   }
-  #menu #content .tool {
-    border: none;
-  }
   #menu #content.focus {
-    padding: 1rem;
-    margin-top: 1.5rem;
+    padding: 24px;
     overflow-y: scroll;
-    max-height: 20rem;
+    max-height: 275px;
     background: white;
   }
   #menu #content.focus #tool-button-container {
     display: flex;
   }
-  #menu #content.focus .controls {
-    display: block;
-    z-index: 1;
-  }
-  #menu #content.focus .results {
-    z-index: -1;
-  }
-  #menu #content.focus .tool {
-    border: 1px solid #31b98d;
-  }
-  #menu #content .results {
-    position: fixed;
-    background: white;
-    width: 80%;
-    left: 10%;
-    bottom: 1rem;
-    box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.3);
-    border: 1px solid #31b98d;
+  #menu #content.focus #tool-button-container .tool-button {
+    height: 100px;
+    width: 120px;
   }
 }
 .tool {
@@ -346,7 +319,7 @@ body {
   position: absolute;
   top: 0;
   width: 400px;
-  z-index: 1000;
+  z-index: 9000;
 }
 .tool > header {
   background: #13293D;
@@ -456,6 +429,56 @@ body {
   letter-spacing: 2px;
   margin: 0;
 }
+@media screen and (max-width: 900px) {
+  .tool {
+    background: white;
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  .tool > header {
+    padding: 16px;
+  }
+  .tool > header .header-top-row i {
+    width: 32px;
+    height: 32px;
+  }
+  .tool > header .header-top-row span {
+    vertical-align: top !important;
+  }
+  .tool > header h3 {
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+    font-size: 24px;
+  }
+  .tool > header .header-title-row {
+    margin-top: 16px;
+  }
+  .tool section.content {
+    padding: 0;
+    margin: 0;
+    display: none;
+  }
+  .tool section.content.focus {
+    padding: 24px;
+    overflow-y: scroll;
+    max-height: 275px;
+    background: white;
+    display: block;
+  }
+  .tool section.content.focus .results {
+    z-index: -1;
+  }
+  .tool section.content .results {
+    position: fixed;
+    width: 80%;
+    left: 10%;
+    bottom: 32px;
+  }
+  .tool footer {
+    display: none;
+  }
+}
 #map {
   bottom: 0;
   left: 400px;
@@ -477,12 +500,12 @@ body {
 [data-layout='hide-menu'] #map {
   left: 0;
 }
-@media screen and (max-width: 45.5em) {
+@media screen and (max-width: 900px) {
   #map {
     left: 0;
   }
   #map .leaflet-top {
-    top: 7.5rem;
+    top: 150px;
   }
 }
 .loader-container {

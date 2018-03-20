@@ -1,5 +1,6 @@
 import React from 'react';
 import ToolHeader from '../../shared/tool-header';
+import ToolContent from '../../shared/tool-content';
 import ToolFooter from '../../shared/tool-footer';
 
 const LoadComponent = ({
@@ -10,7 +11,7 @@ const LoadComponent = ({
       logo_url="/images/load.svg"
       title="Load a GeoTIFF"
     />
-    <section className='content'>
+    <ToolContent>
       <p className='tool-desc'>
         You have two ways to add a GeoTIFF to the map. Add a url or upload a file
       </p>
@@ -44,7 +45,7 @@ const LoadComponent = ({
           Load
         </button>
       </div>
-    </section>
+    </ToolContent>
     <ToolFooter />
   </div>
 );

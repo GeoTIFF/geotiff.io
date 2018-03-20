@@ -1,5 +1,6 @@
 import React from 'react';
 import ToolHeader from '../../shared/tool-header';
+import ToolContent from '../../shared/tool-content';
 import ToolResults from '../../shared/tool-results';
 import ToolFooter from '../../shared/tool-footer';
 import DrawGeometry from '../../shared/draw-geometry';
@@ -15,7 +16,7 @@ const HistogramComponent = ({
       logo_url="/images/histogram.svg"
       title="Get the histogram distribution of an area"
     />
-    <section className='content'>
+    <ToolContent>
       <p>1. Select a Measurement Scale</p>
       <select
         className='gt-dropdown'
@@ -60,7 +61,7 @@ const HistogramComponent = ({
         </button>
       </div>
       { results && <ToolResults results={results} /> }
-    </section>
+    </ToolContent>
     <ToolFooter />
   </div>
 );

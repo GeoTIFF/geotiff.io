@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ToolHeaderComponent = ({ logo_url, title, close }) => (
-  <header>
+const ToolHeaderComponent = ({ logo_url, title, close, focus}) => (
+  <header onClick={focus}>
     <div className="header-top-row">
       <Link to="/" onClick={close}>
         <i className="material-icons">arrow_back</i>

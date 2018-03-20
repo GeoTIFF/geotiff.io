@@ -94,84 +94,36 @@
         }
       }
     }
-
-    // .tool {
-    //   border: 1px solid @primary-color;
-    //   border-radius: @border-radius-small;
-    //   box-shadow: @box-shadow;
-    //   text-align: center;
-
-    //   .controls {
-
-    //     header {
-    //       width: 100%;
-    //       background: @primary-color;
-    //       color: white;
-    //       text-align: left;
-
-    //       h3 {
-    //         padding-top: .5rem;
-    //         font-size: @font-size-medium;
-    //         display: inline;
-    //       }
-    //     }
-
-    //     .content {
-    //       padding: 1rem;
-    //       font-size: @font-size-small;
-
-    //       .content-row {
-
-    //         .gt-button {
-    //           margin: .5rem;
-    //         }
-    //       }
-    //     }
-
-
-    //   }
-
-    //   .results {
-    //     padding: 1rem;
-    //     margin-top: 1.5rem;
-    //   }
-
-    // }
   }
 }
 
 [data-layout='hide-menu'] {
   #menu {
-      display: none;
-    }
+    display: none;
+  }
 }
 
 // mobile
-@media screen and (max-width: 45.5em) {
+@media screen and (max-width: @breakpoint-large) {
 
   #menu {
-    z-index: 1000;
+    background: white;
     position: relative;
-    margin: 1em auto;
-    width: 80%;
-    border-radius: @border-radius-small;
-    padding: .75rem;
     text-align: center;
-    border: 1px solid @primary-color;
+    width: 100%;
+    z-index: 1000;
 
     #menu-header {
-      display: none;
-    }
+      padding-top: 0;
 
-    #search {
-      padding: 0;
+      .menu-header-icon {
+        width: @spacing-large;
+        height: @spacing-large;
+      }
 
-
-      #search-input {
-        padding: .5rem 1rem;
-        width: 100%;
-        display: block;
-        margin: 0 auto;
+      h3 {
+        letter-spacing: 1.5px;
+        font-size: @font-size-large;
       }
     }
 
@@ -183,43 +135,20 @@
         display: none;
       }
 
-      .tool {
-        border: none;
-      }
-
       &.focus {
-        padding: 1rem;
-        margin-top: 1.5rem;
+        padding: @spacing-medium;
         overflow-y: scroll;
-        max-height: 20rem;
+        max-height: 275px;
         background: white;
 
         #tool-button-container {
           display: flex;
-        }
 
-        .controls {
-          display: block;
-          z-index: 1;
+          .tool-button {
+            height: 100px;
+            width: 120px;
+          }
         }
-
-        .results {
-          z-index: -1;
-        }
-
-        .tool {
-          border: 1px solid @primary-color;
-        }
-      }
-
-      .results {
-        position: fixed;
-        background: white;
-        width: 80%;
-        left: 10%;
-        bottom: 1rem;
-        box-shadow: @box-shadow;
-        border: 1px solid @primary-color;
       }
     }
   }

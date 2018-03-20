@@ -9,7 +9,7 @@
   position: absolute;
   top: 0;
   width: @menu-width;
-  z-index: 1000;
+  z-index: 9000;
 
   > header {
     background: @secondary-color;
@@ -135,6 +135,72 @@
       font-size: @font-size-xlarge;
       letter-spacing: 2px;
       margin: 0;
+    }
+  }
+}
+
+// mobile
+@media screen and (max-width: @breakpoint-large) {
+
+  .tool {
+    background: white;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
+    > header {
+      padding: @spacing-small;
+
+      .header-top-row {
+
+        i {
+          width: @spacing-large;
+          height: @spacing-large;
+        }
+
+        span {
+          vertical-align: top !important;
+        }
+      }
+
+      h3 {
+        line-height: 1.2;
+        letter-spacing: 1.5px;
+        font-size: @font-size-large;
+      }
+
+      .header-title-row {
+        margin-top: @spacing-small;
+      }
+    }
+
+    section.content {
+      padding: 0;
+      margin: 0;
+      display: none;
+
+      &.focus {
+        padding: @spacing-medium;
+        overflow-y: scroll;
+        max-height: 275px;
+        background: white;
+        display: block;
+
+        .results {
+          z-index: -1;
+        }
+      }
+
+      .results {
+        position: fixed;
+        width: 80%;
+        left: 10%;
+        bottom: @spacing-large;
+      }
+    }
+
+    footer {
+      display: none;
     }
   }
 }

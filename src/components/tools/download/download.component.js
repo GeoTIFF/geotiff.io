@@ -1,5 +1,6 @@
 import React from 'react';
 import ToolHeader from '../../shared/tool-header';
+import ToolContent from '../../shared/tool-content';
 import ToolFooter from '../../shared/tool-footer';
 
 const DownloadComponent = ({ raster, download }) => (
@@ -8,7 +9,7 @@ const DownloadComponent = ({ raster, download }) => (
       logo_url="/images/download.svg"
       title="Download the GeoTIFF"
     />
-    <section className='content'>
+    <ToolContent>
       <p>Download the GeoTIFF displayed on the map</p>
       <div className='content-row submit-row'>
         <button
@@ -18,7 +19,7 @@ const DownloadComponent = ({ raster, download }) => (
           Download GeoTIFF
         </button>
       </div>
-    </section>
+    </ToolContent>
     <ToolFooter />
    </div>
 );

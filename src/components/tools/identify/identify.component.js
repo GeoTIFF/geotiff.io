@@ -1,5 +1,6 @@
 import React from 'react';
 import ToolHeader from '../../shared/tool-header';
+import ToolContent from '../../shared/tool-content';
 import ToolResults from '../../shared/tool-results';
 import ToolFooter from '../../shared/tool-footer';
 
@@ -9,7 +10,7 @@ const IdentifyComponent = ({ identifying, results, change_mode }) => (
       logo_url="/images/identify.svg"
       title="Identify a pixel value"
     />
-    <section className='content'>
+    <ToolContent>
       <p>Click a point on the map to identify the pixel value</p>
       <div className='content-row submit-row'>
         <button
@@ -20,7 +21,7 @@ const IdentifyComponent = ({ identifying, results, change_mode }) => (
         </button>
       </div>
       { identifying && <ToolResults results={results} />}
-      </section>
+    </ToolContent>
     <ToolFooter />
   </div>
 );
