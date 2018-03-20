@@ -10,6 +10,7 @@
     border: none !important;
     overflow: hidden !important;
     transition: opacity 200ms ease-in-out;
+    
     &--after-open {
       opacity: 1;
     }
@@ -18,26 +19,59 @@
     }
 
     header {
-      background: @primary-color;
+      align-items: center;
+      background: @secondary-color;
       color: white;
-      padding: 1rem;
+      display: flex;
+      padding: @spacing-medium;
+      width: 100%;
+
+      .geotiff-logo {
+        display: inline-block;
+        background-image: url('/images/logomark-light.svg');
+        background-size: cover;
+        fill: white;
+        height: @spacing-large;
+        width: @spacing-large;
+        margin-right: @spacing-small;
+      }
 
       h3 {
-        margin-bottom: 0;
+        display: inline;
+        font-family: @font-family-title;
+        font-size: 32px;
+        letter-spacing: 2px;
+        margin: 0;
+      }
+
+      i {
+        margin-left: auto;
+        cursor: pointer;
       }
     }
 
     .content {
-      padding: 1rem;
+      overflow-y: auto;
+      height: calc(~'100% - 75px');
+      padding: @spacing-large;
 
-      .gt-input {
-        margin-top: 1rem;
+      &::-webkit-scrollbar {
+        width: @spacing-xxsmall;
       }
 
-    }
+      &::-webkit-scrollbar-track {
+        box-shadow: @box-shadow-thin;
+        background: @primary-color-light;
+      }
 
-    .footer {
-      text-align: center;
+      &::-webkit-scrollbar-thumb {
+        background-color: @primary-color;
+      }
+
+      .gt-input {
+        margin-top: @spacing-medium;
+      }
+
     }
   }
 }

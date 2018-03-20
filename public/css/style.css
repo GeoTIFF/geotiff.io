@@ -134,20 +134,53 @@ body {
   opacity: 0;
 }
 .ReactModal__Overlay .ReactModal__Content header {
-  background: #31b98d;
+  align-items: center;
+  background: #13293D;
   color: white;
-  padding: 1rem;
+  display: flex;
+  padding: 24px;
+  width: 100%;
+}
+.ReactModal__Overlay .ReactModal__Content header .geotiff-logo {
+  display: inline-block;
+  background-image: url('/images/logomark-light.svg');
+  background-size: cover;
+  fill: white;
+  height: 32px;
+  width: 32px;
+  margin-right: 16px;
 }
 .ReactModal__Overlay .ReactModal__Content header h3 {
-  margin-bottom: 0;
+  display: inline;
+  font-family: 'Lalezar';
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin: 0;
+}
+.ReactModal__Overlay .ReactModal__Content header i {
+  margin-left: auto;
+  cursor: pointer;
 }
 .ReactModal__Overlay .ReactModal__Content .content {
-  padding: 1rem;
+  overflow-y: auto;
+  height: calc(100% - 75px);
+  padding: 32px;
+}
+.ReactModal__Overlay .ReactModal__Content .content::-webkit-scrollbar {
+  width: 4px;
+}
+.ReactModal__Overlay .ReactModal__Content .content::-webkit-scrollbar-track {
+  box-shadow: 0 1px 3px 0 rgba(49, 185, 141, 0.3);
+  background: rgba(49, 185, 141, 0.3);
+}
+.ReactModal__Overlay .ReactModal__Content .content::-webkit-scrollbar-thumb {
+  background-color: #31b98d;
 }
 .ReactModal__Overlay .ReactModal__Content .content .gt-input {
-  margin-top: 1rem;
+  margin-top: 24px;
 }
 .ReactModal__Overlay .ReactModal__Content .footer {
+  padding: 32px;
   text-align: center;
 }
 #menu {
