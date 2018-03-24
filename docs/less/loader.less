@@ -1,0 +1,43 @@
+.loader-container {
+  background: rgba(0,0,0,0.5);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1001;
+
+  .loader {
+    text-align: center;
+    width: 30%;
+    min-width: 20rem;
+    margin: auto;
+    padding: 2rem;
+    position: relative;
+    top: 25%;
+    height: 50%;
+    background: rgba(0, 0, 0, .5);
+
+    h3 {
+      font-weight: bold;
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .spinner {
+      border: 1.5rem solid rgba(255, 255, 255, .2); /* Light grey */
+      border-top: 1.5rem solid @primary-color; /* Blue */
+      border-radius: 50%;
+      width: 12rem;
+      height: 12rem;
+      animation: spin 2s linear infinite;
+      position: relative;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  }
+}
