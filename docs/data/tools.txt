@@ -1,0 +1,10 @@
+Load GeoTIFF|/images/load.svg|/load
+Identify|/images/identify.svg|/identify
+Mean|/images/mean.svg|/mean
+Sum|/images/sum.svg|/sum
+Mode|/images/mode.svg|/mode
+Median|/images/median.svg|/median
+Min|/images/minimum.svg|/min
+Max|/images/maximum.svg|/max
+Histogram|/images/histogram.svg|/histogram
+Download|/images/download.svg|/download
