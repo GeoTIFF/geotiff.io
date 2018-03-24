@@ -7,57 +7,65 @@
 }
 
 .gt-dropdown {
-  border-radius: @border-radius;
-  border: 1px solid @primary-color;
-  padding: .5rem;
-  margin: auto;
-  display: block;
   background: white;
-  max-width: 30rem;
-  width: 80%;
+  border-radius: @border-radius-small;
+  border: 2px solid rgba(19,41,61,0.7);
+  display: block;
+  padding: 12px;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+    // box-shadow: @box-shadow-thin;
+  }
 }
 
 .gt-input {
-  border-radius: @border-radius;
-  border: 1px solid @primary-color;
-  padding: .35rem .5rem;
-  margin: auto;
+  border-radius: @border-radius-small;
+  border: 2px solid rgba(19,41,61,0.7);
   display: block;
-  max-width: 30rem;
-  width: 80%;
+  padding: 12px;
+  width: 100%;
 
   > input {
     border: none;
-    padding: .5rem;
+    line-height: 1.5;
   }
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 3px @primary-color;
+    // box-shadow: @box-shadow-thin;
   }
 }
 
 .gt-button {
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: @border-radius;
-  color: white;
-  background: @primary-color;
-  // background: white;
-  // border: 1px solid @primary-color;
+  border-radius: @border-radius-small;
   border: none;
+  box-shadow: @box-shadow-button;
   color: white;
-  padding: .5rem 1rem;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  cursor: pointer;
+  font-family: @font-family-title;
+  font-size: @font-size-medium;
+  padding: 12px @spacing-medium;
+  margin-right: @spacing-small;
 
-  &:hover {
-    background: @primary-color-focus;
+  &.full {
+    width: 100%;
   }
+}
+
+.gt-button-primary {
+  .gt-button;
+  background: @primary-color;
 
   &.active {
-    background: @accent-color;
+    background: @primary-color-focus;
   }
+}
+
+.gt-button-secondary {
+  .gt-button;
+  background: @secondary-color;
 }
 
 .gt-button-accent {
@@ -73,7 +81,7 @@
 
 .gt-remove {
   border-radius: 50%;
-  box-shadow: @box-shadow-small;
+  box-shadow: @box-shadow;
   cursor: pointer;
   float: right;
   background: @accent-color;
@@ -81,6 +89,6 @@
   padding: .25rem;
 
   &:hover {
-    background: @accent-color-focus;
+    background: @accent-color-light;
   }
 }

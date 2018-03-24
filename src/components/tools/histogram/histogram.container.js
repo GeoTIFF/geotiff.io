@@ -1,7 +1,7 @@
+import React from 'react';
 import HistogramComponent from './histogram.component';
 import geoblaze from 'geoblaze';
 import _ from 'underscore';
-import { unmount_tool } from '../../../actions/active-tool-actions';
 import { set_results } from '../../../actions/results-actions';
 import { show_alert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
@@ -18,7 +18,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    close: () => dispatch(unmount_tool()),
     get_histogram: (raster, geometry, options) => {
       try {
         dispatch(get_histogram(raster, geometry, options));
@@ -60,7 +59,10 @@ const get_histogram = (raster, geometry, options) => {
       return _.sortBy(results_list, bin => Number(bin[0].split('- ')[1]));
     });
   }
-  return set_results(results);
+  const histogram = results.map(band => band.map(bin =>(
+    <p>{`${bin[0]}:   ${bin[1]}\n`}</p>
+  )));
+  return set_results(histogram);
 }
 
 const HistogramContainer = compose(

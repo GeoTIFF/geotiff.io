@@ -1,5 +1,6 @@
 import AppComponent from './app.component';
 import UrlService from '../../services/UrlService';
+import { withRouter } from 'react-router-dom';
 import { set_default_layout, set_hide_menu_layout } from '../../actions/layout-actions';
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
@@ -31,4 +32,4 @@ const AppContainer = compose(
   })
 )(AppComponent);
 
-export default AppContainer;
+export default withRouter(AppContainer);
