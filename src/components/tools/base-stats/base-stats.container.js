@@ -1,5 +1,4 @@
 import { set_results } from '../../../actions/results-actions';
-import { unmount_tool } from '../../../actions/active-tool-actions';
 import { show_alert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 
@@ -27,8 +26,7 @@ const mapDispatchToProps = dispatch => {
         return;
       }
       dispatch(execute(raster, geometry, func));
-    },
-    close: () => dispatch(unmount_tool())
+    }
   }
 }
 
