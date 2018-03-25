@@ -1,6 +1,5 @@
 import LoadComponent from './load.component';
 import { add_raster } from '../../../actions/raster-actions';
-import { unmount_tool } from '../../../actions/active-tool-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 import { show_alert } from '../../../actions/alert-actions';
@@ -14,12 +13,8 @@ const urlIsValid = url => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    show_alert: message => {
-      console.error('gonna show alert: ', message);
-      dispatch(show_alert(message))
-    },
-    add_raster: input => dispatch(add_raster(input)),
-    close: () => dispatch(unmount_tool())
+    show_alert: message => dispatch(show_alert(message)),
+    add_raster: input => dispatch(add_raster(input))
   }
 }
 
@@ -29,7 +24,7 @@ export const load_state = compose(
   withState('file_input', 'set_file_input', ''),
   withHandlers({
     update_url_input: ({ set_url_input }) => event => {
-      return set_url_input(event.target.value);
+      return set_url_input(event.target.value.trim());
     },
     update_file_input: ({ set_file_input }) => event => {
       return set_file_input(event.target.files[0]);
