@@ -115,16 +115,19 @@ body {
   overflow: hidden;
 }
 .ReactModal__Overlay {
+  background: rgba(0, 0, 0, 0.75) !important;
   border-radius: 3px;
   z-index: 2000;
-  background: rgba(0, 0, 0, 0.75) !important;
 }
 .ReactModal__Overlay .ReactModal__Content {
-  max-width: 500px;
-  margin: auto;
-  padding: 0 !important;
   border: none !important;
+  bottom: auto !important;
+  margin: auto;
+  max-width: 500px;
   overflow: hidden !important;
+  padding: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%);
   transition: opacity 200ms ease-in-out;
 }
 .ReactModal__Overlay .ReactModal__Content--after-open {
@@ -163,7 +166,7 @@ body {
 }
 .ReactModal__Overlay .ReactModal__Content .content {
   overflow-y: auto;
-  height: calc(100% - 75px);
+  overflow-x: hidden;
   padding: 32px;
 }
 .ReactModal__Overlay .ReactModal__Content .content::-webkit-scrollbar {
@@ -178,6 +181,16 @@ body {
 }
 .ReactModal__Overlay .ReactModal__Content .content .gt-input {
   margin-top: 24px;
+}
+@media (max-height: 700px) {
+  .ReactModal__Overlay .ReactModal__Content .content {
+    max-height: 450px;
+  }
+}
+@media (max-height: 550px) {
+  .ReactModal__Overlay .ReactModal__Content .content {
+    max-height: 375px;
+  }
 }
 #menu {
   background: white;
@@ -518,32 +531,40 @@ body {
   z-index: 1001;
 }
 .loader-container .loader {
-  text-align: center;
-  width: 30%;
-  min-width: 20rem;
+  align-items: center;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-around;
   margin: auto;
-  padding: 2rem;
+  padding: 40px;
   position: relative;
-  top: 25%;
-  height: 50%;
-  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
 }
-.loader-container .loader h3 {
-  font-weight: bold;
-  color: white;
-  margin-bottom: 2rem;
+@media (max-width: 700px) {
+  .loader-container .loader {
+    flex-direction: column;
+    width: 300px;
+  }
 }
 .loader-container .loader .spinner {
-  border: 1.5rem solid rgba(255, 255, 255, 0.2);
-  /* Light grey */
-  border-top: 1.5rem solid #31b98d;
-  /* Blue */
+  border: 8px solid #ff4380;
+  border-top: 8px solid white;
   border-radius: 50%;
-  width: 12rem;
-  height: 12rem;
+  width: 100px;
+  height: 100px;
   animation: spin 2s linear infinite;
   position: relative;
-  margin: auto;
+}
+.loader-container .loader h3 {
+  letter-spacing: 2px;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Lalezar';
 }
 @keyframes spin {
   0% {
