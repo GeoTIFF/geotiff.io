@@ -5,8 +5,8 @@ const LoaderComponent = ({ loading }) => {
     return (
       <div className="loader-container">
         <div className='loader'>
-          <h3>{loading}</h3>
           <div className='spinner'></div>
+          <h3>{loading}</h3>
         </div>
       </div>
     )
