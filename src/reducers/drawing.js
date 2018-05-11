@@ -10,7 +10,7 @@ const drawing = (state = false, action) => {
       } else if (action.format === 'point') {
         Map.start_draw_point();
       } else {
-        throw 'Invalid format specified. Please use "rectangle", "polygon", or "point"';
+        throw new Error('Invalid format specified. Please use "rectangle", "polygon", or "point"');
       }
       return action.format;
     case 'MAP_DRAW_STOP':

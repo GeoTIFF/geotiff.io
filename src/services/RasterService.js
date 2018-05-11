@@ -1,6 +1,5 @@
 import geoblaze from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
-import chroma from 'chroma-js';
 
 const RasterService = {
 
@@ -8,16 +7,24 @@ const RasterService = {
     return new Promise((resolve, reject) => {
       geoblaze.load(input)
         .then(georaster => {
-          let options = {
-            georaster: georaster,
+          const options = {
+            georaster,
             opacity: 0.7
           };
-          let raster = new GeoRasterLayer(options);
+          const raster = new GeoRasterLayer(options);
           resolve(raster);
         }, error => {
           reject(error);
         });
     });
+  },
+
+  create_raster_from_georaster(georaster) {
+    const options = {
+      georaster,
+      opacity: 0.7,
+    }
+    return new GeoRasterLayer(options);
   }
 }
 
