@@ -27,7 +27,6 @@ let ToolListService = {
   search_tool_list(value) {
     return new Promise((resolve, reject) => {
       this.get_tool_list().then(tool_list => {
-        console.log("tool_list:", tool_list);
         if (!this.fuse) {
           let options = {
             includeScore: true,
