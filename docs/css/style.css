@@ -262,6 +262,7 @@ body {
   width: 150px;
 }
 #menu #content #tool-button-container .tool-button > i {
+  background-size: 100%;
   width: 24px;
   height: 24px;
   color: #31b98d;

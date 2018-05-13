@@ -16,6 +16,13 @@ export const add_raster = input => {
 };
 window.add_raster = add_raster; // made this global temporarily so it can work with main.js
 
+export const add_raster_from_georaster = georaster => {
+  return dispatch => {
+    const raster = RasterService.create_raster_from_georaster(georaster)
+    return dispatch({ type: 'MAP_RASTER_ADD', raster });
+  }
+}
+
 export const remove_raster = () => (
   { type: 'MAP_RASTER_REMOVE' }
-)
+);

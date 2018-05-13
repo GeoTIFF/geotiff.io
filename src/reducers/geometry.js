@@ -17,7 +17,7 @@ const geometry = (state = null, action) => {
         Map.add_polygon(layer);
         return layer;
       } else {
-        throw 'Invalid format for geometry was specified, please use either "polygon" or "point".'
+        throw new Error('Invalid format for geometry was specified, please use either "polygon" or "point".');
       }
     case 'MAP_GEOMETRY_REMOVE':
       if (state) Map.remove_layer(state);

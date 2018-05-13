@@ -7,38 +7,15 @@ import { show_alert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
-const mapStateToProps = state => {
-  return {
-    results: state.results,
-    drawing: state.drawing,
-    geometry: state.geometry,
-    raster: state.raster
-  }
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    get_histogram: (raster, geometry, options) => {
-      try {
-        dispatch(get_histogram(raster, geometry, options));
-      } catch (error) {
-        dispatch(show_alert(error.message));
-      }
-    }
-  }
-}
-
 const get_histogram = (raster, geometry, options) => {
-  let { scale_type, num_classes, class_type } = options;
+  let { scale_type, num_classes } = options;
 
   // make sure parameters are valid
   if (num_classes % 1 !== 0) {
     throw new Error('Please make sure the number of classes is an integer.');
-    return;
   }
   if (!geometry) {
     throw new Error('Please make sure to select a geography to run the tool on.');
-    return;
   }
 
   // convert to list because react doesn't like storing objects in state
@@ -63,6 +40,27 @@ const get_histogram = (raster, geometry, options) => {
     <p>{`${bin[0]}:   ${bin[1]}\n`}</p>
   )));
   return set_results(histogram);
+}
+
+const mapStateToProps = state => {
+  return {
+    results: state.results,
+    drawing: state.drawing,
+    geometry: state.geometry,
+    raster: state.raster
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    get_histogram: (raster, geometry, options) => {
+      try {
+        dispatch(get_histogram(raster, geometry, options));
+      } catch (error) {
+        dispatch(show_alert(error.message));
+      }
+    }
+  }
 }
 
 const HistogramContainer = compose(
