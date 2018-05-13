@@ -7,5 +7,5 @@ Median|/images/median.svg|/median
 Min|/images/minimum.svg|/min
 Max|/images/maximum.svg|/max
 Band Arithmetic|/images/band-arithmetic.svg|/band-arithmetic
+Raster Calculator|/images/raster-calculator.svg|/raster-calculator
 Histogram|/images/histogram.svg|/histogram
-Download|/images/download.svg|/download

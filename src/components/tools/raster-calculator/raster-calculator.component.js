@@ -3,28 +3,29 @@ import ToolHeader from '../../shared/tool-header';
 import ToolContent from '../../shared/tool-content';
 import ToolFooter from '../../shared/tool-footer';
 
-const RasterCalculator = ({ band_arithmetic, update_band_arithmetic, execute }) => (
-  <div id='band-arithmetic-tool' className='tool'>
+const RasterCalculator = ({ raster_calculator, update_raster_calculator, execute }) => (
+  <div id='raster-calculator-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/band-arithmetic.svg"
-      title="Run Band Arithmetic on the raster"
+      logo_url="/images/raster-calculator.svg"
+      title="Run Raster Calculator on the raster"
     />
     <ToolContent>
-      <p>Description of how band arithmetic works goes here.</p>
+      <p>Description of how raster calculator works goes here.</p>
       <br/>
-      <p>Enter your band arithmetic operation.</p>
-      <input
+      <p>Enter your raster calculator operation.</p>
+      <textarea
         type='string'
         className='gt-input'
-        onChange={update_band_arithmetic}
-        value={band_arithmetic}
+        onChange={update_raster_calculator}
+        value={raster_calculator}
+        rows="5"
       />
       <div className='content-row submit-row'>
         <button
           className='gt-button-accent full'
           onClick={execute}
         >
-          Compute Band Arithmetic
+          Compute Raster Calculator
         </button>
       </div>
     </ToolContent>

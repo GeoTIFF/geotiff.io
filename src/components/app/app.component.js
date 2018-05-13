@@ -13,6 +13,7 @@ import Min from '../tools/min';
 import Mode from '../tools/mode';
 import Sum from '../tools/sum';
 import BandArithmetic from '../tools/band-arithmetic';
+import RasterCalculator from '../tools/raster-calculator';
 import Modal from '../modal';
 import Loader from '../loader';
 import Alert from '../alert';
@@ -36,6 +37,7 @@ const AppComponent = ({ layout, set_layout }) => (
       <Route path='/mode' component={Mode} />
       <Route path='/sum' component={Sum} />
       <Route path='/band-arithmetic' component={BandArithmetic} />
+      <Route path='/raster-calculator' component={RasterCalculator} />
       <Route component={Menu} />
     </Switch>
     <MapContainer />

@@ -1,5 +1,5 @@
 import geoblaze from 'geoblaze';
-import BandArithmeticComponent from './band-arithmetic.component';
+import RasterCalculatorComponent from './raster-calculator.component';
 import { add_raster_from_georaster } from '../../../actions/raster-actions';
 import { start_loading, stop_loading } from '../../../actions/loading-actions';
 import { show_alert } from '../../../actions/alert-actions';
@@ -11,12 +11,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  run_band_arithmetic: (raster, band_arithmetic) => {
+  run_raster_calculator: (raster, raster_calculator) => {
     if (!raster) return dispatch(show_alert('Please add a raster before running this tool.'));
-    if (!band_arithmetic) return dispatch(show_alert('Please add an arithmetic operation before running this tool.'));
+    if (!raster_calculator) return dispatch(show_alert('Please add a raster calculator operation before running this tool.'));
     try {
-      dispatch(start_loading('Running Band Arithmetic'));
-      return geoblaze.bandArithmetic(raster, band_arithmetic).then(new_raster => {
+      dispatch(start_loading('Running Raster Calculator'));
+      console.log("raster_calculator:", raster_calculator);
+      return geoblaze.rasterCalculator(raster, raster_calculator).then(new_raster => {
         dispatch(stop_loading());
         dispatch(add_raster_from_georaster(new_raster));
       });
@@ -27,17 +28,17 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const BandArithmeticContainer = compose(
+const RasterCalculatorContainer = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withState('band_arithmetic', 'set_band_arithmetic', ''),
+  withState('raster_calculator', 'set_raster_calculator', ''),
   withHandlers({
-    update_band_arithmetic: ({ set_band_arithmetic }) => event => {
-      return set_band_arithmetic(event.target.value);
+    update_raster_calculator: ({ set_raster_calculator }) => event => {
+      return set_raster_calculator(event.target.value);
     },
-    execute: ({ raster, band_arithmetic, run_band_arithmetic }) => () => {
-      return run_band_arithmetic(raster, band_arithmetic);
+    execute: ({ raster, raster_calculator, run_raster_calculator }) => () => {
+      return run_raster_calculator(raster, raster_calculator);
     }
   })
-)(BandArithmeticComponent);
+)(RasterCalculatorComponent);
 
-export default BandArithmeticContainer;
+export default RasterCalculatorContainer;

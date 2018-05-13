@@ -1,15 +1,30 @@
 import geoblaze from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
 
+const getResolution = () => {
+  const width = document.documentElement.clientWidth;
+  const userAgent = window.navigator.userAgent;
+  const isAndroid = userAgent.includes("Android");
+  const isChromebook = userAgent.includes("CrOS");
+  if (width < 900 || isAndroid || isChromebook) {
+    return 32;
+  } else if (width < 1200) {
+    return 48;
+  } else {
+    return 64;
+  }
+}
+
 const RasterService = {
 
   create_raster(input) {
     return new Promise((resolve, reject) => {
       geoblaze.load(input)
         .then(georaster => {
-          const options = {
-            georaster,
-            opacity: 0.7
+          let options = {
+            georaster: georaster,
+            opacity: 0.7,
+            resolution: getResolution()
           };
           const raster = new GeoRasterLayer(options);
           resolve(raster);
