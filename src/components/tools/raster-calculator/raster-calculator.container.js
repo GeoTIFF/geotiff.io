@@ -16,7 +16,6 @@ const mapDispatchToProps = dispatch => ({
     if (!raster_calculator) return dispatch(show_alert('Please add a raster calculator operation before running this tool.'));
     try {
       dispatch(start_loading('Running Raster Calculator'));
-      console.log("raster_calculator:", raster_calculator);
       return geoblaze.rasterCalculator(raster, raster_calculator).then(new_raster => {
         dispatch(stop_loading());
         dispatch(add_raster_from_georaster(new_raster));
