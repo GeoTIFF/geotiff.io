@@ -1,15 +1,17 @@
 import geoblaze from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
-import chroma from 'chroma-js';
 
 const getResolution = () => {
   const width = document.documentElement.clientWidth;
-  if (width < 900) {
-    return Math.pow(2, 5);
+  const userAgent = window.navigator.userAgent;
+  const isAndroid = userAgent.includes("Android");
+  const isChromebook = userAgent.includes("CrOS");
+  if (width < 900 || isAndroid || isChromebook) {
+    return 32;
   } else if (width < 1200) {
-    return Math.pow(2, 6);
+    return 48;
   } else {
-    return Math.pow(2, 7);
+    return 64;
   }
 }
 
@@ -22,14 +24,22 @@ const RasterService = {
           let options = {
             georaster: georaster,
             opacity: 0.7,
-            resolution: getResolution(),
+            resolution: getResolution()
           };
-          let raster = new GeoRasterLayer(options);
+          const raster = new GeoRasterLayer(options);
           resolve(raster);
         }, error => {
           reject(error);
         });
     });
+  },
+
+  create_raster_from_georaster(georaster) {
+    const options = {
+      georaster,
+      opacity: 0.7,
+    }
+    return new GeoRasterLayer(options);
   }
 }
 
