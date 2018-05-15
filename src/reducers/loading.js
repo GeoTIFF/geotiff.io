@@ -1,5 +1,3 @@
-import { start_loading, stop_loading } from '../actions/loading-actions';
-
 const loading = (state = null, action) => {
   switch (action.type) {
     case 'LOADING_START':
