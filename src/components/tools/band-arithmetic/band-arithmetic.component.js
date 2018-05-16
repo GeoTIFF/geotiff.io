@@ -10,7 +10,7 @@ const BandArithmeticComponent = ({ band_arithmetic, update_band_arithmetic, exec
       title="Run Band Arithmetic on the raster"
     />
     <ToolContent>
-      <p>Description of how band arithmetic works goes here.</p>
+      <p>Run a math expression on every pixel in your raster.  The values from different bands can be accessed with the variables A, B, C, ...</p>
       <br/>
       <p>Enter your band arithmetic operation.</p>
       <input

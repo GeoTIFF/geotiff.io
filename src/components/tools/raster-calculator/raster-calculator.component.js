@@ -10,7 +10,7 @@ const RasterCalculator = ({ raster_calculator, update_raster_calculator, execute
       title="Run Raster Calculator on the raster"
     />
     <ToolContent>
-      <p>Description of how raster calculator works goes here.</p>
+      <p>Run a JavaScript function on every pixel in your raster.  Just type in the function body below.  The values for each different pixel are already passed in as variables A, B, C, etc.  For example typing in "return A > 200 ? 1 : 0;" binarizes the image using the first band.</p>
       <br/>
       <p>Enter your raster calculator operation.</p>
       <textarea
