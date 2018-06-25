@@ -4,7 +4,7 @@ GeoTIFF.io wouldn't be what it is without its contributors.  There's many differ
 ## Write Code
 ### Author a New Tool
 Geotiff.io consists of different tools, which appear as cards underneath the search bar.  Some examples, include "Load GeoTIFF" and "Identify Pixel".  It'd be a great help if you add to this growing list of tools!  Here's the steps:
- 1) Author backend code or an algorithm for the tool and place it under the packages folder of geotiff-io, found [here](https://github.com/GeoTIFF/geotiff-io/tree/master/packages).
+ 1) Author backend code or an algorithm for the tool and place it under the `src` folder of geotiff-io, found [here](https://github.com/GeoTIFF/geotiff.io/tree/master/src).
  2) Submit a pull request to the dev branch of geotiff-io.  Your code should exist on a separate branch you created specifically for this pull request.  You can create a new branch with the following `git checkout -b name_of_new_branch`
  3) Create a frontend interface for your tool.  You can find the GUIs under tools [here](https://github.com/GeoTIFF/geotiff.io/tree/master/src/tools).
  4) Submit a pull request to the dev branch of geotiff.io for the GUI
