@@ -10,7 +10,7 @@ Geotiff.io consists of different tools, which appear as cards underneath the sea
  4) Submit a pull request to the dev branch of geotiff.io for the GUI
  
 ### Write Tests
-GeoTIFF.io has a lot of tests for testing both the GUI frontend and backend algorithms.  You can write tests for either.  The front-end GUI tests are actually written in Python with [Behave](http://pythonhosted.org/behave/), [Selenium](https://github.com/SeleniumHQ/selenium), and [Beryl](https://github.com/danieljdufour/beryl) and can be found under the tests folder [here](https://github.com/GeoTIFF/geotiff.io/tree/master/test).  Backend tests are written in JavaScript and a test is included in for each tool.
+GeoTIFF.io has a lot of tests for testing both the GUI frontend and backend algorithms.  You can write tests for either.  The front-end GUI tests are actually written in Python with [Behave](http://pythonhosted.org/behave/), [Selenium](https://github.com/SeleniumHQ/selenium), and [Beryl](https://github.com/danieljdufour/beryl) and can be found under the tests folder [here](https://github.com/GeoTIFF/geotiff.io/tree/master/test).  Backend tests are written in JavaScript and a test is included for each tool.
 
 ### Submit User Stories
 Hearing about our users challenges and learning how we can help is a great benefit.  Tell us you users stories by submitting issues [here](https://github.com/GeoTIFF/geotiff.io/issues) or emailing one of the code contributors.  Daniel's email address is daniel.j.dufour@gmail.com
