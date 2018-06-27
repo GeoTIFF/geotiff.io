@@ -4,23 +4,23 @@ const geometry = (state = null, action) => {
   switch (action.type) {
     case 'MAP_GEOMETRY_ADD':
       if (state) { // first remove the existing layer is present
-        Map.remove_layer(state);
+        Map.removeLayer(state);
       }
       if (action.format === 'polygon') {
-        Map.add_polygon(action.geometry);
+        Map.addPolygon(action.geometry);
         return action.geometry;
       } else if (action.format === 'point') {
-        let point = Map.add_point(action.geometry);
+        let point = Map.addPoint(action.geometry);
         return point;
       } else if (action.format === 'geojson') {
-        let layer = Map.create_geojson_layer(action.geometry);
-        Map.add_polygon(layer);
+        let layer = Map.createGeojsonLayer(action.geometry);
+        Map.addPolygon(layer);
         return layer;
       } else {
         throw new Error('Invalid format for geometry was specified, please use either "polygon" or "point".');
       }
     case 'MAP_GEOMETRY_REMOVE':
-      if (state) Map.remove_layer(state);
+      if (state) Map.removeLayer(state);
       return null;
     default:
       return state;

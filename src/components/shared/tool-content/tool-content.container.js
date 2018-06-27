@@ -3,7 +3,7 @@ import ToolContentComponent from './tool-content.component';
 
 const mapStateToProps = state => {
   return {
-    menu_focus: state.menu_focus
+    menuFocus: state.menuFocus
   }
 };
 

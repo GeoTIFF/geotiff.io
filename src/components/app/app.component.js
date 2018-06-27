@@ -18,7 +18,7 @@ import Modal from '../modal';
 import Loader from '../loader';
 import Alert from '../alert';
 
-const AppComponent = ({ layout, set_layout }) => (
+const AppComponent = ({ layout, setLayout }) => (
   <div
     className="App"
     data-layout={layout}

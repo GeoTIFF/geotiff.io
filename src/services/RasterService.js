@@ -17,7 +17,7 @@ const getResolution = () => {
 
 const RasterService = {
 
-  create_raster(input) {
+  createRaster(input) {
     return new Promise((resolve, reject) => {
       geoblaze.load(input)
         .then(georaster => {
@@ -34,7 +34,7 @@ const RasterService = {
     });
   },
 
-  create_raster_from_georaster(georaster) {
+  createRasterFromGeoraster(georaster) {
     const options = {
       georaster,
       opacity: 0.7,

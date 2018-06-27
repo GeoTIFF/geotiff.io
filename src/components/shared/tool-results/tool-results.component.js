@@ -1,6 +1,6 @@
 import React from 'react';
 
-const list_results = (results) => {
+const listResults = (results) => {
   results.forEach(result => console.error(result))
   return results.map((result, index) => (
     <p>{`Band ${index + 1}: ${result}`}</p>
@@ -12,8 +12,8 @@ const ToolResultsComponent = ({ results }) => (
     <h3>Result: </h3>
     <p>
       {
-        typeof results === 'object' && results.length > 1
-          ? list_results(results)
+        typeof results && results === 'object' && results.length > 1
+          ? listResults(results)
           : results
       }
     </p>

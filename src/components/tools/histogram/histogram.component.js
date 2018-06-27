@@ -7,21 +7,21 @@ import DrawGeometry from '../../shared/draw-geometry';
 import ImportGeometry from '../../shared/import-geometry';
 
 const HistogramComponent = ({
-  results, drawing, raster, geometry, execute, scale_type,
-  update_scale_type, num_classes, update_num_classes,
-  class_type, update_class_type
+  results, raster, geometry, execute, scaleType,
+  updateScaleType, numClasses, updateNumClasses,
+  classType, updateClassType
 }) => (
   <div id='sum-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/histogram.svg"
+      logoURL="/images/histogram.svg"
       title="Get the histogram distribution of an area"
     />
     <ToolContent>
       <p>1. Select a Measurement Scale</p>
       <select
         className='gt-dropdown'
-        onChange={update_scale_type}
-        value={scale_type}
+        onChange={updateScaleType}
+        value={scaleType}
       >
         <option value='ratio'>Ratio</option>
         <option value='nominal'>Nominal</option>
@@ -31,19 +31,19 @@ const HistogramComponent = ({
       <input
         type='number'
         className='gt-input'
-        onChange={update_num_classes}
-        value={num_classes}
+        onChange={updateNumClasses}
+        value={numClasses}
         min='0'
         step='1'
-        disabled={scale_type === 'nominal'}
+        disabled={scaleType === 'nominal'}
       />
       <br />
       <p>3. Select how the data should be classified</p>
       <select
         className='gt-dropdown'
-        onChange={update_class_type}
-        value={class_type}
-        disabled={scale_type === 'nominal'}
+        onChange={updateClassType}
+        value={classType}
+        disabled={scaleType === 'nominal'}
       >
         <option value='equal-interval'>Equal-Interval</option>
         <option value='quantile'>Quantile</option>

@@ -2,31 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/app';
-import build_store from './build-store';
+import buildStore from './build-store';
 import { Provider } from 'react-redux';
-import { load_tools } from './actions/tool-list-actions';
-import { add_raster } from './actions/raster-actions';
+import { loadTools } from './actions/tool-list-actions';
+import { addRaster } from './actions/raster-actions';
 import UrlService from './services/UrlService';
 import ToolListService from './services/ToolListService';
 import Map from './Map';
-import _ from 'underscore';
 
-let store = build_store();
-store.dispatch(load_tools());
+const store = buildStore();
+store.dispatch(loadTools());
 window.store = store; // made this global so it can be accessed from Map
 
-let url = UrlService.get('url');
+const url = UrlService.get('url');
 if (url) {
-  store.dispatch(add_raster(url));
+  store.dispatch(addRaster(url));
 }
 
-let tool_name = UrlService.get('tool');
-if (tool_name) {
-  ToolListService.get_tool_list().then(tools => {
-    let tool = _.find(tools, tool => tool[2] === tool_name);
-    // if (tool) store.dispatch(mount_tool(tool[3]));
-  });
-}
+// const toolName = UrlService.get('tool');
+// if (toolName) {
+//   ToolListService.getToolList().then(tools => {
+//     const tool = tools.find(tool => tool[2] === toolName);
+//   });
+// }
 
 ReactDOM.render(
   <Provider store={store}>

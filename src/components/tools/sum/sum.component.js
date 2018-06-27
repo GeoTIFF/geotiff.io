@@ -7,9 +7,9 @@ import DrawGeometry from '../../shared/draw-geometry';
 import ImportGeometry from '../../shared/import-geometry';
 
 const SumComponent = ({ results, raster, geometry, execute, func }) => (
-  <div id='mean-tool' className='tool'>
+  <div id='sum-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/sum.svg"
+      logoURL="/images/sum.svg"
       title="Get the sum pixel value of an area"
     />
     <ToolContent>

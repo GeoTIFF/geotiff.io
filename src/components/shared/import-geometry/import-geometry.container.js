@@ -1,15 +1,15 @@
 import ImportGeometryComponent from './import-geometry.component';
-import { add_geometry } from '../../../actions/geometry-actions';
-import { show_alert } from '../../../actions/alert-actions';
+import { addGeometry } from '../../../actions/geometry-actions';
+import { showAlert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
-const add_geojson = geojson => {
+const addGeoJSON = geojson => {
   let geometry = JSON.parse(geojson);
-  return add_geometry(geometry, 'geojson');
+  return addGeometry(geometry, 'geojson');
 }
 
-const is_json_str = json => {
+const isJSONStr = json => {
   try {
     JSON.parse(json);
   } catch(e) {
@@ -18,39 +18,39 @@ const is_json_str = json => {
   return true;
 }
 
-const import_geojson = event => {
+const importGeojson = event => {
   return new Promise((resolve, reject) => {
     let file = event.target.files[0];
-    let file_reader = new FileReader();
-    file_reader.onload = evt => {
+    let fileReader = new FileReader();
+    fileReader.onload = evt => {
       let geojson = evt.target.result;
-      if (is_json_str(geojson)) {
+      if (isJSONStr(geojson)) {
         resolve(geojson);
       } else {
         reject(new Error('File could not be uploaded. Please make sure to upload a valid JSON file'));
       }
     }
-    file_reader.readAsText(file);
+    fileReader.readAsText(file);
   });
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    show_alert: message => dispatch(show_alert(message)),
-    add_geojson: geojson => dispatch(add_geojson(geojson))
+    showAlert: message => dispatch(showAlert(message)),
+    addGeoJSON: geojson => dispatch(addGeoJSON(geojson))
   }
 }
 
 const ImportGeometryContainer = compose(
   connect(null, mapDispatchToProps),
-  withState('geometry', 'update_geometry', ''),
+  withState('geometry', 'updateGeometry', ''),
   withHandlers({
-    import_geometry: ({ update_geometry, add_geojson, show_alert }) => event => {
-      import_geojson(event).then(geometry => {
-        update_geometry(geometry);
-        add_geojson(geometry);
+    importGeometry: ({ updateGeometry, addGeoJSON, showAlert }) => event => {
+      importGeojson(event).then(geometry => {
+        updateGeometry(geometry);
+        addGeoJSON(geometry);
       }, error => {
-        show_alert(error.message);
+        showAlert(error.message);
       });
     }
   })

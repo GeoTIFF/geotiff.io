@@ -1,22 +1,22 @@
-let _ = require('underscore');
-let Fuse = require('fuse.js');
+const _ = require('underscore');
+const Fuse = require('fuse.js');
 
-let ToolListService = {
+const ToolListService = {
 
-  tool_list: null,
+  toolList: null,
 
-  get_tool_list() {
+  getToolList() {
     return new Promise((resolve, reject) => {
-      if (this.tool_list) {
-        resolve(this.tool_list);
+      if (this.toolList) {
+        resolve(this.toolList);
       } else {
         fetch('data/tools.txt').then(response => {
           response.text().then(str => {
-            let tools = str.split('\n')
+            const tools = str.split('\n')
               .filter(Boolean) // filter out blank lines
               .map(tool => tool.split('|'));
 
-            this.tool_list = tools.filter(tool => tool[0][0] !== '#'); // this is temporary
+            this.toolList = tools.filter(tool => tool[0][0] !== '#'); // this is temporary
             resolve(tools);
           });
         });
@@ -24,11 +24,11 @@ let ToolListService = {
     });
   },
 
-  search_tool_list(value) {
+  searchToolList(value) {
     return new Promise((resolve, reject) => {
-      this.get_tool_list().then(tool_list => {
+      this.getToolList().then(toolList => {
         if (!this.fuse) {
-          let options = {
+          const options = {
             includeScore: true,
             shouldSort: true,
             tokenize: true,
@@ -42,10 +42,10 @@ let ToolListService = {
               { name: "2", weight: 0.2 }
             ]
           };
-          this.fuse = new Fuse(tool_list, options);
+          this.fuse = new Fuse(toolList, options);
         }
         if (value === "") {
-          resolve(this.tool_list);
+          resolve(this.toolList);
         } else {
           resolve(_.pluck(this.fuse.search(value), 'item'));
         }

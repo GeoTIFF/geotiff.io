@@ -1,7 +1,7 @@
-export const start_drawing = format => (
+export const startDrawing = format => (
   { type: 'MAP_DRAW_START', format }
 );
 
-export const stop_drawing = () => (
+export const stopDrawing = () => (
   { type: 'MAP_DRAW_STOP' }
 );
