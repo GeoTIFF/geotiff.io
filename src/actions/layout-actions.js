@@ -1,7 +1,7 @@
-export const set_default_layout = layout => (
+export const setDefaultLayout = layout => (
   { type: 'LAYOUT_DEFAULT' }
 );
 
-export const set_hide_menu_layout = layout => (
+export const setHideMenuLayout = layout => (
   { type: 'LAYOUT_HIDE_MENU' }
 );

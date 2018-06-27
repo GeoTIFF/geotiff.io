@@ -1,21 +1,21 @@
 import _ from 'underscore';
 import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
 import geoblaze from 'geoblaze';
-import { add_geometry, remove_geometry } from './actions/geometry-actions';
-import { stop_drawing } from './actions/drawing-actions';
-import { set_results } from './actions/results-actions';
-import { unfocus_menu } from './actions/menu-focus-actions';
+import { addGeometry, removeGeometry } from './actions/geometry-actions';
+import { stopDrawing } from './actions/drawing-actions';
+import { setResults } from './actions/results-actions';
+import { unfocusMenu } from './actions/menu-focus-actions';
 
 let store;
-let L = window.L;
-let map, draw_control;
+const L = window.L;
+let map, drawControl;
 
-let Map = {
+const Map = {
 
   tiff: null,
   image: null,
   raster: null,
-  drawing_points: null,
+  drawingPoints: null,
 
   subscribers: [],
 
@@ -28,7 +28,7 @@ let Map = {
     map.options.minZoom = 2;
 
     // add draw controls
-    let draw_options = {
+    let drawOptions = {
       /*draw: {
         rectangle: {
           shapeOptions: {
@@ -37,15 +37,15 @@ let Map = {
         }
       }*/
     };
-    draw_control = new L.Control.Draw(draw_options);
-    map.addControl(draw_control);
+    drawControl = new L.Control.Draw(drawOptions);
+    map.addControl(drawControl);
 
     // add osm basemap
-    let OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    let openStreetMapMapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
-    OpenStreetMap_Mapnik.addTo(map);
+    openStreetMapMapnik.addTo(map);
 
     // add search
     let provider = new OpenStreetMapProvider();
@@ -56,33 +56,33 @@ let Map = {
     map.addControl(searchControl);
 
     map.on('click', e => {
-      store.dispatch(unfocus_menu());
-      if (self.drawing_points) {
-        store.dispatch(remove_geometry());
-        store.dispatch(add_geometry(e.latlng, 'point'));
+      store.dispatch(unfocusMenu());
+      if (self.drawingPoints) {
+        store.dispatch(removeGeometry());
+        store.dispatch(addGeometry(e.latlng, 'point'));
 
         // temporary - setting results for identify here since
         // i can't find a good way of getting it in to the identify
         // tool while using leaflet for mapping
         let latlng = [e.latlng.lng, e.latlng.lat];
         let results = geoblaze.identify(self.raster.georaster, latlng);
-        store.dispatch(set_results(results));
+        store.dispatch(setResults(results));
       }
     });
     map.on('draw:created', e => {
-      store.dispatch(stop_drawing());
-      store.dispatch(add_geometry(e.layer, 'polygon'));
+      store.dispatch(stopDrawing());
+      store.dispatch(addGeometry(e.layer, 'polygon'));
     });
   },
 
-  add_raster(layer) {
+  addRaster(layer) {
     if (this.raster) map.removeLayer(this.raster);
     layer.addTo(map);
 
-    let layer_bounds = layer.getBounds();
-    map.fitBounds(layer_bounds);
+    let layerBounds = layer.getBounds();
+    map.fitBounds(layerBounds);
 
-    L.rectangle(layer_bounds, {
+    L.rectangle(layerBounds, {
       color: "#ff0000",
       fillOpacity: 0,
       weight: 1
@@ -91,55 +91,55 @@ let Map = {
     this.raster = layer;
   },
 
-  remove_raster() {
+  removeRaster() {
     map.removeLayer(this.raster);
     this.raster = null;
   },
 
-  add_polygon(layer) {
+  addPolygon(layer) {
     layer.addTo(map);
   },
 
-  add_point(latlng) {
+  addPoint(latlng) {
     return L.marker(latlng).addTo(map);
   },
 
-  remove_layer(layer) {
+  removeLayer(layer) {
     map.removeLayer(layer);
   },
 
-  create_geojson_layer(geojson) {
+  createGeojsonLayer(geojson) {
     return L.geoJSON(geojson);
   },
 
-  start_draw_rectangle() {
-    this.rectangle_drawer = new L.Draw.Rectangle(map, draw_control.options.rectangle);
-    this.rectangle_drawer.enable();
+  startDrawRectangle() {
+    this.rectangleDrawer = new L.Draw.Rectangle(map, drawControl.options.rectangle);
+    this.rectangleDrawer.enable();
   },
 
-  stop_draw_rectangle() {
-    if (this.rectangle_drawer) {
-      this.rectangle_drawer.disable();
+  stopDrawRectangle() {
+    if (this.rectangleDrawer) {
+      this.rectangleDrawer.disable();
     }
   },
 
-  start_draw_polygon() {
-    this.polygon_drawer = new L.Draw.Polygon(map, draw_control.options.polygon);
-    this.polygon_drawer.enable();
+  startDrawPolygon() {
+    this.polygonDrawer = new L.Draw.Polygon(map, drawControl.options.polygon);
+    this.polygonDrawer.enable();
   },
 
-  stop_draw_polygon() {
-    if (this.polygon_drawer) {
-      this.polygon_drawer.disable();
+  stopDrawPolygon() {
+    if (this.polygonDrawer) {
+      this.polygonDrawer.disable();
     }
   },
 
-  start_draw_point() {
-    this.drawing_points = true;
+  startDrawPoint() {
+    this.drawingPoints = true;
   },
 
-  stop_draw_point() {
-    this.drawing_points = false;
+  stopDrawPoint() {
+    this.drawingPoints = false;
   }
 }
 

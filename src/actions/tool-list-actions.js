@@ -1,15 +1,15 @@
 import ToolListService from '../services/ToolListService';
 
-export const load_tools = () => {
+export const loadTools = () => {
   return dispatch => {
-    return ToolListService.get_tool_list()
+    return ToolListService.getToolList()
       .then(tools => dispatch({ type: 'TOOL_LIST_LOAD', tools }));
   }
 }
 
-export const search_tools = value => {
+export const searchTools = value => {
   return dispatch => {
-    return ToolListService.search_tool_list(value)
+    return ToolListService.searchToolList(value)
       .then(tools => dispatch({ type: 'TOOL_LIST_SEARCH', tools }));
   }
 }

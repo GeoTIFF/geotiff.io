@@ -3,10 +3,10 @@ import ToolHeader from '../../shared/tool-header';
 import ToolContent from '../../shared/tool-content';
 import ToolFooter from '../../shared/tool-footer';
 
-const RasterCalculator = ({ raster_calculator, update_raster_calculator, execute }) => (
+const RasterCalculator = ({ rasterCalculator, updateRasterCalculator, execute }) => (
   <div id='raster-calculator-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/raster-calculator.svg"
+      logoURL="/images/raster-calculator.svg"
       title="Run Raster Calculator on the raster"
     />
     <ToolContent>
@@ -16,8 +16,8 @@ const RasterCalculator = ({ raster_calculator, update_raster_calculator, execute
       <textarea
         type='string'
         className='gt-input'
-        onChange={update_raster_calculator}
-        value={raster_calculator}
+        onChange={updateRasterCalculator}
+        value={rasterCalculator}
         rows="5"
       />
       <div className='content-row submit-row'>

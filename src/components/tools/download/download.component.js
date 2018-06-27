@@ -6,7 +6,7 @@ import ToolFooter from '../../shared/tool-footer';
 const DownloadComponent = ({ raster, download }) => (
   <div id='download-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/download.svg"
+      logoURL="/images/download.svg"
       title="Download the GeoTIFF"
     />
     <ToolContent>

@@ -1,8 +1,8 @@
 import geoblaze from 'geoblaze';
 import RasterCalculatorComponent from './raster-calculator.component';
-import { add_raster_from_georaster } from '../../../actions/raster-actions';
-import { start_loading, stop_loading } from '../../../actions/loading-actions';
-import { show_alert } from '../../../actions/alert-actions';
+import { addRasterFromGeoraster } from '../../../actions/raster-actions';
+import { startLoading, stopLoading } from '../../../actions/loading-actions';
+import { showAlert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
@@ -11,31 +11,31 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  run_raster_calculator: (raster, raster_calculator) => {
-    if (!raster) return dispatch(show_alert('Please add a raster before running this tool.'));
-    if (!raster_calculator) return dispatch(show_alert('Please add a raster calculator operation before running this tool.'));
+  runRasterCalculator: (raster, rasterCalculator) => {
+    if (!raster) return dispatch(showAlert('Please add a raster before running this tool.'));
+    if (!rasterCalculator) return dispatch(showAlert('Please add a raster calculator operation before running this tool.'));
     try {
-      dispatch(start_loading('Running Raster Calculator'));
-      return geoblaze.rasterCalculator(raster, raster_calculator).then(new_raster => {
-        dispatch(stop_loading());
-        dispatch(add_raster_from_georaster(new_raster));
+      dispatch(startLoading('Running Raster Calculator'));
+      return geoblaze.rasterCalculator(raster, rasterCalculator).then(newRaster => {
+        dispatch(stopLoading());
+        dispatch(addRasterFromGeoraster(newRaster));
       });
     } catch(e) {
-      dispatch(stop_loading());
-      dispatch(show_alert('Geotiff was unable to complete the operation. Please make sure you are using a multi-band raster and a valid arithmetic operation'));
+      dispatch(stopLoading());
+      dispatch(showAlert('Geotiff was unable to complete the operation. Please make sure you are using a multi-band raster and a valid arithmetic operation'));
     }
   }
 });
 
 const RasterCalculatorContainer = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withState('raster_calculator', 'set_raster_calculator', ''),
+  withState('rasterCalculator', 'setRasterCalculator', ''),
   withHandlers({
-    update_raster_calculator: ({ set_raster_calculator }) => event => {
-      return set_raster_calculator(event.target.value);
+    updateRasterCalculator: ({ setRasterCalculator }) => event => {
+      return setRasterCalculator(event.target.value);
     },
-    execute: ({ raster, raster_calculator, run_raster_calculator }) => () => {
-      return run_raster_calculator(raster, raster_calculator);
+    execute: ({ raster, rasterCalculator, runRasterCalculator }) => () => {
+      return runRasterCalculator(raster, rasterCalculator);
     }
   })
 )(RasterCalculatorComponent);

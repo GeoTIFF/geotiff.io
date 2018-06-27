@@ -1,7 +1,7 @@
-export const start_loading = message => (
+export const startLoading = message => (
   { type: 'LOADING_START', message }
 );
 
-export const stop_loading = () => (
+export const stopLoading = () => (
   { type: 'LOADING_STOP' }
 );
