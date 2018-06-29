@@ -9,6 +9,7 @@ import { addRaster } from './actions/raster-actions';
 import UrlService from './services/UrlService';
 import ToolListService from './services/ToolListService';
 import Map from './Map';
+import '../styles/style.less';
 
 const store = buildStore();
 store.dispatch(loadTools());
