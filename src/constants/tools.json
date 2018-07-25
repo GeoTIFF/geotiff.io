@@ -27,32 +27,32 @@
     },
     {
       "name": "Median",
-      "iconUrl": "./images/median",
+      "iconUrl": "./images/median.svg",
       "path": "/median"
     },
     {
       "name": "Min",
-      "iconUrl": "./images/min",
+      "iconUrl": "./images/minimum.svg",
       "path": "/min"
     },
     {
       "name": "Max",
-      "iconUrl": "./images/max",
+      "iconUrl": "./images/maximum.svg",
       "path": "/max"
     },
     {
       "name": "Band Arithmetic",
-      "iconUrl": "./images/band-arithmetic",
+      "iconUrl": "./images/band-arithmetic.svg",
       "path": "/band-arithmetic"
     },
     {
       "name": "Raster Calculator",
-      "iconUrl": "./images/raster-calculator",
+      "iconUrl": "./images/raster-calculator.svg",
       "path": "/raster-calculator"
     },
     {
       "name": "Histogram",
-      "iconUrl": "./images/histogram",
+      "iconUrl": "./images/histogram.svg",
       "path": "/histogram"
     }
   ]
