@@ -74,3 +74,5 @@ typings/
 package-lock.json
 
 .DS_Store
+
+dist/
