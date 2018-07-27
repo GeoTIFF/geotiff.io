@@ -3,7 +3,7 @@ import BaseStats from '../base-stats';
 import ModeComponent from './mode.component';
 import { withProps } from 'recompose';
 
-const calculate_mode = (raster, coors) => {
+const calculateMode = (raster, coors) => {
   const modes = geoblaze.mode(raster, coors);
   return modes.map(band => {
     if (typeof band === 'number') return band;
@@ -12,7 +12,7 @@ const calculate_mode = (raster, coors) => {
 }
 
 const ModeContainer = withProps(
-  { func: calculate_mode }
+  { func: calculateMode }
 )(BaseStats(ModeComponent));
 
 export default ModeContainer;

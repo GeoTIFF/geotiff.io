@@ -1,26 +1,26 @@
 import { combineReducers } from 'redux';
-import active_tool from './active-tool';
+import activeTool from './active-tool';
 import alert from './alert';
 import drawing from './drawing';
 import geometry from './geometry';
 import layout from './layout';
 import loading from './loading';
-import menu_focus from './menu-focus';
+import menuFocus from './menu-focus';
 import raster from './raster';
 import results from './results';
-import tool_list from './tool-list';
+import toolList from './tool-list';
 
-const root_reducer = combineReducers({
-  active_tool,
+const rootReducer = combineReducers({
+  activeTool,
   alert,
   drawing,
   geometry,
   layout,
   loading,
-  menu_focus,
+  menuFocus,
   raster,
   results,
-  tool_list
+  toolList
 });
 
-export default root_reducer;
+export default rootReducer;

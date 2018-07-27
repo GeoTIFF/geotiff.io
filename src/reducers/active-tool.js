@@ -1,4 +1,4 @@
-const active_tool = (state = null, action) => {
+const activeTool = (state = null, action) => {
   switch (action.type) {
     case 'ACTIVE_TOOL_MOUNT':
       return action.tool;
@@ -9,4 +9,4 @@ const active_tool = (state = null, action) => {
   }
 }
 
-export default active_tool;
+export default activeTool;

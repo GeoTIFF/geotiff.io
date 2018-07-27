@@ -1,9 +1,7 @@
 import React from 'react';
 import ToolButton from '../tool-button';
 
-const MenuComponent = ({
-  tool_list, menu_focus, search_tools, on_submit, focus
-}) => (
+const MenuComponent = ({ toolList, menuFocus, searchTools, onSubmit, focus }) => (
   <div id='menu'>
     <header id='menu-header'>
       <span className='menu-header-icon'></span>
@@ -13,28 +11,28 @@ const MenuComponent = ({
       id='search'
       onClick={focus}
     >
-      <form onSubmit={on_submit}>
+      <form onSubmit={onSubmit}>
         <input
           id='search-input'
           className='gt-input'
           type='text'
           placeholder='Search Tools...'
-          onChange={search_tools}
+          onChange={searchTools}
         />
       </form>
     </section>
     <section
       id='content'
-      className={menu_focus ? 'focus' : ''}
+      className={menuFocus ? 'focus' : ''}
     >
       <div id='tool-button-container'>
         {
-          tool_list.map(tool => {
+          toolList.map(({ name, iconUrl, path }) => {
             return <ToolButton
-              key={tool[0]}
-              name={tool[0]}
-              icon_url={tool[1]}
-              path={tool[2]}
+              key={name}
+              name={name}
+              iconUrl={iconUrl}
+              path={path}
             />
           })
         }

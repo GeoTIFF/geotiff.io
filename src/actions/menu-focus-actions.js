@@ -1,7 +1,7 @@
-export const focus_menu = () => (
+export const focusMenu = () => (
   { type: 'MENU_FOCUS_ON' }
 );
 
-export const unfocus_menu = () => (
+export const unfocusMenu = () => (
   { type: 'MENU_FOCUS_OFF' }
 );

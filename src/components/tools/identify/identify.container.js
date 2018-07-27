@@ -1,30 +1,30 @@
 import IdentifyComponent from './identify.component';
-import { start_drawing, stop_drawing } from '../../../actions/drawing-actions';
-import { remove_geometry } from '../../../actions/geometry-actions';
+import { startDrawing, stopDrawing } from '../../../actions/drawing-actions';
+import { removeGeometry } from '../../../actions/geometry-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
 let mapStateToProps = state => ({ results: state.results });
 
-const stop_and_remove_geometry = dispatch => {
-  dispatch(remove_geometry());
-  dispatch(stop_drawing());
+const stopAndRemoveGeometry = dispatch => {
+  dispatch(removeGeometry());
+  dispatch(stopDrawing());
 }
 
 let mapDispatchToProps = dispatch => {
   return {
-    start_drawing: () => dispatch(start_drawing('point')),
-    stop_drawing: () => stop_and_remove_geometry(dispatch)
+    startDrawing: () => dispatch(startDrawing('point')),
+    stopDrawing: () => stopAndRemoveGeometry(dispatch)
   }
 }
 
 let IdentifyContainer = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withState('identifying', 'update_identifying', false),
+  withState('identifying', 'updateIdentifying', false),
   withHandlers({
-    change_mode: props => () => {
-      props.identifying ? props.stop_drawing() : props.start_drawing('point');
-      return props.update_identifying(!props.identifying);
+    changeMode: props => () => {
+      props.identifying ? props.stopDrawing() : props.startDrawing('point');
+      return props.updateIdentifying(!props.identifying);
     }
   })
 )(IdentifyComponent);

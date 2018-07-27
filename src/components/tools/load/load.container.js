@@ -1,11 +1,11 @@
 import LoadComponent from './load.component';
-import { add_raster } from '../../../actions/raster-actions';
+import { addRaster } from '../../../actions/raster-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
-import { show_alert } from '../../../actions/alert-actions';
+import { showAlert } from '../../../actions/alert-actions';
 
-// let url_to_tiff = new URLSearchParams(window.location.search).get("url");
-// if (url_to_tiff) window.load_raster(url_to_tiff);
+// let urlToTiff = new URLSearchParams(window.location.search).get("url");
+// if (urlToTiff) window.loadRaster(urlToTiff);
 
 const urlIsValid = url => {
   return /^http|^https/.test(url);
@@ -13,40 +13,40 @@ const urlIsValid = url => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    show_alert: message => dispatch(show_alert(message)),
-    add_raster: input => dispatch(add_raster(input))
+    showAlert: message => dispatch(showAlert(message)),
+    addRaster: input => dispatch(addRaster(input))
   }
 }
 
-export const load_state = compose(
+export const loadState = compose(
   connect(null, mapDispatchToProps),
-  withState('url_input', 'set_url_input', ''),
-  withState('file_input', 'set_file_input', ''),
+  withState('urlInput', 'setURLInput', ''),
+  withState('fileInput', 'setFileInput', ''),
   withHandlers({
-    update_url_input: ({ set_url_input }) => event => {
-      return set_url_input(event.target.value.trim());
+    updateURLInput: ({ setURLInput }) => event => {
+      return setURLInput(event.target.value.trim());
     },
-    update_file_input: ({ set_file_input }) => event => {
-      return set_file_input(event.target.files[0]);
+    updateFileInput: ({ setFileInput }) => event => {
+      return setFileInput(event.target.files[0]);
     },
-    load_raster: ({ url_input, file_input, add_raster, show_alert }) => () => {
+    loadRaster: ({ urlInput, fileInput, addRaster, showAlert }) => () => {
       return new Promise((resolve, reject) => {
         try {
-          if (url_input !== '' ) {
-            if (urlIsValid(url_input)) {
-              add_raster(url_input);
+          if (urlInput !== '' ) {
+            if (urlIsValid(urlInput)) {
+              addRaster(urlInput);
               resolve(true);
             } else {
-              show_alert('Please make sure you are using a valid url. It must start with either http or https.');
+              showAlert('Please make sure you are using a valid url. It must start with either http or https.');
             }
-          } else if (file_input !== '') {
-            add_raster(file_input);
+          } else if (fileInput !== '') {
+            addRaster(fileInput);
             resolve(true);
           } else {
-            show_alert('Please add either a url or a geotiff file');
+            showAlert('Please add either a url or a geotiff file');
           }
         } catch (e) {
-          show_alert('The raster you tried to load is not a valid geotiff. Please try again with a different file.');
+          showAlert('The raster you tried to load is not a valid geotiff. Please try again with a different file.');
           reject();
         }
       });
@@ -54,6 +54,6 @@ export const load_state = compose(
   })
 );
 
-const LoadContainer = compose(load_state)(LoadComponent)
+const LoadContainer = compose(loadState)(LoadComponent)
 
 export default LoadContainer;

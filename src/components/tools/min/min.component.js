@@ -9,7 +9,7 @@ import ImportGeometry from '../../shared/import-geometry';
 const MinComponent = ({ results, raster, geometry, execute, func }) => (
   <div id='min-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/minimum.svg"
+      logoURL="/images/minimum.svg"
       title="Get the minimum pixel value of an area"
     />
     <ToolContent>

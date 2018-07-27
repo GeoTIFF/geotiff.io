@@ -18,7 +18,6 @@
     "react-modal": "^3.1.11",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "0.9.5",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
@@ -26,19 +25,31 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^3.0.0",
-    "html-webpack-plugin": "^2.30.1",
-    "webpack": "^3.5.5"
+    "favicons-webpack-plugin": "0.0.9",
+    "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.21.0",
+    "tapable": "^1.0.0",
+    "webpack": "^4.13.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.3"
   },
   "scripts": {
+    "build": "webpack --config webpack.prod.js",
     "compile-linked": "cd ~/geotiff.js && npm run build && cd ~/georaster && npm run babel && cd ~/georaster-layer-for-leaflet && npm run babel && cd ~/geoblaze && npm run babel && npm run build && cd ~/geotiff.io && npm run less",
     "debug-chain": "npm run compile-linked && npm run start",
-    "start": "npm run less && react-scripts start",
-    "less": "lessc public/less/style.less public/css/style.css",
-    "build": "react-scripts build && rm -fr docs && cp -fr build docs && echo 'app.geotiff.io' > docs/CNAME",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
     "debug-docs": "npm run link-repos && npm run compile-linked && npm run build && cd docs && http-server",
-    "link-repos": "npm link ~/geoblaze && cd ~/geoblaze && npm link ~/georaster && npm link ~/georaster-layer-for-leaflet"
+    "link-repos": "npm link ~/geoblaze && cd ~/geoblaze && npm link ~/georaster && npm link ~/georaster-layer-for-leaflet",
+    "start": "webpack-dev-server --config webpack.dev.js"
   }
 }

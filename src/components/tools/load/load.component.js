@@ -4,11 +4,11 @@ import ToolContent from '../../shared/tool-content';
 import ToolFooter from '../../shared/tool-footer';
 
 const LoadComponent = ({
-  url_input, file_input, update_url_input, update_file_input, load_raster
+  urlInput, fileInput, updateURLInput, updateFileInput, loadRaster
 }) => (
   <div id='load-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/load.svg"
+      logoURL="/images/load.svg"
       title="Load a GeoTIFF"
     />
     <ToolContent>
@@ -23,7 +23,7 @@ const LoadComponent = ({
         <input
           type="text"
           className="gt-input"
-          onChange={update_url_input}
+          onChange={updateURLInput}
         />
       </div>
       <br />
@@ -34,13 +34,13 @@ const LoadComponent = ({
       <div className="gt-input">
         <input
           type="file"
-          onChange={update_file_input}
+          onChange={updateFileInput}
         />
       </div>
       <div className="content-row submit-row">
         <button
           className='gt-button-accent full'
-          onClick={load_raster}
+          onClick={loadRaster}
         >
           Load
         </button>

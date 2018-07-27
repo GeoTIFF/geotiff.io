@@ -1,12 +1,12 @@
 import DrawGeometryComponent from './draw-geometry.component';
-import { start_drawing } from '../../../actions/drawing-actions';
+import { startDrawing } from '../../../actions/drawing-actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({ drawing: state.drawing });
 
 const mapDispatchToProps = dispatch => {
   return {
-    draw: format => dispatch(start_drawing(format))
+    draw: format => dispatch(startDrawing(format))
   }
 }
 
