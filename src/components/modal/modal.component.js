@@ -2,11 +2,11 @@ import React from 'react';
 import Modal from 'react-modal';
 
 const ModalComponent = ({
-  is_open, url_input, file_input, close, update_url_input,
-  update_file_input, load_raster_and_close_modal
+  isOpen, urlInput, fileInput, close, updateURLInput,
+  updateFileInput, loadRasterAndCloseModal
 }) => (
   <Modal
-    isOpen={is_open}
+    isOpen={isOpen}
     shouldCloseOnOverlayClick={true}
     onRequestClose={close}
     closeTimeoutMS={200}
@@ -31,7 +31,7 @@ const ModalComponent = ({
         <input
           type="text"
           className="gt-input"
-          onChange={update_url_input}
+          onChange={updateURLInput}
         />
       </div>
       <br />
@@ -42,13 +42,13 @@ const ModalComponent = ({
       <div className="gt-input">
         <input
           type="file"
-          onChange={update_file_input}
+          onChange={updateFileInput}
         />
       </div>
       <br />
       <button
         className='gt-button-accent full'
-        onClick={load_raster_and_close_modal}
+        onClick={loadRasterAndCloseModal}
       >
         GO
       </button>

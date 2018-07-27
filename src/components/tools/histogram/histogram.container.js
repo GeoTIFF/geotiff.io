@@ -2,16 +2,16 @@ import React from 'react';
 import HistogramComponent from './histogram.component';
 import geoblaze from 'geoblaze';
 import _ from 'underscore';
-import { set_results } from '../../../actions/results-actions';
-import { show_alert } from '../../../actions/alert-actions';
+import { setResults } from '../../../actions/results-actions';
+import { showAlert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
-const get_histogram = (raster, geometry, options) => {
-  let { scale_type, num_classes } = options;
+const getHistogram = (raster, geometry, options) => {
+  let { scaleType, numClasses } = options;
 
   // make sure parameters are valid
-  if (num_classes % 1 !== 0) {
+  if (numClasses % 1 !== 0) {
     throw new Error('Please make sure the number of classes is an integer.');
   }
   if (!geometry) {
@@ -20,26 +20,26 @@ const get_histogram = (raster, geometry, options) => {
 
   // convert to list because react doesn't like storing objects in state
   let geojson = geometry.toGeoJSON();
-  let results_objs = geoblaze.histogram(raster, geojson, options);
-  let results_lists = results_objs.map(band_results => {
-    return _.keys(band_results).map(bin => [bin, band_results[bin]]);
+  let resultsObjs = geoblaze.histogram(raster, geojson, options);
+  let resultsLists = resultsObjs.map(bandResults => {
+    return _.keys(bandResults).map(bin => [bin, bandResults[bin]]);
   });
 
   // sort results
   let results;
-  if (scale_type === 'nominal') {
-    results = results_lists.map(results_list => {
-      return _.sortBy(results_list, bin => Number(bin[0]));
+  if (scaleType === 'nominal') {
+    results = resultsLists.map(resultsList => {
+      return _.sortBy(resultsList, bin => Number(bin[0]));
     });
   } else {
-    results = results_lists.map(results_list => {
-      return _.sortBy(results_list, bin => Number(bin[0].split('- ')[1]));
+    results = resultsLists.map(resultsList => {
+      return _.sortBy(resultsList, bin => Number(bin[0].split('- ')[1]));
     });
   }
   const histogram = results.map(band => band.map(bin =>(
     <p>{`${bin[0]}:   ${bin[1]}\n`}</p>
   )));
-  return set_results(histogram);
+  return setResults(histogram);
 }
 
 const mapStateToProps = state => {
@@ -53,11 +53,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_histogram: (raster, geometry, options) => {
+    getHistogram: (raster, geometry, options) => {
       try {
-        dispatch(get_histogram(raster, geometry, options));
+        dispatch(getHistogram(raster, geometry, options));
       } catch (error) {
-        dispatch(show_alert(error.message));
+        dispatch(showAlert(error.message));
       }
     }
   }
@@ -65,23 +65,23 @@ const mapDispatchToProps = dispatch => {
 
 const HistogramContainer = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withState('scale_type', 'set_scale_type', 'ratio'),
-  withState('num_classes', 'set_num_classes', 3),
-  withState('class_type', 'set_class_type', 'equal-interval'),
+  withState('scaleType', 'setScaleType', 'ratio'),
+  withState('numClasses', 'setNumClasses', 3),
+  withState('classType', 'setClassType', 'equal-interval'),
   withHandlers({
-    update_scale_type: ({ set_scale_type }) => event => {
-      return set_scale_type(event.target.value);
+    updateScaleType: ({ setScaleType }) => event => {
+      return setScaleType(event.target.value);
     },
-    update_num_classes: ({ set_num_classes }) => event => {
-      return set_num_classes(event.target.value);
+    updateNumClasses: ({ setNumClasses }) => event => {
+      return setNumClasses(event.target.value);
     },
-    update_class_type: ({ set_class_type }) => event => {
-      return set_class_type(event.target.value);
+    updateClassType: ({ setClassType }) => event => {
+      return setClassType(event.target.value);
     },
     execute: ({
-      raster, geometry, scale_type, num_classes, class_type, get_histogram
+      raster, geometry, scaleType, numClasses, classType, getHistogram
     }) => () => {
-      return get_histogram(raster, geometry, { scale_type, num_classes, class_type });
+      return getHistogram(raster, geometry, { scaleType, numClasses, classType });
     }
   })
 )(HistogramComponent);

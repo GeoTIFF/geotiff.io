@@ -9,7 +9,7 @@ import ImportGeometry from '../../shared/import-geometry';
 const MaxComponent = ({ results, raster, geometry, execute, func }) => (
   <div id='max-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/maximum.svg"
+      logoURL="/images/maximum.svg"
       title="Get the maximum pixel value of an area"
     />
     <ToolContent>

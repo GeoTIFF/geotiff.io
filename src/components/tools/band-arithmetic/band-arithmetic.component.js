@@ -3,10 +3,10 @@ import ToolHeader from '../../shared/tool-header';
 import ToolContent from '../../shared/tool-content';
 import ToolFooter from '../../shared/tool-footer';
 
-const BandArithmeticComponent = ({ band_arithmetic, update_band_arithmetic, execute }) => (
+const BandArithmeticComponent = ({ bandArithmetic, updateBandArithmetic, execute }) => (
   <div id='band-arithmetic-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/band-arithmetic.svg"
+      logoURL="/images/band-arithmetic.svg"
       title="Run Band Arithmetic on the raster"
     />
     <ToolContent>
@@ -16,8 +16,8 @@ const BandArithmeticComponent = ({ band_arithmetic, update_band_arithmetic, exec
       <input
         type='string'
         className='gt-input'
-        onChange={update_band_arithmetic}
-        value={band_arithmetic}
+        onChange={updateBandArithmetic}
+        value={bandArithmetic}
       />
       <div className='content-row submit-row'>
         <button

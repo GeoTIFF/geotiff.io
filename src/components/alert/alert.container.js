@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { hide_alert } from '../../actions/alert-actions';
+import { hideAlert } from '../../actions/alert-actions';
 import AlertComponent from './alert.component';
 
 const mapStateToProps = ({ alert }) => ({ alert });
 
 const mapDispatchToProps = dispatch => {
   return {
-    hide_alert: () => dispatch(hide_alert())
+    hideAlert: () => dispatch(hideAlert())
   }
 }
 

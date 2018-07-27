@@ -9,7 +9,7 @@ import ImportGeometry from '../../shared/import-geometry';
 const MedianComponent = ({ results, raster, geometry, execute, func }) => (
   <div id='median-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/median.svg"
+      logoURL="/images/median.svg"
       title="Get the median pixel value of an area"
     />
     <ToolContent>

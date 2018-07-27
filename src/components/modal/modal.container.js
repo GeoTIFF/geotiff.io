@@ -1,17 +1,17 @@
 import ModalComponent from './modal.component';
-import { load_state } from '../tools/load/load.container';
+import { loadState } from '../tools/load/load.container';
 import { compose, withState, withHandlers } from 'recompose';
 
-const search_params = new URLSearchParams(window.location.search);
-const preload_url = search_params.get("url");
+const searchParams = new URLSearchParams(window.location.search);
+const preloadURL = searchParams.get("url");
 
 const ModalContainer = compose(
-  load_state,
-  withState('is_open', 'set_is_open', !preload_url),
+  loadState,
+  withState('isOpen', 'setIsOpen', !preloadURL),
   withHandlers({
-    close: ({ is_open, set_is_open }) => () => set_is_open(false),
-    load_raster_and_close_modal: ({ is_open, set_is_open, load_raster }) =>() => {
-      load_raster().then(() => set_is_open(false));
+    close: ({ isOpen, setIsOpen }) => () => setIsOpen(false),
+    loadRasterAndCloseModal: ({ isOpen, setIsOpen, loadRaster }) =>() => {
+      loadRaster().then(() => setIsOpen(false));
     }
   })
 )(ModalComponent);

@@ -1,4 +1,4 @@
-const tool_list = (state = [], action) => {
+const toolList = (state = [], action) => {
   switch (action.type) {
     case 'TOOL_LIST_LOAD':
       return action.tools;
@@ -9,4 +9,4 @@ const tool_list = (state = [], action) => {
   }
 }
 
-export default tool_list;
+export default toolList;

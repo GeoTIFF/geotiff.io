@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ImportGeometryComponent = ({ geometry, import_geometry }) => (
+const ImportGeometryComponent = ({ geometry, importGeometry }) => (
   <div className='import-geojson'>
     <p>Import Geometry from file</p>
     <div className='content-row'>
@@ -14,7 +14,7 @@ const ImportGeometryComponent = ({ geometry, import_geometry }) => (
         id='import-geojson-input'
         type='file'
         className='gt-input'
-        onChange={import_geometry}
+        onChange={importGeometry}
       />
     </div>
   </div>

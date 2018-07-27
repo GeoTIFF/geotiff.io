@@ -9,7 +9,7 @@ import ImportGeometry from '../../shared/import-geometry';
 const ModeComponent = ({ results, raster, geometry, execute, func }) => (
   <div id='mode-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/mode.svg"
+      logoURL="/images/mode.svg"
       title="Get the mode pixel value of an area"
     />
     <ToolContent>

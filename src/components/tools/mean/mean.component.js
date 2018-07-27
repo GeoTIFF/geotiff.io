@@ -9,7 +9,7 @@ import ImportGeometry from '../../shared/import-geometry';
 const MeanComponent = ({ results, raster, geometry, execute, func }) => (
   <div id='mean-tool' className='tool'>
     <ToolHeader
-      logo_url="/images/mean.svg"
+      logoURL="/images/mean.svg"
       title="Get the mean pixel value of an area"
     />
     <ToolContent>

@@ -1,0 +1,59 @@
+{
+  "tools": [
+    {
+      "name": "Load GeoTIFF",
+      "iconUrl": "./images/load.svg",
+      "path": "/load"
+    },
+    {
+      "name": "Identify",
+      "iconUrl": "./images/identify.svg",
+      "path": "/identify"
+    },
+    {
+      "name": "Mean",
+      "iconUrl": "./images/mean.svg",
+      "path": "/mean"
+    },
+    {
+      "name": "Sum",
+      "iconUrl": "./images/sum.svg",
+      "path": "/sum"
+    },
+    {
+      "name": "Mode",
+      "iconUrl": "./images/mode.svg",
+      "path": "/mode"
+    },
+    {
+      "name": "Median",
+      "iconUrl": "./images/median.svg",
+      "path": "/median"
+    },
+    {
+      "name": "Min",
+      "iconUrl": "./images/minimum.svg",
+      "path": "/min"
+    },
+    {
+      "name": "Max",
+      "iconUrl": "./images/maximum.svg",
+      "path": "/max"
+    },
+    {
+      "name": "Band Arithmetic",
+      "iconUrl": "./images/band-arithmetic.svg",
+      "path": "/band-arithmetic"
+    },
+    {
+      "name": "Raster Calculator",
+      "iconUrl": "./images/raster-calculator.svg",
+      "path": "/raster-calculator"
+    },
+    {
+      "name": "Histogram",
+      "iconUrl": "./images/histogram.svg",
+      "path": "/histogram"
+    }
+  ]
+}

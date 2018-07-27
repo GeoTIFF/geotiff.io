@@ -1,5 +1,5 @@
-import { set_results } from '../../../actions/results-actions';
-import { show_alert } from '../../../actions/alert-actions';
+import { setResults } from '../../../actions/results-actions';
+import { showAlert } from '../../../actions/alert-actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
@@ -11,18 +11,18 @@ const mapStateToProps = state => ({
 const execute = (raster, geometry, func) => {
   let geojson = geometry.toGeoJSON();
   let results = func(raster, geojson);
-  return set_results(results);
+  return setResults(results);
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     execute: (raster, geometry, func) => {
       if (!raster) {
-        dispatch(show_alert('Please make sure a geotiff is loaded before running this tool. You can load a geotiff using the Load Tool."'));
+        dispatch(showAlert('Please make sure a geotiff is loaded before running this tool. You can load a geotiff using the Load Tool."'));
         return;
       }
       if (!geometry) {
-        dispatch(show_alert('Please draw an area of interest or import a GeoJSON file before running this tool.'));
+        dispatch(showAlert('Please draw an area of interest or import a GeoJSON file before running this tool.'));
         return;
       }
       dispatch(execute(raster, geometry, func));

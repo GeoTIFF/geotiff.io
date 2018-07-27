@@ -1,4 +1,4 @@
-const menu_focus = (state = false, action) => {
+const menuFocus = (state = false, action) => {
   switch (action.type) {
     case 'MENU_FOCUS_ON':
       return true;
@@ -9,4 +9,4 @@ const menu_focus = (state = false, action) => {
   }
 }
 
-export default menu_focus;
+export default menuFocus;
