@@ -17,9 +17,9 @@ It's too much of a pain to view and manipulate raster data.  The aim of this pro
 - Download TIFF File
 - Draw Polygon
 - Upload GeoJSON
+- Band Calculations (e.g. NDVI)
 
 # Features Coming Soon
-- Band Calculations (e.g. NDVI)
 - Stretching
 - Clip Raster by Another Raster
 - Creating new TIFF Files
