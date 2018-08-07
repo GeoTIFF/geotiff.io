@@ -1,7 +1,10 @@
-export const startLoading = message => (
-  { type: 'LOADING_START', message }
-);
+import { LOADING_START, LOADING_STOP } from 'constants/actions';
 
-export const stopLoading = () => (
-  { type: 'LOADING_STOP' }
-);
+export const startLoading = message => ({
+  message,
+  type: LOADING_START
+});
+
+export const stopLoading = () => ({
+  type: LOADING_STOP
+});

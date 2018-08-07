@@ -15,7 +15,7 @@ const setLayout = () => {
   }
 }
 
-const mapStateToProps = state => ({ layout: state.layout });
+const mapStateToProps = ({ layout}) => ({ layout });
 
 const mapDispatchToProps = dispatch => {
   return {

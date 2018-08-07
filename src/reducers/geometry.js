@@ -1,8 +1,9 @@
+import { MAP_GEOMETRY_ADD, MAP_GEOMETRY_REMOVE } from 'constants/actions';
 import Map from '../Map';
 
 const geometry = (state = null, action) => {
   switch (action.type) {
-    case 'MAP_GEOMETRY_ADD':
+    case MAP_GEOMETRY_ADD:
       if (state) { // first remove the existing layer is present
         Map.removeLayer(state);
       }
@@ -19,7 +20,7 @@ const geometry = (state = null, action) => {
       } else {
         throw new Error('Invalid format for geometry was specified, please use either "polygon" or "point".');
       }
-    case 'MAP_GEOMETRY_REMOVE':
+    case MAP_GEOMETRY_REMOVE:
       if (state) Map.removeLayer(state);
       return null;
     default:
