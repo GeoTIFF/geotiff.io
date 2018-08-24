@@ -31,11 +31,19 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['docs']),
     new CopyWebpackPlugin([
       {
         from: './assets/images',
         to: 'images',
+      },
+      {
+        from: './assets/data',
+        to: 'data'
+      },
+      {
+        from: './assets/favicon.png',
+        to: 'favicon.png'
       }
     ]),
     new FaviconsWebpackPlugin('./assets/favicon.png'),

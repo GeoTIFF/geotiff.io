@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const path = require('path');
 const shared = require('./webpack.shared');
 const OfflinePlugin = require('offline-plugin');
+const CnameWebpackPlugin = require('cname-webpack-plugin');
 
 const prod = {
   mode: 'production',
@@ -38,7 +39,10 @@ const prod = {
         'https://unpkg.com/leaflet@1.0.3/dist/images/marker-shadow.png',
         'https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon.png'
       ]
-   })
+   }),
+    new CnameWebpackPlugin({
+      domain: 'app.geotiff.io',
+    }),
   ]
 };
 module.exports = merge(shared, prod);
