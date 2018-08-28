@@ -5,6 +5,7 @@ import { addGeometry, removeGeometry } from './actions/geometry-actions';
 import { stopDrawing } from './actions/drawing-actions';
 import { setResults } from './actions/results-actions';
 import { unfocusMenu } from './actions/menu-focus-actions';
+import 'leaflet-draw';
 
 let store;
 const L = window.L;
@@ -28,7 +29,7 @@ const Map = {
     map.options.minZoom = 2;
 
     // add draw controls
-    let drawOptions = {
+    const drawOptions = {
       /*draw: {
         rectangle: {
           shapeOptions: {
