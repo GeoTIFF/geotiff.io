@@ -1,4 +1,4 @@
-let UrlService = {
+const UrlService = {
 
   params: null,
 

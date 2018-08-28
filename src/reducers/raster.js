@@ -1,11 +1,12 @@
+import { MAP_RASTER_ADD, MAP_RASTER_REMOVE } from 'constants/actions';
 import Map from '../Map';
 
 const raster = (state = null, action) => {
   switch (action.type) {
-    case 'MAP_RASTER_ADD':
+    case MAP_RASTER_ADD:
       Map.addRaster(action.raster);
       return action.raster.georaster;
-    case 'MAP_RASTER_REMOVE':
+    case MAP_RASTER_REMOVE:
       Map.removeRaster();
       return null;
     default:
