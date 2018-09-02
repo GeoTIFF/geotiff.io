@@ -38,10 +38,6 @@ module.exports = {
         to: 'images',
       },
       {
-        from: './assets/data',
-        to: 'data'
-      },
-      {
         from: './assets/favicon.png',
         to: 'favicon.png'
       }
