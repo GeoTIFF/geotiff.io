@@ -45,6 +45,9 @@ typings/
 # Optional eslint cache
 .eslintcache
 
+# Other cache files
+docs/icons-fe645e4a373f127b6adba54b222978be/.cache
+
 # Optional REPL history
 .node_repl_history
 

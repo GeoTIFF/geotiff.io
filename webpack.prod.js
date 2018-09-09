@@ -23,7 +23,6 @@ const prod = {
         'https://unpkg.com/geotiff@0.4.1/dist/geotiff.browserify.min.js',
         'https://unpkg.com/leaflet-providers@1.1.17/leaflet-providers.js',
         'https://ihcantabria.github.io/Leaflet.CanvasLayer.Field/dist/leaflet.canvaslayer.field.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.12/leaflet.draw.js',
         'https://fonts.googleapis.com/icon?family=Material+Icons',
         'https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.0/chroma.min.js',
         'https://unpkg.com/leaflet-geosearch@2.4.0/dist/style.css',
