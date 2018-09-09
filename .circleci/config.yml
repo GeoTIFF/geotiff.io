@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  save-deps:
+    docker:
+      - image: ubuntu
+    steps:
+      - run:
+          name: Update Package Lists
+          command: apt-get update -qq
+      - run:
+          name: Install Dependencies
+          command: apt-get install -y build-essential npm nodejs python-dev python3-pip zip
+      - run:
+          name: Install AWS CLI
+          command: pip install awscli --upgrade          
+      - checkout
+      - run:
+          name: Zip Node Modules
+          command: zip -r node_modules.zip node_modules
+      - run:
+          name: Upload Zipped Folder
+          command: aws s3 cp node_modules.zip s3://geotiff.io/node_modules.zip --acl public-read
+workflows:
+  version: 2
+  low-internet:
+    jobs:
+      - save-deps:
+          filters:
+            branches:
+              only: master
