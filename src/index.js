@@ -23,12 +23,20 @@ if (url) {
   store.dispatch(addRaster(url));
 }
 
-// const toolName = UrlService.get('tool');
-// if (toolName) {
-//   ToolListService.getToolList().then(tools => {
-//     const tool = tools.find(tool => tool[2] === toolName);
-//   });
-// }
+const toolName = UrlService.get('tool');
+if (toolName) {
+  const toolList = ToolListService.getToolList();
+  const tool = toolList.find(tool => tool.param === toolName);
+  if (tool) {
+    let newSearch = window.location.search
+      .replace(/(\?|&)tool=[a-z-]{3,100}/, '') // remove tool=... param from url
+      .replace(/^./, '?'); // mark sure starting search param is a question mark
+    const newPathName = tool.path;
+    const newUrl = newPathName + newSearch;
+    /* global history */
+    history.replaceState({}, 'identify', newUrl);
+  }
+}
 
 ReactDOM.render(
   <Provider store={store}>
