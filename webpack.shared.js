@@ -35,11 +35,15 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: './assets/images',
-        to: 'images',
+        to: 'images'
       },
       {
         from: './assets/favicon.png',
         to: 'favicon.png'
+      },
+      {
+        from: './404.html',
+        to: '404.html'
       }
     ]),
     new FaviconsWebpackPlugin('./assets/favicon.png'),
