@@ -3,56 +3,67 @@
     {
       "name": "Load GeoTIFF",
       "iconUrl": "./images/load.svg",
+      "param": "load",
       "path": "/load"
     },
     {
       "name": "Identify",
       "iconUrl": "./images/identify.svg",
+      "param": "identify",
       "path": "/identify"
     },
     {
       "name": "Mean",
       "iconUrl": "./images/mean.svg",
+      "param": "mean",
       "path": "/mean"
     },
     {
       "name": "Sum",
       "iconUrl": "./images/sum.svg",
+      "param": "sum",
       "path": "/sum"
     },
     {
       "name": "Mode",
       "iconUrl": "./images/mode.svg",
+      "param": "mode",
       "path": "/mode"
     },
     {
       "name": "Median",
       "iconUrl": "./images/median.svg",
+      "param": "median",
       "path": "/median"
     },
     {
       "name": "Min",
       "iconUrl": "./images/minimum.svg",
+      "param": "min",
       "path": "/min"
     },
     {
       "name": "Max",
       "iconUrl": "./images/maximum.svg",
+      "param": "max",
       "path": "/max"
     },
     {
       "name": "Band Arithmetic",
       "iconUrl": "./images/band-arithmetic.svg",
+      "param": "band-arithmetic",
       "path": "/band-arithmetic"
     },
     {
       "name": "Raster Calculator",
       "iconUrl": "./images/raster-calculator.svg",
+      "param": "raster-calculator",
       "path": "/raster-calculator"
     },
     {
       "name": "Histogram",
       "iconUrl": "./images/histogram.svg",
+      "param": "histogram",
       "path": "/histogram"
     }
   ]

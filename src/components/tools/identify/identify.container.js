@@ -1,8 +1,9 @@
 import IdentifyComponent from './identify.component';
 import { startDrawing, stopDrawing } from '../../../actions/drawing-actions';
 import { removeGeometry } from '../../../actions/geometry-actions';
+import UrlService from '../../../services/UrlService';
 import { connect } from 'react-redux';
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, lifecycle, withState, withHandlers } from 'recompose';
 
 let mapStateToProps = state => ({ results: state.results });
 
@@ -26,7 +27,14 @@ let IdentifyContainer = compose(
       props.identifying ? props.stopDrawing() : props.startDrawing('point');
       return props.updateIdentifying(!props.identifying);
     }
-  })
+  }),
+  lifecycle({
+    componentDidMount(props) {
+      if (UrlService.get('auto_start')) {
+        this.props.changeMode(props);
+      }
+    }
+})
 )(IdentifyComponent);
 
 export default IdentifyContainer;

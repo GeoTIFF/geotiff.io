@@ -23,12 +23,27 @@ if (url) {
   store.dispatch(addRaster(url));
 }
 
-// const toolName = UrlService.get('tool');
-// if (toolName) {
-//   ToolListService.getToolList().then(tools => {
-//     const tool = tools.find(tool => tool[2] === toolName);
-//   });
-// }
+const toolName = UrlService.get('tool');
+if (toolName) {
+  const toolList = ToolListService.getToolList();
+  const tool = toolList.find(tool => tool.param === toolName);
+  if (tool) {
+
+    // newSearch is usually something like ?auto_start=true&url=...
+    const newSearch = window.location.search
+      .replace(/(\?|&)tool=[a-z-]{3,100}/, '') // remove tool=... param from url
+      .replace(/^./, '?'); // mark sure starting search param is a question mark
+
+    // newPathName is usually something like 'identify' or 'min'
+    const newPathName = tool.path;
+
+    // newUrl is usually something like /identify?url=...
+    const newUrl = newPathName + newSearch;
+
+    /* global history */
+    history.replaceState({}, 'identify', newUrl);
+  }
+}
 
 ReactDOM.render(
   <Provider store={store}>

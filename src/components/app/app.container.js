@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 const setLayout = () => {
   const hideMenu = ["", "true", "True", "y", "Y", "yes", "Yes"]
-    .indexOf(UrlService.get("hide_menu")) > -1 || false;
+    .includes(UrlService.get("hide_menu")) || false;
   if (hideMenu) {
     return setHideMenuLayout();
   } else {
