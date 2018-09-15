@@ -6,6 +6,15 @@ import ToolFooter from '../../shared/tool-footer';
 import DrawGeometry from '../../shared/draw-geometry';
 import ImportGeometry from '../../shared/import-geometry';
 
+const mapBand = (band) => (
+  Object.keys(band).map((key, value) => (
+    <div key={key}>
+      <p>{key}</p>
+      <p>{value}</p>
+    </div>
+  ))
+);
+
 const HistogramComponent = ({
   results, raster, geometry, execute, scaleType,
   updateScaleType, numClasses, updateNumClasses,
@@ -60,7 +69,14 @@ const HistogramComponent = ({
           Get Histogram
         </button>
       </div>
-      { results && <ToolResults results={results} /> }
+      {
+        results &&
+        <ToolResults className="histogram-results">
+          <div>
+            {results.map(mapBand)}
+          </div>
+        </ToolResults>
+      }
     </ToolContent>
     <ToolFooter />
   </div>

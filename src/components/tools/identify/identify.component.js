@@ -20,7 +20,13 @@ const IdentifyComponent = ({ identifying, results, changeMode }) => (
           { identifying ? 'Stop Identifying' : 'Identify'  }
         </button>
       </div>
-      { identifying && <ToolResults results={results} />}
+      {
+        identifying &&
+        <ToolResults className="single-value">
+          <h3>Results</h3>
+          <p>{results}</p>
+        </ToolResults>
+      }
     </ToolContent>
     <ToolFooter />
   </div>

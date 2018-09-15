@@ -4,7 +4,7 @@ import geoblaze from 'geoblaze';
 import { addGeometry, removeGeometry } from './actions/geometry-actions';
 import { stopDrawing } from './actions/drawing-actions';
 import { setResults } from './actions/results-actions';
-import { unfocusMenu } from './actions/menu-focus-actions';
+import { focusMenu, unfocusMenu } from './actions/menu-focus-actions';
 import 'leaflet-draw';
 
 let store;
@@ -65,14 +65,16 @@ const Map = {
         // temporary - setting results for identify here since
         // i can't find a good way of getting it in to the identify
         // tool while using leaflet for mapping
-        let latlng = [e.latlng.lng, e.latlng.lat];
-        let results = geoblaze.identify(self.raster.georaster, latlng);
+        const latlng = [e.latlng.lng, e.latlng.lat];
+        const results = geoblaze.identify(self.raster.georaster, latlng);
         store.dispatch(setResults(results));
       }
     });
+
     map.on('draw:created', e => {
       store.dispatch(stopDrawing());
       store.dispatch(addGeometry(e.layer, 'polygon'));
+      setTimeout(() => store.dispatch(focusMenu()), 100);
     });
   },
 
@@ -80,7 +82,7 @@ const Map = {
     if (this.raster) map.removeLayer(this.raster);
     layer.addTo(map);
 
-    let layerBounds = layer.getBounds();
+    const layerBounds = layer.getBounds();
     map.fitBounds(layerBounds);
 
     L.rectangle(layerBounds, {
