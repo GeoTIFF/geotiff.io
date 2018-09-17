@@ -80,26 +80,29 @@
     &::-webkit-scrollbar-thumb {
       background-color: @primary-color;
     }
+  }
 
-    .tool-results {
-      background: white;
-      border-radius: @border-radius-small;
-      border: 2px solid @secondary-color;
+  .tool-results {
+    background: white;
+    border-radius: @border-radius-small;
+    border: 2px solid @secondary-color;
+    font-family: @font-family-title;
+    margin: 0 @spacing-medium;
+
+    &.single-value {
       display: flex;
-      font-family: @font-family-title;
       justify-content: space-around;
-      width: 100%;
+    }
 
-      h3 {
-        color: @secondary-color;
-        font-size: @font-size-large;
-        letter-spacing: 1.5px;
-      }
+    h3 {
+      color: @secondary-color;
+      font-size: @font-size-large;
+      letter-spacing: 1.5px;
+    }
 
-      p {
-        color: @secondary-color;
-        font-size: @font-size-large;
-      }
+    p {
+      color: @secondary-color;
+      font-size: @font-size-large;
     }
   }
 
@@ -107,7 +110,7 @@
     margin: @spacing-medium 0;
 
     &.submit-row {
-      margin: @spacing-xxlarge 0 @spacing-xxlarge * 2;
+      margin: @spacing-xxlarge 0 @spacing-xxlarge;
     }
   }
 
@@ -140,7 +143,7 @@
 }
 
 // mobile
-@media screen and (max-width: @breakpoint-large) {
+@media (max-width: @breakpoint-large) {
 
   .tool {
     background: white;
@@ -177,30 +180,53 @@
     section.content {
       padding: 0;
       margin: 0;
-      display: none;
+
+      > * {
+        display: none;
+      }
 
       &.focus {
         padding: @spacing-medium;
         overflow-y: scroll;
-        max-height: 275px;
+        max-height: 250px;
         background: white;
-        display: block;
 
-        .results {
-          z-index: -1;
+        > * {
+          display: block;
         }
       }
 
-      .results {
+      .tool-results {
+        overflow-y: auto;
+        max-height: 160px;
+        z-index: 999;
         position: fixed;
         width: 80%;
+        margin: 0;
         left: 10%;
         bottom: @spacing-large;
+
+        &.single-value {
+          display: flex;
+        }
       }
     }
 
     footer {
       display: none;
+    }
+  }
+}
+
+.histogram-results {
+  > div {
+    > div {
+      display: flex;
+      justify-content: space-around;
+
+      p:first-child {
+        width: 50%;
+      }
     }
   }
 }
