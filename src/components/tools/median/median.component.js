@@ -23,7 +23,13 @@ const MedianComponent = ({ results, raster, geometry, execute, func }) => (
           Calculate Median
         </button>
       </div>
-      { results && <ToolResults results={results} />}
+      {
+        results &&
+        <ToolResults className="single-value">
+          <h3>Results</h3>
+          <p>{results}</p>
+        </ToolResults>
+      }
     </ToolContent>
     <ToolFooter />
   </div>

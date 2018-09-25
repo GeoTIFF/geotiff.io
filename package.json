@@ -14,7 +14,7 @@
     "less": "^2.7.3",
     "offline-plugin": "^5.0.5",
     "pako": "^1.0.6",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-modal": "^3.1.11",

@@ -13,25 +13,26 @@ const MenuComponent = ({ toolList, menuFocus, searchTools, onSubmit, focus }) =>
     >
       <form onSubmit={onSubmit}>
         <input
-          id='search-input'
+          autoComplete="off"
           className='gt-input'
-          type='text'
-          placeholder='Search Tools...'
+          id='search-input'
           onChange={searchTools}
+          placeholder='Search Tools...'
+          type='text'
         />
       </form>
     </section>
     <section
-      id='content'
       className={menuFocus ? 'focus' : ''}
+      id='content'
     >
       <div id='tool-button-container'>
         {
           toolList.map(({ name, iconUrl, path }) => {
             return <ToolButton
+              iconUrl={iconUrl}
               key={name}
               name={name}
-              iconUrl={iconUrl}
               path={path}
             />
           })

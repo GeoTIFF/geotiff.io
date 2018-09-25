@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 
 const getHistogram = (raster, geometry, options) => {
-  let { scaleType, numClasses } = options;
+  const { scaleType, numClasses } = options;
 
   // make sure parameters are valid
   if (numClasses % 1 !== 0) {
@@ -19,27 +19,9 @@ const getHistogram = (raster, geometry, options) => {
   }
 
   // convert to list because react doesn't like storing objects in state
-  let geojson = geometry.toGeoJSON();
-  let resultsObjs = geoblaze.histogram(raster, geojson, options);
-  let resultsLists = resultsObjs.map(bandResults => {
-    return _.keys(bandResults).map(bin => [bin, bandResults[bin]]);
-  });
-
-  // sort results
-  let results;
-  if (scaleType === 'nominal') {
-    results = resultsLists.map(resultsList => {
-      return _.sortBy(resultsList, bin => Number(bin[0]));
-    });
-  } else {
-    results = resultsLists.map(resultsList => {
-      return _.sortBy(resultsList, bin => Number(bin[0].split('- ')[1]));
-    });
-  }
-  const histogram = results.map(band => band.map(bin =>(
-    <p>{`${bin[0]}:   ${bin[1]}\n`}</p>
-  )));
-  return setResults(histogram);
+  const geojson = geometry.toGeoJSON();
+  const results = geoblaze.histogram(raster, geojson, options);
+  return setResults(results);
 }
 
 const mapStateToProps = state => {

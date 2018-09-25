@@ -23,7 +23,12 @@ const ModeComponent = ({ results, raster, geometry, execute, func }) => (
           Calculate Mode
         </button>
       </div>
-      { results && <ToolResults results={results} /> }
+      { results &&
+        <ToolResults className="single-value">
+          <h3>Results</h3>
+          <p>{results}</p>
+        </ToolResults>
+      }
     </ToolContent>
     <ToolFooter />
   </div>
