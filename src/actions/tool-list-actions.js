@@ -1,12 +1,12 @@
 import { TOOL_LIST_LOAD, TOOL_LIST_SEARCH } from 'constants/actions';
-import ToolListService from '../services/ToolListService';
+import { getTools, tools } from 'services/tools';
 
 export const loadTools = () => ({
-  tools: ToolListService.getToolList(),
+  tools,
   type: TOOL_LIST_LOAD
 });
 
 export const searchTools = value => ({
-  tools: ToolListService.searchToolList(value),
+  tools: getTools(value),
   type: TOOL_LIST_SEARCH
 });

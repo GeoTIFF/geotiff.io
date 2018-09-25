@@ -7,8 +7,8 @@ import buildStore from './build-store';
 import { Provider } from 'react-redux';
 import { loadTools } from './actions/tool-list-actions';
 import { addRaster } from './actions/raster-actions';
-import UrlService from './services/UrlService';
-import ToolListService from './services/ToolListService';
+import { toolName, url } from './services/path';
+import { getTool } from './services/tools';
 import Map from './Map';
 import '../styles/style.less';
 
@@ -18,17 +18,11 @@ const store = buildStore();
 store.dispatch(loadTools());
 window.store = store; // made this global so it can be accessed from Map
 
-const url = UrlService.get('url');
-if (url) {
-  store.dispatch(addRaster(url));
-}
+if (url) store.dispatch(addRaster(url));
 
-const toolName = UrlService.get('tool');
 if (toolName) {
-  const toolList = ToolListService.getToolList();
-  const tool = toolList.find(tool => tool.param === toolName);
+  const tool = getTool(toolName);
   if (tool) {
-
     // newSearch is usually something like ?auto_start=true&url=...
     const newSearch = window.location.search
       .replace(/(\?|&)tool=[a-z-]{3,100}/, '') // remove tool=... param from url
