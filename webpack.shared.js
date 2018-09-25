@@ -14,8 +14,7 @@ module.exports = {
     extensions: ['.js', '.json']
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.less$/,
         use: [
           "style-loader",
@@ -32,8 +31,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['docs']),
-    new CopyWebpackPlugin([
-      {
+    new CopyWebpackPlugin([{
         from: './assets/images',
         to: 'images'
       },
@@ -44,6 +42,10 @@ module.exports = {
       {
         from: './404.html',
         to: '404.html'
+      },
+      {
+        from: './sitemap.xml',
+        to: 'sitemap.xml'
       }
     ]),
     new FaviconsWebpackPlugin('./assets/favicon.png'),
