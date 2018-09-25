@@ -1,10 +1,10 @@
-import IdentifyComponent from './identify.component';
-import { startDrawing, stopDrawing } from '../../../actions/drawing-actions';
-import { removeGeometry } from '../../../actions/geometry-actions';
-import UrlService from '../../../services/UrlService';
-import { unfocusMenu } from '../../../actions/menu-focus-actions';
 import { connect } from 'react-redux';
 import { compose, lifecycle, withState, withHandlers } from 'recompose';
+import IdentifyComponent from './identify.component';
+import { startDrawing, stopDrawing } from 'actions/drawing-actions';
+import { removeGeometry } from 'actions/geometry-actions';
+import { unfocusMenu } from 'actions/menu-focus-actions';
+import { autoStart } from 'services/path';
 
 const mapStateToProps = state => ({ results: state.results });
 
@@ -33,9 +33,7 @@ const IdentifyContainer = compose(
   }),
   lifecycle({
     componentDidMount(props) {
-      if (UrlService.get('auto_start')) {
-        this.props.changeMode(props);
-      }
+      if (autoStart) this.props.changeMode(props);
     }
 })
 )(IdentifyComponent);
