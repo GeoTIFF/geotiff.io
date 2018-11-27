@@ -1,7 +1,13 @@
+/* global URLSearchParams */
 import geoblaze from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
 
 const getResolution = () => {
+  const resolution = Number(new URLSearchParams(window.location.search).get('resolution'))
+  if (resolution) {
+    return resolution
+  }
+
   const width = document.documentElement.clientWidth;
   const userAgent = window.navigator.userAgent;
   const isAndroid = userAgent.includes("Android");
@@ -38,6 +44,7 @@ const RasterService = {
     const options = {
       georaster,
       opacity: 0.7,
+      resolution: getResolution()
     }
     return new GeoRasterLayer(options);
   }
