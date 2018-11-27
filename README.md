@@ -24,6 +24,9 @@ It's too much of a pain to view and manipulate raster data.  The aim of this pro
 - Clip Raster by Another Raster
 - Creating new TIFF Files
 
+# Advanced Features
+Wondering how to auto-load a raster or adjust the resolution?  Check out [ADVANCED_FEATURES.md](ADVANCED_FEATURES.md)
+
 ## Very Simple
 GeoTIFF.io redesigns the traditional GIS approach.  No longer, must you learn buttonology, what every icon stands for and where to find it.  GeoTIFF.io has a simple search interface where you can find everything you need.
 
