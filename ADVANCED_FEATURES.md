@@ -6,5 +6,6 @@ You can auto-load a raster by setting `url` to the url of your raster in your ur
 
 # Adjusting Resolution
 :warning: increasing the resolution, can slow down performance
+
 GeoTIFF.io decides how many pixels to sample across and down for each Leaflet grid cell based on [the getResolution function](https://github.com/GeoTIFF/geotiff.io/blob/master/src/services/RasterService.js#L4).
 Currently, you can adjust this resolution by setting a URL param of resolution.  For example, loading https://app.geotiff.io?resolution=128 will load the site with twice the previously highest possible resolution.
