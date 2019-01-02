@@ -1,3 +1,4 @@
+/* global SITE_CONFIG */
 /* global URLSearchParams */
 import geoblaze from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
@@ -6,6 +7,10 @@ const getResolution = () => {
   const resolution = Number(new URLSearchParams(window.location.search).get('resolution'))
   if (resolution) {
     return resolution
+  }
+
+  if (SITE_CONFIG.resolution) {
+    return Number(SITE_CONFIG.resolution);
   }
 
   const width = document.documentElement.clientWidth;

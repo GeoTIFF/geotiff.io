@@ -1,0 +1,32 @@
+{
+  "colors": {
+    "primary-color": "rgba(49, 185, 141, 1)",
+    "primary-color-focus": "rgba(49, 185, 141, .8)",
+    "primary-color-light": "rgba(49, 185, 141, .3)",
+    "accent-color": "rgba(255, 67, 128, 1)",
+    "accent-color-focus": "rgba(49, 185, 141, .8)",
+    "accent-color-light": "rgba(49, 185, 141, .3)",
+    "secondary-color": "#13293D"
+  },
+  "domain": "app.geotiff.io",
+  "google_analytics_id": "UA-73811343-5",
+  "logo": {
+    "dark": "url('/images/logomark-dark.svg')",
+    "light": "url('/images/logomark-light.svg')"
+  },
+  "resolution": "",
+  "title": "GeoTIFF.io",
+  "tools": [
+    "band-arithmetic",
+    "histogram",
+    "identify",
+    "load",
+    "max",
+    "mean",
+    "median",
+    "min",
+    "mode",
+    "raster-calculator",
+    "sum"
+  ]
+}

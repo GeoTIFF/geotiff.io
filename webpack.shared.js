@@ -2,7 +2,15 @@ const webpack = require('webpack');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const SITE_CONFIG = require(process.env.GEOTIFF_IO_CONFIG || './config.json');
+console.log("SITE_CONFIG:", SITE_CONFIG);
+
+const globalVars = SITE_CONFIG.colors;
+globalVars['logo-dark'] = SITE_CONFIG.logo.dark;
+globalVars['logo-light'] = SITE_CONFIG.logo.light;
 
 module.exports = {
   entry: [
@@ -19,7 +27,12 @@ module.exports = {
         use: [
           "style-loader",
           "css-loader",
-          "less-loader"
+          {
+            loader: "less-loader",
+            options: {
+              globalVars
+            }
+          }
         ]
       },
       {
@@ -48,10 +61,16 @@ module.exports = {
         to: 'sitemap.xml'
       }
     ]),
+    new DefinePlugin({
+      'SITE_CONFIG': JSON.stringify(SITE_CONFIG)
+    }),
     new FaviconsWebpackPlugin('./assets/favicon.png'),
     new HtmlWebpackPlugin({
       template: 'index.html',
-      title: 'GeoTIFF.io',
+      templateParameters: {
+        SITE_CONFIG
+      },
+      title: SITE_CONFIG.title
     })
   ],
 }

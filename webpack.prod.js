@@ -5,6 +5,8 @@ const shared = require('./webpack.shared');
 const OfflinePlugin = require('offline-plugin');
 const CnameWebpackPlugin = require('cname-webpack-plugin');
 
+const SITE_CONFIG = require(process.env.GEOTIFF_IO_CONFIG || './config.json');
+
 const prod = {
   mode: 'production',
   output: {
@@ -54,10 +56,12 @@ const prod = {
         'https://c.tile.openstreetmap.org/2/3/2.png',
         'https://a.tile.openstreetmap.org/2/3/3.png'
       ]
-   }),
-    new CnameWebpackPlugin({
-      domain: 'app.geotiff.io',
-    }),
+   })
   ]
 };
+
+if (SITE_CONFIG.domain) {
+  prod.plugins.push(new CnameWebpackPlugin({ domain: SITE_CONFIG.domain }));
+}
+
 module.exports = merge(shared, prod);
