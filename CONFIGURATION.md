@@ -19,7 +19,7 @@ You'll have to set your custom fields in your own config JSON file.  Here's a br
 | tools | yes | list of tools that should be available |
 
 ## Set Environmental Variable
-In order to load your customizations, you must build and run the application with the `GEOTIFF_IO_CONFIG` environmental variable set to point to your config file.  For example, if you created a custom config file called `mysite-config.json`, you will run your application with `GEOTIFF_IO_CONFIG="./mysite-config.json" npm run start`.  You will build the application with `GEOTIFF_IO_CONFIG="./mysite-config.json" npm run start`.
+In order to load your customizations, you must build and run the application with the `GEOTIFF_IO_CONFIG` environmental variable set to point to your config file.  For example, if you created a custom config file called `mysite-config.json`, you will run your application with `GEOTIFF_IO_CONFIG="./mysite-config.json" npm run start`.  You will build the application with `GEOTIFF_IO_CONFIG="./mysite-config.json" npm run build`.
 
 ### Contact
 If you have any questions about configuration, please don't hesitate to contact Daniel J. Dufour, one of the maintainers, at daniel.j.dufour@gmail.com or post an issue in this Github repo.
