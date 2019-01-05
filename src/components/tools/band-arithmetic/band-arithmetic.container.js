@@ -1,3 +1,4 @@
+/* global SITE_CONFIG */
 import geoblaze from 'geoblaze';
 import BandArithmeticComponent from './band-arithmetic.component';
 import { addRasterFromGeoraster } from '../../../actions/raster-actions';
@@ -22,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
       });
     } catch(e) {
       dispatch(stopLoading());
-      dispatch(showAlert('Geotiff was unable to complete the operation. Please make sure you are using a multi-band raster and a valid arithmetic operation'));
+      dispatch(showAlert(`${SITE_CONFIG.title} was unable to complete the operation. Please make sure you are using a multi-band raster and a valid arithmetic operation`));
     }
   }
 });

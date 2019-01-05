@@ -1,3 +1,4 @@
+/* global SITE_CONFIG */
 import RasterService from '../services/RasterService';
 import { MAP_RASTER_ADD, MAP_RASTER_REMOVE } from 'constants/actions';
 import { startLoading, stopLoading } from './loading-actions';
@@ -11,7 +12,7 @@ export const addRaster = input => {
       dispatch({ type: MAP_RASTER_ADD, raster });
     }, error => {
       dispatch(stopLoading());
-      dispatch(showAlert('Geotiff.io was unable to load the tiff. Please make sure your url or file is accurate and try again.'));
+      dispatch(showAlert(`${SITE_CONFIG.title} was unable to load the tiff. Please make sure your url or file is accurate and try again.`));
     });
   }
 };

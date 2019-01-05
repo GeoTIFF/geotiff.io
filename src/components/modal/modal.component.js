@@ -1,3 +1,4 @@
+/* global SITE_CONFIG */
 import React from 'react';
 import Modal from 'react-modal';
 
@@ -13,7 +14,7 @@ const ModalComponent = ({
   >
     <header>
       <span className='geotiff-logo'></span>
-      <h3>GeoTIFF</h3>
+      <h3>{SITE_CONFIG.title}</h3>
       <i
         className='material-icons'
         onClick={close}
