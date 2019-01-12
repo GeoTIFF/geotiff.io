@@ -37,6 +37,7 @@
     "cname-webpack-plugin": "^1.0.3",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.11",
+    "eslint": "^5.12.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "favicons-webpack-plugin": "0.0.9",
     "html-webpack-plugin": "^3.2.0",
@@ -56,6 +57,7 @@
     "debug-docs": "npm run link-repos && npm run compile-linked && npm run build && cd docs && http-server",
     "install-low-memory": "rm -fr node_modules* && curl -O https://s3.amazonaws.com/geotiff.io/node_modules.zip && unzip -q node_modules.zip && rm node_modules.zip",
     "link-repos": "npm link ~/geoblaze && cd ~/geoblaze && npm link ~/georaster && npm link ~/georaster-layer-for-leaflet",
+    "lint": "eslint src",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.js",
     "start-on-server": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.js --host 0.0.0.0 --port 80"
   }
