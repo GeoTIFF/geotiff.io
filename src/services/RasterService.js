@@ -29,6 +29,25 @@ const getResolution = () => {
 const RasterService = {
 
   createRaster(input) {
+
+    /* check for Github URL and switch to cors-enabled version
+    https://github.com/GeoTIFF/geotiff.io/blob/master/assets/data/PuertoRicoTropicalFruit.tiff
+    to:
+    https://raw.githubusercontent.com/GeoTIFF/geotiff.io/master/assets/data/PuertoRicoTropicalFruit.tiff
+    */
+    if (typeof input === "string") {
+      if (input.match(/^https\:\/\/github\.com\/.*\/.*\/blob\/.*\/.*.tiff?$/i)) {
+        input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob", "");
+        console.warn("Changed URL to " + input + " which is CORS-enabled");
+      } else if (input.match(/^https\:\/\/github\.com\/.*\/.*\/blob\/.*\/.*.tiff?\?raw\=true$/i)) {
+        input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob", "").replace("?raw=true","");
+        console.warn("Changed URL to " + input + " which is CORS-enabled");
+      } else if (input.match(/^https\:\/\/github\.com\/.*\/.*\/raw\/.*\/.*.tiff?$/i)) {
+        input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/raw/", "/");
+        console.warn("Changed URL to " + input + " which is CORS-enabled");
+      }
+    }
+
     return new Promise((resolve, reject) => {
       geoblaze.load(input)
         .then(georaster => {
