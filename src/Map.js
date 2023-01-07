@@ -66,8 +66,16 @@ const Map = {
         // i can't find a good way of getting it in to the identify
         // tool while using leaflet for mapping
         const latlng = [e.latlng.lng, e.latlng.lat];
-        const results = geoblaze.identify(self.raster.georaster, latlng);
-        store.dispatch(setResults(results));
+        const results = geoblaze.identify(self.raster.georasters[0], latlng);
+        results.then(
+          (data) => {
+            store.dispatch(setResults(data));
+          },
+          (err) => {
+            console.log("error", err);
+          }
+        );
+        
       }
     });
 
@@ -79,6 +87,7 @@ const Map = {
   },
 
   addRaster(layer) {
+    console.log(layer);
     if (this.raster) map.removeLayer(this.raster);
     layer.addTo(map);
 
