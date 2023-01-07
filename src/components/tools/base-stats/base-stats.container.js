@@ -11,18 +11,10 @@ const mapStateToProps = state => ({
 const execute = (raster, geometry, func) => {
   let geojson = geometry.toGeoJSON();
   let results = func(raster, geojson);
-  console.log(raster);
-  console.log(geojson);
-  console.log(results);
   return results.then(
-    (data) => {
-      console.log(data);
-      return setResults(data)
-    },
-    (err) => {
-      console.log("error", err);
-    }
-  );
+    (value) => {
+      return setResults(value)
+    });
   
 }
 
@@ -37,17 +29,10 @@ const mapDispatchToProps = dispatch => {
         dispatch(showAlert('Please draw an area of interest or import a GeoJSON file before running this tool.'));
         return;
       }
-      console.log(execute(raster, geometry, func));
       execute(raster, geometry, func).then(
-        (data) => {
-          console.log(data);
-          return dispatch(data);
-        },
-        (err) => {
-          console.log("error", err);
-        }
-      );
-      
+        (action) => {
+          return dispatch(action);
+        });
     }
   }
 }

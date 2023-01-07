@@ -68,14 +68,11 @@ const Map = {
         const latlng = [e.latlng.lng, e.latlng.lat];
         const results = geoblaze.identify(self.raster.georasters[0], latlng);
         results.then(
-          (data) => {
-            store.dispatch(setResults(data));
-          },
-          (err) => {
+          (value) => {
+            store.dispatch(setResults(value));
+          },(err) => {
             console.log("error", err);
-          }
-        );
-        
+          });
       }
     });
 
@@ -87,7 +84,6 @@ const Map = {
   },
 
   addRaster(layer) {
-    console.log(layer);
     if (this.raster) map.removeLayer(this.raster);
     layer.addTo(map);
 
