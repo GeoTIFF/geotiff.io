@@ -1,7 +1,6 @@
 import { RESULTS_SET, RESULTS_CLEAR } from 'constants/actions';
 
 const results = (state = null, action) => {
-  console.log(action);
   switch (action.type) {
     case RESULTS_SET:
       return action.results;
