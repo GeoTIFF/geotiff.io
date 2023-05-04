@@ -21,8 +21,8 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "recompose": "^0.26.0",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
+    "redux": "3.7.2",
+    "redux-thunk": "2.2.0",
     "sweetalert-react": "^0.4.11",
     "underscore": "^1.8.3",
     "webpack-bundle-analyzer": "^2.13.1"
@@ -39,7 +39,6 @@
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.11",
     "eslint": "^5.12.0",
-    "extract-text-webpack-plugin": "^3.0.0",
     "favicons-webpack-plugin": "0.0.9",
     "html-webpack-plugin": "^3.2.0",
     "less-loader": "^4.1.0",
