@@ -49,7 +49,7 @@ const RasterService = {
     }
 
     return new Promise((resolve, reject) => {
-      geoblaze.load(input)
+      geoblaze.parse(input)
         .then(georaster => {
           let options = {
             georaster: georaster,

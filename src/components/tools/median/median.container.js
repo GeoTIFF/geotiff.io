@@ -3,9 +3,9 @@ import BaseStats from '../base-stats';
 import MedianComponent from './median.component';
 import { withProps } from 'recompose';
 
-const calculateMedian = (raster, coors) => {
-  return geoblaze.median(raster, coors)
-    .map(value => value.toFixed(2)).join(', ');
+const calculateMedian = async (raster, coors) => {
+  const result = await geoblaze.median(raster, coors)
+  return result.map(value => value.toFixed(2)).join(', ');
 }
 
 const MedianContainer = withProps(

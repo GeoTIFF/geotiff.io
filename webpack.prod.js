@@ -4,6 +4,7 @@ const path = require('path');
 const shared = require('./webpack.shared');
 const OfflinePlugin = require('offline-plugin');
 const CnameWebpackPlugin = require('cname-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 const SITE_CONFIG = require(process.env.GEOTIFF_IO_CONFIG || './config.json');
 
@@ -13,6 +14,10 @@ const prod = {
     filename: 'bundle.js',
     path: path.join(__dirname, 'docs'),
     publicPath: '/'
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
   plugins: [
     new OfflinePlugin({

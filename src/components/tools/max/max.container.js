@@ -3,9 +3,9 @@ import BaseStats from '../base-stats';
 import MaxComponent from './max.component';
 import { withProps } from 'recompose';
 
-const calculateMax = (raster, coors) => {
-  return geoblaze.max(raster, coors)
-    .map(value => value.toFixed(2)).join(', ');
+const calculateMax = async (raster, coors) => {
+  const result = await geoblaze.max(raster, coors)
+  return result.map(value => value.toFixed(2)).join(', ');
 }
 
 const MaxContainer = withProps(
