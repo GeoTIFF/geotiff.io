@@ -25,7 +25,8 @@
     "redux-thunk": "2.2.0",
     "sweetalert-react": "^0.4.11",
     "underscore": "^1.8.3",
-    "webpack-bundle-analyzer": "^2.13.1"
+    "webpack-bundle-analyzer": "^2.13.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -60,6 +61,9 @@
     "link-repos": "npm link ~/geoblaze && cd ~/geoblaze && npm link ~/georaster && npm link ~/georaster-layer-for-leaflet",
     "lint": "eslint src",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.js",
-    "start-on-server": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.js --host 0.0.0.0"
-  }
+    "start-on-server": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.js --host 0.0.0.0",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
