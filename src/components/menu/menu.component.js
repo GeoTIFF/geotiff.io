@@ -29,14 +29,14 @@ const MenuComponent = ({ toolList, menuFocus, searchTools, onSubmit, focus }) =>
     >
       <div id='tool-button-container'>
         {
-          toolList.map(({ name, iconUrl, path }) => {
-            return <ToolButton
+          toolList.map(({ name, iconUrl, path }) => (
+            <ToolButton
               iconUrl={iconUrl}
               key={name}
               name={name}
               path={path}
             />
-          })
+          ))
         }
       </div>
     </section>

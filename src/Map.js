@@ -66,7 +66,8 @@ const Map = {
         // i can't find a good way of getting it in to the identify
         // tool while using leaflet for mapping
         const latlng = [e.latlng.lng, e.latlng.lat];
-        const results = geoblaze.identify(self.raster.georasters[0], latlng);
+        const geom = { srs: 4326, geometry: { type: "Point", coordinates: latlng } };
+        const results = Promise.resolve(geoblaze.identify(self.raster.georasters[0], geom));
         results.then(
           (value) => {
             store.dispatch(setResults(value));
