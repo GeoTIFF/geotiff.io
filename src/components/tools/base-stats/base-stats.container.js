@@ -10,6 +10,8 @@ const mapStateToProps = state => ({
 
 const execute = (raster, geometry, func) => {
   let geojson = geometry.toGeoJSON();
+  // inject srs info, otherwise geoblaze will assume in srs of raster
+  geojson.srs = 4326;
   let results = func(raster, geojson);
   return results.then(
     (value) => {
